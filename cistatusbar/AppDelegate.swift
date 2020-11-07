@@ -14,7 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
 
-        let presenter = StatusItemPresenter(repo: GithubJobsRepo(), button: button)
+        let repo = JobsRepoImpl(jobInfoDao: JobInfoDaoImpl(), jobHttpClient: JobHttpClientImpl())
+        let presenter = StatusItemPresenter(repo: repo, button: button)
         presenter.present()
     }
     

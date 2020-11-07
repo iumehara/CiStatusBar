@@ -1,0 +1,1 @@
+struct CisbError: Error, Equatable {}
