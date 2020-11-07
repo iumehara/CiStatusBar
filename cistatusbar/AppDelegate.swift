@@ -1,64 +1,23 @@
-//
-//  AppDelegate.swift
-//  cistatusbar
-//
-//  Created by umehara on 2020/10/20.
-//
-
 import Cocoa
 import SwiftUI
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    var window: NSWindow!
     var statusItem: NSStatusItem?
 
-
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
-        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        let contentView = ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
-
-        
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(100))
+        
         guard let button = statusItem?.button else {
             print("hello")
             NSApp.terminate(nil)
             return
         }
-        
-        
 
-        button.title = "🟢"
-        button.isBordered = false
-        button.wantsLayer = true
-        button.layer?.borderColor = CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
-        button.layer?.backgroundColor = CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
-        
-//        button.image = NSImage(named: NSImage.Name("android-icon"))
-        
-        
-        button.target = self
-        button.action = #selector(displaySomething)
-        
-        
-        
-        // Create the window and set the content view.
-        window = NSWindow(
-            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-            backing: .buffered, defer: false)
-        window.center()
-        window.setFrameAutosaveName("Main Window")
-        window.contentView = NSHostingView(rootView: contentView)
-        window.makeKeyAndOrderFront(nil)
+        let presenter = StatusItemPresenter(repo: GithubJobsRepo(), button: button)
+        presenter.present()
     }
     
-    @objc func displaySomething() {
-        print("yoooooo!")
-    }
-
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }

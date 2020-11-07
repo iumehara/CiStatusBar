@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */; };
+		240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
 		2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDD9253F072D00184F1A /* AppDelegate.swift */; };
-		2474EDDC253F072D00184F1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDDB253F072D00184F1A /* ContentView.swift */; };
 		2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */; };
 		2474EDE1253F072E00184F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE0253F072E00184F1A /* Assets.xcassets */; };
 		2474EDE4253F072E00184F1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE3253F072E00184F1A /* Preview Assets.xcassets */; };
@@ -35,9 +36,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
+		240C977B2552E6F10083C9B8 /* JobsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsRepo.swift; sourceTree = "<group>"; };
 		2474EDD6253F072D00184F1A /* cistatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cistatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDD9253F072D00184F1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2474EDDB253F072D00184F1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		2474EDDE253F072D00184F1A /* cistatusbar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cistatusbar.xcdatamodel; sourceTree = "<group>"; };
 		2474EDE0253F072E00184F1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2474EDE3253F072E00184F1A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -100,14 +102,15 @@
 		2474EDD8253F072D00184F1A /* cistatusbar */ = {
 			isa = PBXGroup;
 			children = (
-				2474EDD9253F072D00184F1A /* AppDelegate.swift */,
-				2474EDDB253F072D00184F1A /* ContentView.swift */,
-				2474EDE0253F072E00184F1A /* Assets.xcassets */,
-				2474EDE5253F072E00184F1A /* Main.storyboard */,
-				2474EDE8253F072E00184F1A /* Info.plist */,
 				2474EDE9253F072E00184F1A /* cistatusbar.entitlements */,
+				2474EDE8253F072E00184F1A /* Info.plist */,
+				2474EDD9253F072D00184F1A /* AppDelegate.swift */,
+				2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */,
+				2474EDE0253F072E00184F1A /* Assets.xcassets */,
 				2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */,
+				2474EDE5253F072E00184F1A /* Main.storyboard */,
 				2474EDE2253F072E00184F1A /* Preview Content */,
+				240C977B2552E6F10083C9B8 /* JobsRepo.swift */,
 			);
 			path = cistatusbar;
 			sourceTree = "<group>";
@@ -268,9 +271,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */,
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
-				2474EDDC253F072D00184F1A /* ContentView.swift in Sources */,
 				2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */,
+				240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
