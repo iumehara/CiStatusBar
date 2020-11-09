@@ -9,13 +9,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(100))
         
         guard let button = statusItem?.button else {
-            print("hello")
             NSApp.terminate(nil)
             return
         }
+        
+        let menu = NSMenu()
+        statusItem?.menu = menu
 
-        let repo = JobsRepoImpl(jobInfoDao: JobInfoDaoImpl(), jobHttpClient: JobHttpClientImpl())
-        let presenter = StatusItemPresenter(repo: repo, button: button)
+        let repo = JobsRepoImpl(jobInfoDao: JobInfoDaoImpl(),
+                                jobHttpClient: JobHttpClientImpl())
+        let presenter = StatusItemPresenter(repo: repo,
+                                            button: button,
+                                            menu: menu)
         presenter.present()
     }
     
