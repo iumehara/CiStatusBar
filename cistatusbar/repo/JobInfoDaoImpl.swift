@@ -4,11 +4,13 @@ import Combine
 class JobInfoDaoImpl: JobInfoDao {
     func getAll() -> AnyPublisher<[JobInfo], CisbError> {
         let stubJobs = [
-            JobInfo(name: "test",
-                    url: URL(string: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs")!,
+            JobInfo(id: 1,
+                    name: "test",
+                    url: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
                     apiType: ApiType.gitHubV3Workflow),
-            JobInfo(name: "deploy",
-                    url: URL(string: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3188936/runs")!,
+            JobInfo(id: 2,
+                    name: "deploy",
+                    url: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3188936/runs",
                     apiType: ApiType.gitHubV3Workflow)
         ]
         

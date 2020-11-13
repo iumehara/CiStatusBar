@@ -5,9 +5,10 @@ struct Job: Hashable, Codable {
     var status: String
 }
 
-struct JobInfo: Equatable {
+struct JobInfo: Equatable, Identifiable {
+    var id: Int
     var name: String
-    var url: URL
+    var url: String
     var apiType: ApiType
 }
 

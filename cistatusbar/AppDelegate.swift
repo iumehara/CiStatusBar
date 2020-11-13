@@ -4,6 +4,7 @@ import SwiftUI
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
+    var preferencesWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(100))
@@ -22,6 +23,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                             button: button,
                                             menu: menu)
         presenter.present()
+    }
+    
+    @objc func showPreferences() {
+        if preferencesWindow == nil {
+            let preferencesViewModel = PreferencesViewModel(jobInfoRepo: JobInfoRepoImpl(jobInfoDao: JobInfoDaoImpl()))
+            let preferencesView = PreferencesView().environmentObject(preferencesViewModel)
+            preferencesWindow = NSWindow(
+                contentRect: NSRect(x: 20, y: 20, width: 2000, height: 300),
+                styleMask: [.titled, .closable],
+                backing: .buffered,
+                defer: false)
+            preferencesWindow?.center()
+            preferencesWindow?.title = "Preferences"
+            preferencesWindow?.setFrameAutosaveName("Preferences")
+            preferencesWindow?.isReleasedWhenClosed = false
+            preferencesWindow?.contentView = NSHostingView(rootView: preferencesView)
+        }
+        preferencesWindow?.makeKeyAndOrderFront(nil)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -127,3 +146,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 }
 
+
+struct AppDelegate_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}

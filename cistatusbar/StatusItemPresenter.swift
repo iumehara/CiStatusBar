@@ -83,6 +83,7 @@ class StatusItemPresenter: NSObject {
                 menu.insertItem(menuItem, at: jobItemIndex)
                 jobItemIndex += 1
             }
+            setupPreferencesSection()
             setupQuitSection()
         } else {
             jobs.forEach { job in
@@ -110,19 +111,30 @@ class StatusItemPresenter: NSObject {
         menu.addItem(updateSectionSeparator)
     }
     
+    private func setupPreferencesSection() {
+        let preferences = NSMenuItem(title: "Preferences...", action: #selector(self.launchPreferences(_:)), keyEquivalent: "")
+        preferences.target = self
+        preferences.tag = MenuItemTag.update.rawValue
+        menu.addItem(preferences)
+
+        menu.addItem(NSMenuItem.separator())
+    }
+    
     private func setupQuitSection() {
         let action = #selector(NSApp.terminate(_:))
-        
         let quit = NSMenuItem(title: "Quit", action: action, keyEquivalent: "")
         quit.tag = MenuItemTag.quit.rawValue
         menu.addItem(quit)
     }
-
     
     @objc func updateSelector(_ sender: Any?) {
         print("yoooooo!")
         update()
         print("yeaaah!")
+    }
+    
+    @objc func launchPreferences(_ sender: Any?) {
+        NSApp.sendAction(#selector(AppDelegate.showPreferences),to: nil, from: nil)
     }
 }
 
