@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let preferencesViewModel = PreferencesViewModel(jobInfoRepo: JobInfoRepoImpl(jobInfoDao: JobInfoDaoImpl()))
             let preferencesView = PreferencesView().environmentObject(preferencesViewModel)
             preferencesWindow = NSWindow(
-                contentRect: NSRect(x: 20, y: 20, width: 2000, height: 300),
+                contentRect: NSRect(x: 20, y: 20, width: 700, height: 200),
                 styleMask: [.titled, .closable],
                 backing: .buffered,
                 defer: false)

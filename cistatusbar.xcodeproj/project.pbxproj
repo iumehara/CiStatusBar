@@ -31,6 +31,8 @@
 		242F3F3B2559915D00EFC526 /* JobInfoRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */; };
 		242F3F40255992C800EFC526 /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
 		242F3F46255A86E500EFC526 /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */; };
+		242F3F65255E5E8400EFC526 /* JobInfoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */; };
+		242F3F6A255E5F2100EFC526 /* JobInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F69255E5F2100EFC526 /* JobInfoList.swift */; };
 		2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDD9253F072D00184F1A /* AppDelegate.swift */; };
 		2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */; };
 		2474EDE1253F072E00184F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE0253F072E00184F1A /* Assets.xcassets */; };
@@ -75,6 +77,8 @@
 		242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepo.swift; sourceTree = "<group>"; };
 		242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepoImpl.swift; sourceTree = "<group>"; };
 		242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
+		242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDetail.swift; sourceTree = "<group>"; };
+		242F3F69255E5F2100EFC526 /* JobInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoList.swift; sourceTree = "<group>"; };
 		2474EDD6253F072D00184F1A /* cistatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cistatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDD9253F072D00184F1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2474EDDE253F072D00184F1A /* cistatusbar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cistatusbar.xcdatamodel; sourceTree = "<group>"; };
@@ -156,6 +160,8 @@
 			children = (
 				242F3F32255980DF00EFC526 /* PreferencesView.swift */,
 				242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */,
+				242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */,
+				242F3F69255E5F2100EFC526 /* JobInfoList.swift */,
 			);
 			path = preferences;
 			sourceTree = "<group>";
@@ -360,8 +366,10 @@
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
 				242F3F46255A86E500EFC526 /* PreferencesViewModel.swift in Sources */,
 				242F3F3B2559915D00EFC526 /* JobInfoRepo.swift in Sources */,
+				242F3F6A255E5F2100EFC526 /* JobInfoList.swift in Sources */,
 				242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */,
 				2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */,
+				242F3F65255E5E8400EFC526 /* JobInfoDetail.swift in Sources */,
 				240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */,
 				242F3E7825565EE600EFC526 /* Job.swift in Sources */,
 				242F3E8D255660F100EFC526 /* JobsRepoImpl.swift in Sources */,
