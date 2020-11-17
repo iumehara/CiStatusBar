@@ -13,7 +13,6 @@ struct JobInfoList: View {
                     .buttonStyle(ListButtonStyle(isSelected: viewModel.currentJobInfo.id == jobInfo.id))
                 }
             }
-            .frame(width: 120)
 
             HStack(alignment: .bottom, spacing: 0) {
                 Button(action: self.addClicked) { Text("+") }
@@ -51,15 +50,15 @@ struct JobInfoList: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
                 .contentShape(Rectangle())
-                .foregroundColor(Color.black)
-                .listRowBackground(isSelected ? Color.gray : Color.white)
+                .foregroundColor(isSelected ? Color.white : Color.black)
+                .listRowBackground(isSelected ? Color.blue : Color.white)
         }
     }
 }
 
 struct JobInfoList_Previews: PreviewProvider {
     static var previews: some View {
-        let jobInfoDao = JobInfoDaoImpl()
+        let jobInfoDao = JobInfoDaoStub()
         let jobHttpClient = JobHttpClientImpl()
         let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
         let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)

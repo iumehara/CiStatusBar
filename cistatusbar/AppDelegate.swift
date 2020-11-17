@@ -7,7 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesWindow: NSWindow?
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(100))
+        statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(40))
         
         guard let button = statusItem?.button else {
             NSApp.terminate(nil)

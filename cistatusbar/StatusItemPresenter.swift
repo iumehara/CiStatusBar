@@ -145,21 +145,18 @@ extension NSStatusBarButton {
         self.title = "🟢"
         self.isBordered = false
         self.wantsLayer = true
-        self.layer?.backgroundColor = CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
     }
 
     func displayFailed() {
         self.title = "🔴"
         self.isBordered = false
         self.wantsLayer = true
-        self.layer?.backgroundColor = CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
     }
     
     func displayUnavailable() {
         self.title = "⁉️"
         self.isBordered = false
         self.wantsLayer = true
-        self.layer?.backgroundColor = CGColor(red: 1.0, green: 1.0, blue: 0.5, alpha: 1.0)
     }
 }
 

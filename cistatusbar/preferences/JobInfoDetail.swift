@@ -8,42 +8,44 @@ struct JobInfoDetail: View {
             HStack(alignment: .center, spacing: 0) {
                 Text("name:")
                     .padding(10.0)
-                    .frame(width: 100, alignment: .leading)
+                    .frame(width: 60, alignment: .leading)
                 TextField("name", text: $viewModel.currentJobInfo.name)
                     .padding(10.0)
-                    .frame(width: 600, alignment: .leading)
+                    .frame(width: 200, alignment: .leading)
+                Spacer()
             }
             
             HStack(alignment: .center, spacing: 0) {
                 Text("url:")
                     .padding(10.0)
-                    .frame(width: 100, alignment: .leading)
+                    .frame(width: 60, alignment: .leading)
                 TextField("url", text: $viewModel.currentJobInfo.url)
                     .padding(10.0)
                     .frame(width: 600, alignment: .leading)
+                Spacer()
             }
 
             if viewModel.jobInfos.count > 0 {
                 VStack(alignment: .leading) {
                     Button(action: self.testClicked) { Text("Test Connection") }
-                        .padding(.leading, 110)
+                        .padding(.leading, 70)
                         .padding(.top, 10)
                     
                     switch viewModel.connectionStatus {
                     case .connecting:
                         Text("connecing...")
-                            .padding(.leading, 110)
+                            .padding(.leading, 70)
                     case .valid:
                         Text("valid")
-                            .padding(.leading, 110)
+                            .padding(.leading, 70)
                             .foregroundColor(.green)
                     case .invalid:
                         Text("invalid")
-                            .padding(.leading, 110)
+                            .padding(.leading, 70)
                             .foregroundColor(.red)
                     default:
                         Text("click to test connection")
-                            .padding(.leading, 110)
+                            .padding(.leading, 70)
                     }
                 }
                 
@@ -53,7 +55,7 @@ struct JobInfoDetail: View {
                     Button(action: self.saveClicked) { Text("Save") }
                         .padding(10)
                 }
-                .padding(.leading, 100)
+                .padding(.leading, 60)
             }
         }
         .frame(width: 700)
@@ -74,7 +76,7 @@ struct JobInfoDetail: View {
 
 struct JobInfoDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let jobInfoDao = JobInfoDaoImpl()
+        let jobInfoDao = JobInfoDaoStub()
         let jobHttpClient = JobHttpClientImpl()
         let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
         let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
