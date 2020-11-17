@@ -8,7 +8,7 @@ struct JobInfoList: View {
             List {
                 ForEach(viewModel.jobInfos) { jobInfo in
                     Button(action: { self.jobClicked(jobInfo) }) {
-                        Text(jobInfo.name)
+                        Text(viewModel.currentJobInfo.id == jobInfo.id ? viewModel.currentJobInfo.name : jobInfo.name)
                     }
                     .buttonStyle(ListButtonStyle(isSelected: viewModel.currentJobInfo.id == jobInfo.id))
                 }
@@ -28,15 +28,15 @@ struct JobInfoList: View {
     }
     
     private func addClicked() {
-        self.viewModel.saveJobInfo()
+        viewModel.createJobInfo()
     }
 
     private func deleteClicked() {
-        print("delete clicked")
+        viewModel.deleteJobInfo()
     }
     
     private func jobClicked(_ jobInfo: JobInfo) {
-        self.viewModel.jobInfoSelected(jobInfo)
+        viewModel.jobInfoSelected(jobInfo)
     }
 
     struct ListButtonStyle: ButtonStyle {
@@ -57,10 +57,14 @@ struct JobInfoList: View {
     }
 }
 
-
 struct JobInfoList_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = PreferencesViewModel(jobInfoRepo: JobInfoRepoImpl(jobInfoDao: JobInfoDaoImpl()))
+        let jobInfoDao = JobInfoDaoImpl()
+        let jobHttpClient = JobHttpClientImpl()
+        let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
+        let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+        let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
+                                             jobRepo: jobRepo)
         viewModel.onAppear()
         return JobInfoList().environmentObject(viewModel)
     }

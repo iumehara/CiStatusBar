@@ -15,8 +15,13 @@ struct PreferencesView: View {
 
 struct PreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        let preferencesViewModel = PreferencesViewModel(jobInfoRepo: JobInfoRepoImpl(jobInfoDao: JobInfoDaoImpl()))
+        let jobInfoDao = JobInfoDaoImpl()
+        let jobHttpClient = JobHttpClientImpl()
+        let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
+        let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+        let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
+                                            jobRepo: jobRepo)
         return PreferencesView()
-            .environmentObject(preferencesViewModel)
+            .environmentObject(viewModel)
     }
 }

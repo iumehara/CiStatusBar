@@ -3,7 +3,11 @@ import Combine
 
 class JobHttpClientImpl: JobHttpClient {
     func get(jobInfo: JobInfo) -> AnyPublisher<Job, CisbError> {
-        var request = URLRequest(url: URL(string: jobInfo.url)!)
+        guard let url = URL(string: jobInfo.url) else {
+            return Fail(error: CisbError()).eraseToAnyPublisher()
+        }
+        
+        var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         

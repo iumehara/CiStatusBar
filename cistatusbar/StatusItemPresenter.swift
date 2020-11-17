@@ -38,6 +38,8 @@ class StatusItemPresenter: NSObject {
                     switch value {
                     case .failure:
                         self.button.displayUnavailable()
+                        self.updateMenu(jobs: [])
+                        break
                     case .finished:
                         self.lastUpdate = Date()
                         break

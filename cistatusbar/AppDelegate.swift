@@ -27,7 +27,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func showPreferences() {
         if preferencesWindow == nil {
-            let preferencesViewModel = PreferencesViewModel(jobInfoRepo: JobInfoRepoImpl(jobInfoDao: JobInfoDaoImpl()))
+            let jobInfoDao = JobInfoDaoImpl()
+            let jobHttpClient = JobHttpClientImpl()
+            let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
+            let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+            let preferencesViewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
+                                                            jobRepo: jobRepo)
             let preferencesView = PreferencesView().environmentObject(preferencesViewModel)
             preferencesWindow = NSWindow(
                 contentRect: NSRect(x: 20, y: 20, width: 700, height: 200),

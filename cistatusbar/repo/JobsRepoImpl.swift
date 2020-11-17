@@ -10,10 +10,39 @@ class JobsRepoImpl: JobsRepo {
         self.jobHttpClient = jobHttpClient
     }
     
+    func get(jobInfo: JobInfo) -> AnyPublisher<Job, CisbError> {
+        return self.jobHttpClient.get(jobInfo: jobInfo)
+            .mapError { error in CisbError() }
+            .eraseToAnyPublisher()
+    }
+
     func getAll() -> AnyPublisher<[Job], CisbError> {
         return self.jobInfoDao.getAll()
             .flatMap { (jobInfos: [JobInfo]) -> AnyPublisher<[Job], CisbError> in
+                if jobInfos.count == 0 {
+                    return self.empty()
+                }
+                
+                if (jobInfos.count == 1) {
+                    return self.getOne(jobInfo: jobInfos[0])
+                }
+                
                 return self.getBoth(jobInfo1: jobInfos[0], jobInfo2: jobInfos[1])
+            }
+            .eraseToAnyPublisher()
+    }
+
+    private func empty()  -> AnyPublisher<[Job], CisbError> {
+        return Just([])
+            .mapError { error in CisbError() }
+            .eraseToAnyPublisher()
+    }
+
+    private func getOne(jobInfo: JobInfo)  -> AnyPublisher<[Job], CisbError> {
+        return self.jobHttpClient.get(jobInfo: jobInfo)
+            .mapError { error in CisbError() }
+            .map { response -> [Job] in
+                return [response]
             }
             .eraseToAnyPublisher()
     }
