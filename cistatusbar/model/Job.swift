@@ -18,7 +18,3 @@ struct JobInfo: Equatable, Identifiable {
                        apiType: .gitHubV3Workflow)
     }
 }
-
-enum ApiType {
-    case gitHubV3Workflow
-}

@@ -59,8 +59,11 @@ final class PreferencesViewModel: ObservableObject {
         guard let jobInfoId = UUID(uuidString: currentJobInfo.id) else {
             return
         }
-        _ = self.jobInfoRepo.delete(id: jobInfoId)
-        reset()
+        self.jobInfoRepo.delete(id: jobInfoId)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { value in self.reset() },
+                  receiveValue: { _ in })
+            .store(in: &disposables)
     }
     
     func reset() {
@@ -68,24 +71,32 @@ final class PreferencesViewModel: ObservableObject {
     }
     
     func saveJobInfo() {
-        _ = self.jobInfoRepo.create(jobInfo: currentJobInfo)
+        self.jobInfoRepo.create(jobInfo: currentJobInfo)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { value in self.reset() },
+                  receiveValue: { _ in })
+            .store(in: &disposables)
     }
     
     private func fetchData() {
         self.jobInfoRepo.getAll()
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: {value in
-                if value == .failure(CisbError()) {
-                    self.jobInfos = []
+            .sink(
+                receiveCompletion: { value in
+                    if value == .failure(CisbError()) {
+                        self.jobInfos = []
+                    }
+                },
+                receiveValue: { value in
+                    self.jobInfos = value
+                    if (value.count == 0) {
+                        self.createJobInfo()
+                    } else {
+                        print("jobs", value.map {$0.apiType })
+                        self.currentJobInfo = value[0]
+                    }
                 }
-            }, receiveValue: { value in
-                self.jobInfos = value
-                if (value.count == 0) {
-                    self.createJobInfo()
-                } else {
-                    self.currentJobInfo = value[0]
-                }
-            })
+            )
             .store(in: &disposables)
     }
 }

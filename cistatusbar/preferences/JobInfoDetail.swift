@@ -16,6 +16,17 @@ struct JobInfoDetail: View {
             }
             
             HStack(alignment: .center, spacing: 0) {
+                Picker(selection: $viewModel.currentJobInfo.apiType,
+                       label: Text("api:").padding(10.0).frame(width: 60, alignment: .leading)) {
+                    ForEach(ApiType.allCases) { apiType in
+                        Text(apiType.description).tag(apiType)
+                    }
+                }
+                .frame(width: 300)
+                Spacer()
+            }
+
+            HStack(alignment: .center, spacing: 0) {
                 Text("url:")
                     .padding(10.0)
                     .frame(width: 60, alignment: .leading)
@@ -30,7 +41,7 @@ struct JobInfoDetail: View {
                     Button(action: self.testClicked) { Text("Test Connection") }
                         .padding(.leading, 70)
                         .padding(.top, 10)
-                    
+
                     switch viewModel.connectionStatus {
                     case .connecting:
                         Text("connecing...")
@@ -48,7 +59,7 @@ struct JobInfoDetail: View {
                             .padding(.leading, 70)
                     }
                 }
-                
+
                 HStack(alignment: .center, spacing: 0) {
                     Button(action: self.cancelClicked) { Text("Cancel") }
                         .padding(10)

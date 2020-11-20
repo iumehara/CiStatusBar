@@ -6,7 +6,7 @@ class JobInfoDaoStub: JobInfoDao {
         let jobInfos = [
             JobInfo(id: UUID().uuidString,
                     name: "test",
-                    url: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
+                    url: "Zhttps://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
                     apiType: .gitHubV3Workflow),
             JobInfo(id: UUID().uuidString,
                     name: "deploy",

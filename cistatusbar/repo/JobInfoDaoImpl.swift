@@ -45,7 +45,7 @@ class JobInfoDaoImpl: JobInfoDao {
         let entity = NSEntityDescription.entity(forEntityName: "CDJobInfo", in: managedContext)!
         let cdJobInfo = NSManagedObject(entity: entity, insertInto: managedContext)
         let id = UUID(uuidString: jobInfo.id)
-        let apiType = String(describing: jobInfo.apiType)
+        let apiType = jobInfo.apiType.rawValue
         cdJobInfo.setValue(id, forKey: "id")
         cdJobInfo.setValue(url, forKey: "url")
         cdJobInfo.setValue(jobInfo.name, forKey: "name")
@@ -86,10 +86,15 @@ class JobInfoDaoImpl: JobInfoDao {
         guard
             let id = cdJobInfo.id?.uuidString as? String,
             let name = cdJobInfo.name as? String,
-            let url = cdJobInfo.url?.absoluteString as? String else {
+            let url = cdJobInfo.url?.absoluteString as? String,
+            let apiTypeString = cdJobInfo.api_type as? String,
+            let apiType = ApiType(rawValue: apiTypeString) else {
                 return nil
             }
         
-        return JobInfo(id: id, name: name, url: url, apiType: .gitHubV3Workflow)
+        return JobInfo(id: id,
+                       name: name,
+                       url: url,
+                       apiType: apiType)
     }
 }

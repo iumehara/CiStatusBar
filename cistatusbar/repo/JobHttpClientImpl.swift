@@ -26,16 +26,29 @@ class JobHttpClientImpl: JobHttpClient {
     private func decodeResponse(apiType: ApiType,
                                 jobName: String,
                                 data: Data) -> AnyPublisher<Job, CisbError> {
-        let decoderType = GitHubV3WorkflowResponse.self
         
-        return Just(data)
-            .decode(type: decoderType, decoder: JSONDecoder())
-            .map { response in
-                return Job(name: jobName, status: response.toStatus())
-            }
-            .mapError { error in
-                CisbError()
-            }
-            .eraseToAnyPublisher()
+        switch apiType {
+        case .gitHubV3Workflow:
+            let type = GitHubV3WorkflowResponse.self
+            return Just(data)
+                .decode(type: type, decoder: JSONDecoder())
+                .map { Job(name: jobName, status: $0.toStatus())}
+                .mapError { e in CisbError() }
+                .eraseToAnyPublisher()
+        case .gitLabV4Pipeline:
+            let type = [GitLabV4PipelineResponse].self
+            return Just(data)
+                .decode(type: type, decoder: JSONDecoder())
+                .map { Job(name: jobName, status: $0[0].toStatus()) }
+                .mapError { e in CisbError()}
+                .eraseToAnyPublisher()
+        default:
+            let type = OtherResponse.self
+            return Just(data)
+                .decode(type: type, decoder: JSONDecoder())
+                .map { Job(name: jobName, status: $0.toStatus()) }
+                .mapError { e in CisbError() }
+                .eraseToAnyPublisher()
+        }
     }
 }
