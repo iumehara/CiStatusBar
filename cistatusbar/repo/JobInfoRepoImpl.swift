@@ -12,8 +12,11 @@ class JobInfoRepoImpl: JobInfoRepo {
         return self.jobInfoDao.getAll()
     }
 
-    func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
-        return self.jobInfoDao.create(jobInfo: jobInfo)
+    func save(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
+        if jobInfo.id == nil {
+            return self.jobInfoDao.create(jobInfo: jobInfo)
+        }
+        return self.jobInfoDao.update(jobInfo: jobInfo)
     }
     
     func delete(id: UUID) -> AnyPublisher<Bool, CisbError> {

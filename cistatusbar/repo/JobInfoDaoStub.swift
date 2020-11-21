@@ -4,11 +4,11 @@ import Combine
 class JobInfoDaoStub: JobInfoDao {
     func getAll() -> AnyPublisher<[JobInfo], CisbError> {
         let jobInfos = [
-            JobInfo(id: UUID().uuidString,
+            JobInfo(id: UUID(),
                     name: "test",
                     url: "Zhttps://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
                     apiType: .gitHubV3Workflow),
-            JobInfo(id: UUID().uuidString,
+            JobInfo(id: UUID(),
                     name: "deploy",
                     url: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3188936/runs",
                     apiType: .gitHubV3Workflow)
@@ -20,6 +20,12 @@ class JobInfoDaoStub: JobInfoDao {
     }
     
     func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
+        return Just(true)
+            .mapError { error in CisbError()}
+            .eraseToAnyPublisher()
+    }
+    
+    func update(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
             .mapError { error in CisbError()}
             .eraseToAnyPublisher()

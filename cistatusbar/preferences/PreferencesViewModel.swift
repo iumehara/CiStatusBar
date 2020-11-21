@@ -50,13 +50,16 @@ final class PreferencesViewModel: ObservableObject {
 
     func createJobInfo() {
         let count = jobInfos.count + 1
-        let newJobInfo = JobInfo(id: UUID().uuidString, name: "job \(count)", url: "", apiType: .gitHubV3Workflow)
+        let newJobInfo = JobInfo(id: nil,
+                                 name: "job \(count)",
+                                 url: "",
+                                 apiType: .gitHubV3Workflow)
         self.jobInfos.append(newJobInfo)
         self.currentJobInfo = newJobInfo
     }
     
     func deleteJobInfo() {
-        guard let jobInfoId = UUID(uuidString: currentJobInfo.id) else {
+        guard let jobInfoId = currentJobInfo.id else {
             return
         }
         self.jobInfoRepo.delete(id: jobInfoId)
@@ -71,7 +74,7 @@ final class PreferencesViewModel: ObservableObject {
     }
     
     func saveJobInfo() {
-        self.jobInfoRepo.create(jobInfo: currentJobInfo)
+        self.jobInfoRepo.save(jobInfo: currentJobInfo)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { value in self.reset() },
                   receiveValue: { _ in })
@@ -92,7 +95,6 @@ final class PreferencesViewModel: ObservableObject {
                     if (value.count == 0) {
                         self.createJobInfo()
                     } else {
-                        print("jobs", value.map {$0.apiType })
                         self.currentJobInfo = value[0]
                     }
                 }
