@@ -48,7 +48,7 @@ struct JobInfoList: View {
         func makeBody(configuration: Self.Configuration) -> some View {
             configuration.label
                 .font(.headline)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 .contentShape(Rectangle())
                 .foregroundColor(isSelected ? Color.white : Color.black)
                 .listRowBackground(isSelected ? Color.blue : Color.white)

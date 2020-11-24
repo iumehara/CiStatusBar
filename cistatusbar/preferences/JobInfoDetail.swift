@@ -23,6 +23,7 @@ struct JobInfoDetail: View {
                     }
                 }
                 .frame(width: 300)
+                .foregroundColor(.black)
                 Spacer()
             }
 

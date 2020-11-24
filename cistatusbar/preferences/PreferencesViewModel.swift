@@ -29,6 +29,7 @@ final class PreferencesViewModel: ObservableObject {
     
     func jobInfoSelected(_ jobInfo: JobInfo) {
         self.currentJobInfo = jobInfo
+        self.connectionStatus = .none
     }
         
     func testConnection() {
@@ -86,6 +87,7 @@ final class PreferencesViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { value in
+                    self.connectionStatus = .none
                     if value == .failure(CisbError()) {
                         self.jobInfos = []
                     }
