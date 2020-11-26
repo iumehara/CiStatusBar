@@ -9,7 +9,7 @@ class JobRepoImplTests: XCTestCase {
         
         let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
                                 jobHttpClient: jobHttpClient)
-        let jobInfo = JobInfo(id: "1",
+        let jobInfo = JobInfo(id: UUID(),
                             name: "first job",
                             url: "https://api.firstjob.example.com",
                             apiType: .gitHubV3Workflow)
@@ -31,7 +31,7 @@ class JobRepoImplTests: XCTestCase {
 
         let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
                                 jobHttpClient: jobHttpClient)
-        let jobInfo = JobInfo(id: "1",
+        let jobInfo = JobInfo(id: UUID(),
                             name: "first job",
                             url: "https://api.firstjob.example.com",
                             apiType: .gitHubV3Workflow)
@@ -57,17 +57,9 @@ class JobRepoImplTests: XCTestCase {
         _ = repo.getAll()
             .sink(
                 receiveCompletion: { completion in
-                    let stub1 = JobInfo(id: "1",
-                                        name: "first job",
-                                        url: "https://api.firstjob.example.com",
-                                        apiType: .gitHubV3Workflow)
-                    let stub2 = JobInfo(id: "2",
-                                        name: "second job",
-                                        url: "https://api.secondjob.example.com",
-                                        apiType: .gitHubV3Workflow)
                     XCTAssertEqual(jobHttpClient.get_calledWithJobInfos.count, 2)
-                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(stub1))
-                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(stub2))
+                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[0]))
+                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[1]))
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
                 },
                 receiveValue: { _ in}

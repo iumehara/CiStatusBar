@@ -23,11 +23,7 @@ class JobsRepoImpl: JobsRepo {
                     return self.empty()
                 }
                 
-                if (jobInfos.count == 1) {
-                    return self.getOne(jobInfo: jobInfos[0])
-                }
-                
-                return self.getBoth(jobInfo1: jobInfos[0], jobInfo2: jobInfos[1])
+                return self.zipMany(jobInfos: jobInfos)
             }
             .eraseToAnyPublisher()
     }
@@ -37,25 +33,17 @@ class JobsRepoImpl: JobsRepo {
             .mapError { error in CisbError() }
             .eraseToAnyPublisher()
     }
-
-    private func getOne(jobInfo: JobInfo)  -> AnyPublisher<[Job], CisbError> {
-        return self.jobHttpClient.get(jobInfo: jobInfo)
-            .mapError { error in CisbError() }
-            .map { response -> [Job] in
-                return [response]
-            }
-            .eraseToAnyPublisher()
-    }
     
-    private func getBoth(jobInfo1: JobInfo, jobInfo2: JobInfo) -> AnyPublisher<[Job], CisbError> {
-        let getFirst = self.jobHttpClient.get(jobInfo: jobInfo1)
-        let getSecond = self.jobHttpClient.get(jobInfo: jobInfo2)
-        
-        return Publishers.Zip(getFirst, getSecond)
-            .mapError { error in CisbError()}
-            .map { (response1, response2) -> [Job] in
-                return [response1, response2]
+    private func zipMany(jobInfos: [JobInfo]) -> AnyPublisher<[Job], CisbError> {
+        let requests = jobInfos.map { self.jobHttpClient.get(jobInfo: $0) }
+        return requests
+            .dropFirst()
+            .reduce(into: AnyPublisher(requests[0].map{[$0]})) { zippedRequests, nextRequest in
+                zippedRequests = zippedRequests.zip(nextRequest) { zippedRequestsResult, nextRequestResult -> [Job] in
+                    return zippedRequestsResult + [nextRequestResult]
+                    
+                }
+                .eraseToAnyPublisher()
             }
-            .eraseToAnyPublisher()
     }
 }

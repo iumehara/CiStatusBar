@@ -2,24 +2,29 @@ import Foundation
 import Combine
 
 class JobInfoDaoStub: JobInfoDao {
+    var getAll_stubResponse = [
+        JobInfo(id: UUID(),
+                name: "first job",
+                url: "https://api.firstjob.example.com",
+                apiType: ApiType.gitHubV3Workflow),
+        JobInfo(id: UUID(),
+                name: "second job",
+                url: "https://api.secondjob.example.com",
+                apiType: ApiType.gitHubV3Workflow),
+    ]
     func getAll() -> AnyPublisher<[JobInfo], CisbError> {
-        let stubJobs = [
-            JobInfo(id: "1",
-                    name: "first job",
-                    url: "https://api.firstjob.example.com",
-                    apiType: ApiType.gitHubV3Workflow),
-            JobInfo(id: "2",
-                    name: "second job",
-                    url: "https://api.secondjob.example.com",
-                    apiType: ApiType.gitHubV3Workflow),
-        ]
-        
-        return Just(stubJobs)
+        return Just(getAll_stubResponse)
             .mapError { error in CisbError()}
             .eraseToAnyPublisher()
     }
     
     func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
+        return Just(true)
+            .mapError { error in CisbError() }
+            .eraseToAnyPublisher()
+    }
+    
+    func update(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
             .mapError { error in CisbError() }
             .eraseToAnyPublisher()
@@ -35,6 +40,7 @@ class JobInfoDaoStub: JobInfoDao {
 class JobInfoDaoSpy: JobInfoDao {
     var getAll_called = false
     var create_calledWith: JobInfo? = nil
+    var update_calledWith: JobInfo? = nil
     var delete_calledWith: UUID? = nil
 
     func getAll() -> AnyPublisher<[JobInfo], CisbError> {
@@ -44,6 +50,11 @@ class JobInfoDaoSpy: JobInfoDao {
     
     func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
         self.create_calledWith = jobInfo
+        return Just(true).mapError { error in CisbError() }.eraseToAnyPublisher()
+    }
+    
+    func update(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
+        self.update_calledWith = jobInfo
         return Just(true).mapError { error in CisbError() }.eraseToAnyPublisher()
     }
     
