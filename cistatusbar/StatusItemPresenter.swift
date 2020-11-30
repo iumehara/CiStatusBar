@@ -16,6 +16,7 @@ class StatusItemPresenter: NSObject {
     private var disposables = Set<AnyCancellable>()
     private var jobs: [Job] = []
     private var lastUpdate: Date?
+    private var subscription: AnyCancellable? = nil
     
     init(repo: JobsRepo,
          button: NSStatusBarButton,
@@ -28,6 +29,21 @@ class StatusItemPresenter: NSObject {
     func present() {
         presentButton()
         update()
+        startUpdateScheduler()
+    }
+    
+    private func startUpdateScheduler() {
+        let frequency = 5 * 60.0
+        self.startTimer(frequency: frequency)
+    }
+    
+    private func startTimer(frequency: Double) {
+        subscription = Timer.publish(every: frequency, on: .main, in: .common)
+            .autoconnect()
+            .receive(on: DispatchQueue.main)
+            .sink() {_ in
+                self.update()
+            }
     }
     
     func update() {
@@ -130,9 +146,7 @@ class StatusItemPresenter: NSObject {
     }
     
     @objc func updateSelector(_ sender: Any?) {
-        print("yoooooo!")
         update()
-        print("yeaaah!")
     }
     
     @objc func launchPreferences(_ sender: Any?) {
