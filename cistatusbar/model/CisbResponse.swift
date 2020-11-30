@@ -19,8 +19,13 @@ enum ApiType: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
 }
 
+enum CisbStatus: String, Codable {
+    case success
+    case fail
+}
+
 protocol CisbResponse: Codable {
-    func toStatus() -> String
+    func toStatus() -> CisbStatus
 }
 
 struct GitHubV3WorkflowResponse: Codable, CisbResponse {
@@ -30,25 +35,33 @@ struct GitHubV3WorkflowResponse: Codable, CisbResponse {
         var conclusion: String
     }
     
-    func toStatus() -> String {
+    func toStatus() -> CisbStatus {
         if self.workflow_runs.count == 0 {
-            return "fail"
+            return .fail
         }
         
-        return self.workflow_runs[0].conclusion
+        if self.workflow_runs[0].conclusion == "success" {
+            return .success
+        }
+        
+        return .fail
     }
 }
 
 struct GitLabV4PipelineResponse: Codable, CisbResponse {
-    var status: String
+    var stringStatus: String
 
-    func toStatus() -> String {
-        return self.status
+    func toStatus() -> CisbStatus {
+        if stringStatus == "success" {
+            return .success
+        }
+        
+        return .fail
     }
 }
 
 struct OtherResponse: Codable, CisbResponse {
-    func toStatus() -> String {
-        return "fail"
+    func toStatus() -> CisbStatus {
+        return .fail
     }
 }

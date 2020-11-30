@@ -76,7 +76,7 @@ class StatusItemPresenter: NSObject {
         
     private func updateButton(jobs: [Job]) {
         let successfulJobs = jobs.filter { job in
-            job.status == "success"
+            job.status == .success
         }
         
         if (successfulJobs.count == self.jobs.count) {
@@ -184,14 +184,14 @@ extension NSMenu {
         menuItem?.title = "Updated: \(date)"
     }
     
-    func createJobMenuItem(name: String, status: String) -> NSMenuItem {
+    func createJobMenuItem(name: String, status: CisbStatus) -> NSMenuItem {
         let title = jobMenuItemTitle(name: name, status: status)
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
         menuItem.isEnabled = false
         return menuItem
     }
     
-    func jobMenuItemTitle(name: String, status: String) -> String {
+    func jobMenuItemTitle(name: String, status: CisbStatus) -> String {
         return "\(name) - \(status)"
     }
 }
