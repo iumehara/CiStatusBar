@@ -47,6 +47,7 @@ class StatusItemPresenter: NSObject {
     }
     
     func update() {
+        self.button.displayLoading()
         self.repo.getAll()
             .receive(on: DispatchQueue.main)
             .sink(
@@ -169,6 +170,12 @@ extension NSStatusBarButton {
     
     func displayUnavailable() {
         self.title = "⁉️"
+        self.isBordered = false
+        self.wantsLayer = true
+    }
+
+    func displayLoading() {
+        self.title = "⌚︎"
         self.isBordered = false
         self.wantsLayer = true
     }
