@@ -17,9 +17,9 @@ struct JobInfoDetail: View {
             
             HStack(alignment: .center, spacing: 0) {
                 Picker(selection: $viewModel.currentJobInfo.apiType,
-                       label: Text("api:").padding(10.0).frame(width: 60, alignment: .leading)) {
+                       label: Text("api:").padding(.leading, 10).frame(width: 60, alignment: .leading)) {
                     ForEach(ApiType.allCases) { apiType in
-                        Text(apiType.description).tag(apiType)
+                        Text(apiType.responseType().description()).tag(apiType)
                     }
                 }
                 .frame(width: 300)
@@ -27,6 +27,30 @@ struct JobInfoDetail: View {
                 Spacer()
             }
 
+            VStack(alignment: .leading) {
+                Text("format: \(viewModel.currentJobInfo.apiType.responseType().format())")
+                HStack() {
+                    Text("docs:  ")
+                    Button(action: {
+                        if let url = URL(string: viewModel.currentJobInfo.apiType.responseType().apiReference()) {
+                               NSWorkspace.shared.open(url)
+                           }
+                    }) {
+                        Text(viewModel.currentJobInfo.apiType.responseType().apiReference())
+                            .underline()
+                            .foregroundColor(Color.blue)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    .onHover { inside in
+                        if inside {
+                            NSCursor.pointingHand.push()
+                        } else {
+                            NSCursor.pop()
+                        }
+                    }
+                }
+            }.padding(.leading, 70)
+            
             HStack(alignment: .center, spacing: 0) {
                 Text("url:")
                     .padding(10.0)
@@ -37,6 +61,7 @@ struct JobInfoDetail: View {
                 Spacer()
             }
 
+            
             if viewModel.jobInfos.count > 0 {
                 VStack(alignment: .leading) {
                     Button(action: self.testClicked) { Text("Test Connection") }

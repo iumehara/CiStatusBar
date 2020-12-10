@@ -35,19 +35,12 @@ class JobHttpClientImpl: JobHttpClient {
                 .map { Job(name: jobName, status: $0.toStatus())}
                 .mapError { e in CisbError() }
                 .eraseToAnyPublisher()
-        case .gitLabV4Pipeline:
+        default:
             let type = [GitLabV4PipelineResponse].self
             return Just(data)
                 .decode(type: type, decoder: JSONDecoder())
                 .map { Job(name: jobName, status: $0[0].toStatus()) }
                 .mapError { e in CisbError()}
-                .eraseToAnyPublisher()
-        default:
-            let type = OtherResponse.self
-            return Just(data)
-                .decode(type: type, decoder: JSONDecoder())
-                .map { Job(name: jobName, status: $0.toStatus()) }
-                .mapError { e in CisbError() }
                 .eraseToAnyPublisher()
         }
     }
