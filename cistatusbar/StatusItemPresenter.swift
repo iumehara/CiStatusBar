@@ -76,15 +76,19 @@ class StatusItemPresenter: NSObject {
     }
         
     private func updateButton(jobs: [Job]) {
-        let successfulJobs = jobs.filter { job in
-            job.status == .success
+        let statuses = jobs.map { job in job.status }
+        
+        if statuses.contains(ApiResponseStatus.fail) {
+            self.button.displayFailed()
+            return
         }
         
-        if (successfulJobs.count == self.jobs.count) {
-            self.button.displaySuccessful()
-        } else {
-            self.button.displayFailed()
+        if statuses.contains(ApiResponseStatus.unknown) {
+            self.button.displayUnavailable()
+            return
         }
+        
+        self.button.displaySuccessful()
     }
         
     private func updateMenu(jobs: [Job]) {
@@ -175,7 +179,7 @@ extension NSStatusBarButton {
     }
 
     func displayLoading() {
-        self.title = "⌚︎"
+        self.title = "⌚️"
         self.isBordered = false
         self.wantsLayer = true
     }
@@ -186,7 +190,8 @@ extension NSMenu {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm:ss"
         let date = formatter.string(from: Date())
-        
+        let view = NSView(frame: NSRect.zero)
+        view.layer?.backgroundColor = NSColor.blue.cgColor
         let menuItem = self.item(withTag: MenuItemTag.updatedTime.rawValue)
         menuItem?.title = "Updated: \(date)"
     }
@@ -199,6 +204,18 @@ extension NSMenu {
     }
     
     func jobMenuItemTitle(name: String, status: ApiResponseStatus) -> String {
-        return "\(name) - \(status)"
+        var statusIcon: String
+        switch status {
+        case ApiResponseStatus.success:
+            statusIcon = "🟢"
+        case ApiResponseStatus.fail:
+            statusIcon = "🔴"
+        case ApiResponseStatus.running:
+            statusIcon = "⌚️"
+        default:
+            statusIcon = "⁉️"
+        }
+        
+        return "\(statusIcon) \(name)"
     }
 }

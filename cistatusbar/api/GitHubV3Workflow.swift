@@ -11,9 +11,27 @@ struct GitHubV3Workflow {
     
     struct Response: Codable, ApiResponse {
         var workflow_runs: [WorkflowRun] = []
+        
+        enum GithubStatus: String {
+            case queued
+            case in_progress
+            case completed
+        }
+        
+        enum GithubConclusion: String {
+            case success
+            case failure
+            case neutral
+            case cancelled
+            case skipped
+            case timed_out
+            case action_required
+        }
+        
             
         struct WorkflowRun: Codable {
             var conclusion: String
+            var status: String
         }
         
         func toStatus() -> ApiResponseStatus {
@@ -21,11 +39,21 @@ struct GitHubV3Workflow {
                 return .fail
             }
             
-            if self.workflow_runs[0].conclusion == "success" {
-                return .success
+            let workflowRun = self.workflow_runs[0]
+
+            if workflowRun.status != GithubStatus.completed.rawValue {
+                return .running
             }
             
-            return .fail
+            if workflowRun.conclusion == GithubConclusion.success.rawValue {
+                return .success
+            }
+
+            if workflowRun.conclusion == GithubConclusion.failure.rawValue {
+                return .fail
+            }
+
+            return .unknown
         }
     }
 

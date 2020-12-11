@@ -12,12 +12,36 @@ struct GitLabV4Pipeline {
     struct Response: Codable, ApiResponse {
         var status: String = ""
 
+        enum Status: String {
+            case created
+            case waiting_for_resource
+            case preparing
+            case pending
+            case running
+            case success
+            case failed
+            case canceled
+            case skipped
+            case manual
+            case scheduled
+        }
+        
         func toStatus() -> ApiResponseStatus {
-            if status == "success" {
+            switch status {
+            case Status.success.rawValue:
                 return .success
+            case Status.failed.rawValue:
+                return .fail
+            case Status.created.rawValue,
+                 Status.waiting_for_resource.rawValue,
+                 Status.preparing.rawValue,
+                 Status.pending.rawValue,
+                 Status.running.rawValue,
+                 Status.scheduled.rawValue:
+                return .running
+            default:
+                return .unknown
             }
-            
-            return .fail
         }
     }
     

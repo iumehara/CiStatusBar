@@ -20,6 +20,8 @@ enum ApiType: String, CaseIterable, Identifiable {
 enum ApiResponseStatus: String, Codable {
     case success
     case fail
+    case running
+    case unknown
 }
 
 protocol ApiDetails {
