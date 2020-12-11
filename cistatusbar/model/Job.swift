@@ -2,7 +2,7 @@ import Foundation
 
 struct Job: Hashable, Codable {
     var name: String
-    var status: CisbStatus
+    var status: ApiResponseStatus
 }
 
 struct JobInfo: Equatable, Identifiable {

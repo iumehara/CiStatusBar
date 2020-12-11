@@ -191,14 +191,14 @@ extension NSMenu {
         menuItem?.title = "Updated: \(date)"
     }
     
-    func createJobMenuItem(name: String, status: CisbStatus) -> NSMenuItem {
+    func createJobMenuItem(name: String, status: ApiResponseStatus) -> NSMenuItem {
         let title = jobMenuItemTitle(name: name, status: status)
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
         menuItem.isEnabled = false
         return menuItem
     }
     
-    func jobMenuItemTitle(name: String, status: CisbStatus) -> String {
+    func jobMenuItemTitle(name: String, status: ApiResponseStatus) -> String {
         return "\(name) - \(status)"
     }
 }

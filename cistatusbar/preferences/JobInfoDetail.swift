@@ -19,7 +19,7 @@ struct JobInfoDetail: View {
                 Picker(selection: $viewModel.currentJobInfo.apiType,
                        label: Text("api:").padding(.leading, 10).frame(width: 60, alignment: .leading)) {
                     ForEach(ApiType.allCases) { apiType in
-                        Text(apiType.responseType().description()).tag(apiType)
+                        Text(apiType.details().description).tag(apiType)
                     }
                 }
                 .frame(width: 300)
@@ -28,15 +28,13 @@ struct JobInfoDetail: View {
             }
 
             VStack(alignment: .leading) {
-                Text("format: \(viewModel.currentJobInfo.apiType.responseType().format())")
+                Text("format: \(viewModel.currentJobInfo.apiType.details().format)")
                 HStack() {
                     Text("docs:  ")
                     Button(action: {
-                        if let url = URL(string: viewModel.currentJobInfo.apiType.responseType().apiReference()) {
-                               NSWorkspace.shared.open(url)
-                           }
+                        NSWorkspace.shared.open(viewModel.currentJobInfo.apiType.details().apiReference)
                     }) {
-                        Text(viewModel.currentJobInfo.apiType.responseType().apiReference())
+                        Text(viewModel.currentJobInfo.apiType.details().apiReference.absoluteString)
                             .underline()
                             .foregroundColor(Color.blue)
                     }

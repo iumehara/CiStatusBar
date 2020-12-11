@@ -29,19 +29,9 @@ class JobHttpClientImpl: JobHttpClient {
         
         switch apiType {
         case .gitHubV3Workflow:
-            let type = GitHubV3WorkflowResponse.self
-            return Just(data)
-                .decode(type: type, decoder: JSONDecoder())
-                .map { Job(name: jobName, status: $0.toStatus())}
-                .mapError { e in CisbError() }
-                .eraseToAnyPublisher()
+            return GitHubV3Workflow.ResponseDecoder().decode(jobName: jobName, data: data)
         default:
-            let type = [GitLabV4PipelineResponse].self
-            return Just(data)
-                .decode(type: type, decoder: JSONDecoder())
-                .map { Job(name: jobName, status: $0[0].toStatus()) }
-                .mapError { e in CisbError()}
-                .eraseToAnyPublisher()
+            return GitLabV4Pipeline.ResponseDecoder().decode(jobName: jobName, data: data)
         }
     }
 }
