@@ -53,6 +53,7 @@
 		24F184FD2591AE42002A600E /* RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184FC2591AE42002A600E /* RunningResponse.json */; };
 		24F1850D2591B4BC002A600E /* UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* UnknownResponse.json */; };
 		24F185152591B4D2002A600E /* FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* FailResponse.json */; };
+		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		24F184FC2591AE42002A600E /* RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RunningResponse.json; sourceTree = "<group>"; };
 		24F1850C2591B4BC002A600E /* UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UnknownResponse.json; sourceTree = "<group>"; };
 		24F185142591B4D2002A600E /* FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FailResponse.json; sourceTree = "<group>"; };
+		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
+				24F185192591B613002A600E /* AbstractDecoderTests.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -273,19 +276,11 @@
 		24B8A9CF25820D0F000F1201 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				24F184FA2591AD32002A600E /* GitHubV3Workflow */,
 				242F3EB92556741700EFC526 /* ApiProtocols.swift */,
+				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
 				24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */,
 			);
 			path = api;
-			sourceTree = "<group>";
-		};
-		24F184FA2591AD32002A600E /* GitHubV3Workflow */ = {
-			isa = PBXGroup;
-			children = (
-				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
-			);
-			path = GitHubV3Workflow;
 			sourceTree = "<group>";
 		};
 		24F184FB2591AD5B002A600E /* GitHubV3Workflow */ = {
@@ -463,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				24F184AE25916C07002A600E /* JobHttpClientImpl.swift in Sources */,
+				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
 				24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */,
