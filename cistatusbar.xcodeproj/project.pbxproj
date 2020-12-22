@@ -49,7 +49,10 @@
 		24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
 		24F184C625916C1C002A600E /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
 		24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
-		24F184F32591AAE6002A600E /* GitHubV3WorkflowResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */; };
+		24F184F32591AAE6002A600E /* SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* SuccessResponse.json */; };
+		24F184FD2591AE42002A600E /* RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184FC2591AE42002A600E /* RunningResponse.json */; };
+		24F1850D2591B4BC002A600E /* UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* UnknownResponse.json */; };
+		24F185152591B4D2002A600E /* FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* FailResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,7 +110,10 @@
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
-		24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowResponse.json; sourceTree = "<group>"; };
+		24F184F22591AAE6002A600E /* SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SuccessResponse.json; sourceTree = "<group>"; };
+		24F184FC2591AE42002A600E /* RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RunningResponse.json; sourceTree = "<group>"; };
+		24F1850C2591B4BC002A600E /* UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UnknownResponse.json; sourceTree = "<group>"; };
+		24F185142591B4D2002A600E /* FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FailResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,8 +144,7 @@
 		2415DBC3258903D700E77C88 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */,
-				24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */,
+				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -268,11 +273,31 @@
 		24B8A9CF25820D0F000F1201 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				24F184FA2591AD32002A600E /* GitHubV3Workflow */,
 				242F3EB92556741700EFC526 /* ApiProtocols.swift */,
-				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
 				24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		24F184FA2591AD32002A600E /* GitHubV3Workflow */ = {
+			isa = PBXGroup;
+			children = (
+				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
+			);
+			path = GitHubV3Workflow;
+			sourceTree = "<group>";
+		};
+		24F184FB2591AD5B002A600E /* GitHubV3Workflow */ = {
+			isa = PBXGroup;
+			children = (
+				2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */,
+				24F184F22591AAE6002A600E /* SuccessResponse.json */,
+				24F184FC2591AE42002A600E /* RunningResponse.json */,
+				24F1850C2591B4BC002A600E /* UnknownResponse.json */,
+				24F185142591B4D2002A600E /* FailResponse.json */,
+			);
+			path = GitHubV3Workflow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -388,7 +413,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F184F32591AAE6002A600E /* GitHubV3WorkflowResponse.json in Resources */,
+				24F185152591B4D2002A600E /* FailResponse.json in Resources */,
+				24F184F32591AAE6002A600E /* SuccessResponse.json in Resources */,
+				24F184FD2591AE42002A600E /* RunningResponse.json in Resources */,
+				24F1850D2591B4BC002A600E /* UnknownResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,0 +1,8 @@
+{
+    "workflow_runs": [
+        {
+            "status": "completed",
+            "conclusion": "failure"
+        }
+    ]
+}
