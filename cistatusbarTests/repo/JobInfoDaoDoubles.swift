@@ -6,33 +6,34 @@ class JobInfoDaoStub: JobInfoDao {
         JobInfo(id: UUID(),
                 name: "first job",
                 url: "https://api.firstjob.example.com",
-                apiType: ApiType.gitHubV3Workflow),
+                apiType: .gitHubV3Workflow),
         JobInfo(id: UUID(),
                 name: "second job",
                 url: "https://api.secondjob.example.com",
-                apiType: ApiType.gitHubV3Workflow),
+                apiType: .gitHubV3Workflow),
     ]
     func getAll() -> AnyPublisher<[JobInfo], CisbError> {
-        return Just(getAll_stubResponse)
-            .mapError { error in CisbError()}
+        let response = Just(getAll_stubResponse)
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
+        return response
     }
     
     func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError() }
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     
     func update(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError() }
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     
     func delete(id: UUID) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError() }
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
 }

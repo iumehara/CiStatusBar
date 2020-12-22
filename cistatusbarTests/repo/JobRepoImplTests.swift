@@ -1,5 +1,4 @@
 import XCTest
-@testable import cistatusbar
 import Combine
 
 class JobRepoImplTests: XCTestCase {
@@ -42,7 +41,7 @@ class JobRepoImplTests: XCTestCase {
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
                 },
                 receiveValue: { value in
-                    XCTAssertEqual(value, Job(name: "unit tests 1", status: "success"))
+                    XCTAssertEqual(value, Job(name: "unit tests 1", status: .success))
                 }
             )
     }
@@ -80,8 +79,8 @@ class JobRepoImplTests: XCTestCase {
                 },
                 receiveValue: { value in
                     XCTAssertEqual(value, [
-                        Job(name: "unit tests 1", status: "success"),
-                        Job(name: "unit tests 2", status: "success")
+                        Job(name: "unit tests 1", status: .success),
+                        Job(name: "unit tests 2", status: .success)
                     ])
                 }
             )
