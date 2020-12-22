@@ -10,6 +10,7 @@
 		24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */; };
 		2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */; };
 		240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
+		2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */; };
 		242F3E7825565EE600EFC526 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Job.swift */; };
 		242F3E7D25565F4800EFC526 /* CisbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7C25565F4800EFC526 /* CisbError.swift */; };
 		242F3E8D255660F100EFC526 /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
@@ -48,6 +49,7 @@
 		24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
 		24F184C625916C1C002A600E /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
 		24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
+		24F184F32591AAE6002A600E /* GitHubV3WorkflowResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,7 @@
 /* Begin PBXFileReference section */
 		2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
 		240C977B2552E6F10083C9B8 /* JobsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsRepo.swift; sourceTree = "<group>"; };
+		2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3WorkflowTests.swift; sourceTree = "<group>"; };
 		242F3E7725565EE600EFC526 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		242F3E7C25565F4800EFC526 /* CisbError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CisbError.swift; sourceTree = "<group>"; };
 		242F3E872556600200EFC526 /* JobHttpClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobHttpClientDoubles.swift; sourceTree = "<group>"; };
@@ -104,6 +107,7 @@
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
+		24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2415DBC3258903D700E77C88 /* api */ = {
+			isa = PBXGroup;
+			children = (
+				2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */,
+				24F184F22591AAE6002A600E /* GitHubV3WorkflowResponse.json */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
 		242F3E7525565E5600EFC526 /* repo */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +248,7 @@
 		2474EDF1253F072F00184F1A /* cistatusbarTests */ = {
 			isa = PBXGroup;
 			children = (
+				2415DBC3258903D700E77C88 /* api */,
 				242F3EDA2556792B00EFC526 /* repo */,
 				2474EDF4253F072F00184F1A /* Info.plist */,
 			);
@@ -374,6 +388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24F184F32591AAE6002A600E /* GitHubV3WorkflowResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +449,7 @@
 				24F184C625916C1C002A600E /* JobsRepo.swift in Sources */,
 				24F1849A25915415002A600E /* JobHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
+				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

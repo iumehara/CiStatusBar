@@ -2,11 +2,13 @@ import SwiftUI
 import Combine
 
 enum MenuItemTag: Int {
-    case updatedTime = 0
-    case update = 1
+    case updateButton = 1
     case updateSectionSeparator = 2
-    case jobsSectionSeparator = 9
-    case quit = 10
+    case jobUpdatedLabel = 3
+    case jobsSectionSeparator = 7
+    case preferencesButton = 8
+    case preferencesSectionSeparator = 9
+    case quitButton = 10
 }
 
 class StatusItemPresenter: NSObject {
@@ -92,20 +94,17 @@ class StatusItemPresenter: NSObject {
     }
         
     private func updateMenu(jobs: [Job]) {
-        let updateSectionItemCount = 3
-        let jobCountSeparator = 1
+        let updateSectionItemCount = 2
+        let jobsSectionItemCount = jobs.count + 2
+        let preferencesSectionItemCount = 2
         let quitSectionItemCount = 1
-        let currentNumberOfItems = updateSectionItemCount + jobs.count + jobCountSeparator + quitSectionItemCount
+        let expectedNumberOfItems = updateSectionItemCount + jobsSectionItemCount + preferencesSectionItemCount + quitSectionItemCount
         
-        var jobItemIndex = updateSectionItemCount - 1
-        if (menu.items.count != currentNumberOfItems) {
+        var jobItemIndex = updateSectionItemCount + 1
+        if (menu.items.count != expectedNumberOfItems) {
             menu.removeAllItems()
             setupUpdateSection()
-            jobs.forEach { job in
-                let menuItem = menu.createJobMenuItem(name: job.name, status: job.status)
-                menu.insertItem(menuItem, at: jobItemIndex)
-                jobItemIndex += 1
-            }
+            setupJobsSection(jobs: jobs)
             setupPreferencesSection()
             setupQuitSection()
         } else {
@@ -120,24 +119,34 @@ class StatusItemPresenter: NSObject {
     }
     
     private func setupUpdateSection() {
-        let updatedTime = NSMenuItem(title: "Updated: N/A", action: nil, keyEquivalent: "")
-        updatedTime.tag = MenuItemTag.updatedTime.rawValue
-        menu.addItem(updatedTime)
-        
         let update = NSMenuItem(title: "Update", action: #selector(self.updateSelector(_:)), keyEquivalent: "")
         update.target = self
-        update.tag = MenuItemTag.update.rawValue
+        update.tag = MenuItemTag.updateButton.rawValue
         menu.addItem(update)
+
+        menu.addItem(NSMenuItem.separator())
+    }
+    
+    private func setupJobsSection(jobs: [Job]) {
+        let updatedTime = NSMenuItem(title: "Updated: N/A", action: nil, keyEquivalent: "")
+        updatedTime.tag = MenuItemTag.jobUpdatedLabel.rawValue
+        menu.addItem(updatedTime)
         
-        let updateSectionSeparator = NSMenuItem.separator()
-        updateSectionSeparator.tag = MenuItemTag.updateSectionSeparator.rawValue
-        menu.addItem(updateSectionSeparator)
+        var jobItemIndex = 3
+        
+        jobs.forEach { job in
+            let menuItem = menu.createJobMenuItem(name: job.name, status: job.status)
+            menu.insertItem(menuItem, at: jobItemIndex)
+            jobItemIndex += 1
+        }
+        
+        menu.addItem(NSMenuItem.separator())
     }
     
     private func setupPreferencesSection() {
         let preferences = NSMenuItem(title: "Preferences...", action: #selector(self.launchPreferences(_:)), keyEquivalent: "")
         preferences.target = self
-        preferences.tag = MenuItemTag.update.rawValue
+        preferences.tag = MenuItemTag.preferencesButton.rawValue
         menu.addItem(preferences)
 
         menu.addItem(NSMenuItem.separator())
@@ -145,8 +154,8 @@ class StatusItemPresenter: NSObject {
     
     private func setupQuitSection() {
         let action = #selector(NSApp.terminate(_:))
-        let quit = NSMenuItem(title: "Quit", action: action, keyEquivalent: "")
-        quit.tag = MenuItemTag.quit.rawValue
+        let quit = NSMenuItem(title: "Quit CI Status Bar", action: action, keyEquivalent: "")
+        quit.tag = MenuItemTag.quitButton.rawValue
         menu.addItem(quit)
     }
     
@@ -190,15 +199,16 @@ extension NSMenu {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm:ss"
         let date = formatter.string(from: Date())
-        let view = NSView(frame: NSRect.zero)
-        view.layer?.backgroundColor = NSColor.blue.cgColor
-        let menuItem = self.item(withTag: MenuItemTag.updatedTime.rawValue)
+        let menuItem = self.item(withTag: MenuItemTag.jobUpdatedLabel.rawValue)
         menuItem?.title = "Updated: \(date)"
+        menuItem?.isEnabled = false
     }
     
     func createJobMenuItem(name: String, status: ApiResponseStatus) -> NSMenuItem {
         let title = jobMenuItemTitle(name: name, status: status)
+        let image = NSImage(size: NSMakeSize(1, 16))
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+        menuItem.image = image
         menuItem.isEnabled = false
         return menuItem
     }

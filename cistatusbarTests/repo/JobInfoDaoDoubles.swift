@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+@testable import cistatusbar
 
 class JobInfoDaoStub: JobInfoDao {
     var getAll_stubResponse = [
