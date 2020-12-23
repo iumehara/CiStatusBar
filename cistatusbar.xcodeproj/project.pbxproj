@@ -38,6 +38,11 @@
 		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
+		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
+		24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */; };
+		24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */; };
+		24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */; };
+		24E33C1B2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */; };
 		24F1849A25915415002A600E /* JobHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* JobHttpClient.swift */; };
 		24F1849E25916BB6002A600E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Job.swift */; };
 		24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
@@ -49,10 +54,10 @@
 		24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
 		24F184C625916C1C002A600E /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
 		24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
-		24F184F32591AAE6002A600E /* SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* SuccessResponse.json */; };
-		24F184FD2591AE42002A600E /* RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184FC2591AE42002A600E /* RunningResponse.json */; };
-		24F1850D2591B4BC002A600E /* UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* UnknownResponse.json */; };
-		24F185152591B4D2002A600E /* FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* FailResponse.json */; };
+		24F184F32591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */; };
+		24F184FD2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184FC2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json */; };
+		24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */; };
+		24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */; };
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -111,10 +116,15 @@
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
-		24F184F22591AAE6002A600E /* SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SuccessResponse.json; sourceTree = "<group>"; };
-		24F184FC2591AE42002A600E /* RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RunningResponse.json; sourceTree = "<group>"; };
-		24F1850C2591B4BC002A600E /* UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UnknownResponse.json; sourceTree = "<group>"; };
-		24F185142591B4D2002A600E /* FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = FailResponse.json; sourceTree = "<group>"; };
+		24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4PipelineTests.swift; sourceTree = "<group>"; };
+		24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
+		24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_RunningResponse.json; sourceTree = "<group>"; };
+		24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_UnknownResponse.json; sourceTree = "<group>"; };
+		24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_FailResponse.json; sourceTree = "<group>"; };
+		24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_SuccessResponse.json; sourceTree = "<group>"; };
+		24F184FC2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_RunningResponse.json; sourceTree = "<group>"; };
+		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
+		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +156,7 @@
 		2415DBC3258903D700E77C88 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */,
 				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
 				24F185192591B613002A600E /* AbstractDecoderTests.swift */,
 			);
@@ -283,14 +294,26 @@
 			path = api;
 			sourceTree = "<group>";
 		};
+		24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */,
+				24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */,
+				24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */,
+				24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */,
+				24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */,
+			);
+			path = GitLabV4Pipeline;
+			sourceTree = "<group>";
+		};
 		24F184FB2591AD5B002A600E /* GitHubV3Workflow */ = {
 			isa = PBXGroup;
 			children = (
 				2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */,
-				24F184F22591AAE6002A600E /* SuccessResponse.json */,
-				24F184FC2591AE42002A600E /* RunningResponse.json */,
-				24F1850C2591B4BC002A600E /* UnknownResponse.json */,
-				24F185142591B4D2002A600E /* FailResponse.json */,
+				24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */,
+				24F184FC2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json */,
+				24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */,
+				24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */,
 			);
 			path = GitHubV3Workflow;
 			sourceTree = "<group>";
@@ -408,10 +431,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F185152591B4D2002A600E /* FailResponse.json in Resources */,
-				24F184F32591AAE6002A600E /* SuccessResponse.json in Resources */,
-				24F184FD2591AE42002A600E /* RunningResponse.json in Resources */,
-				24F1850D2591B4BC002A600E /* UnknownResponse.json in Resources */,
+				24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */,
+				24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */,
+				24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */,
+				24F184F32591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json in Resources */,
+				24E33C1B2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json in Resources */,
+				24F184FD2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json in Resources */,
+				24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */,
+				24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +490,7 @@
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
 				24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */,
 				242F3EDC2556793E00EFC526 /* JobRepoImplTests.swift in Sources */,
+				24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */,
 				24F1849E25916BB6002A600E /* Job.swift in Sources */,
 				24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */,
 				242F3EE7255679A300EFC526 /* JobHttpClientDoubles.swift in Sources */,
