@@ -38,6 +38,7 @@
 		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
+		24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */; };
 		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
 		24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */; };
 		24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */; };
@@ -116,6 +117,7 @@
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
+		24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepoImplTests.swift; sourceTree = "<group>"; };
 		24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4PipelineTests.swift; sourceTree = "<group>"; };
 		24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
 		24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_RunningResponse.json; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				242F3E872556600200EFC526 /* JobHttpClientDoubles.swift */,
 				242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */,
 				242F3EDB2556793E00EFC526 /* JobRepoImplTests.swift */,
+				24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */,
 				24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */,
 				24F184C625916C1C002A600E /* JobsRepo.swift in Sources */,
+				24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */,
 				24F1849A25915415002A600E /* JobHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
