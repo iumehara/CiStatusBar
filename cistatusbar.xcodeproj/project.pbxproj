@@ -391,7 +391,6 @@
 					};
 					2474EDED253F072F00184F1A = {
 						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 2474EDD5253F072D00184F1A;
 					};
 					2474EDF8253F072F00184F1A = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -714,7 +713,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PBB9GZ72D8;
@@ -728,7 +726,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cistatusbar.app/Contents/MacOS/cistatusbar";
 			};
 			name = Debug;
 		};
@@ -736,7 +733,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PBB9GZ72D8;
@@ -750,7 +746,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cistatusbar.app/Contents/MacOS/cistatusbar";
 			};
 			name = Release;
 		};
