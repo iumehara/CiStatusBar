@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */; };
 		2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */; };
+		240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */; };
+		240AAEF626BC976500CC9FB6 /* ViewInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; };
 		240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
 		2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */; };
 		242F3E7825565EE600EFC526 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Job.swift */; };
@@ -38,6 +40,7 @@
 		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
+		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */; };
 		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
 		24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */; };
@@ -63,6 +66,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		240AAEED26BB3D0E00CC9FB6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2474EDCE253F072D00184F1A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2474EDD5253F072D00184F1A;
+			remoteInfo = cistatusbar;
+		};
 		2474EDEF253F072F00184F1A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2474EDCE253F072D00184F1A /* Project object */;
@@ -79,8 +89,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		24C3FC9B26BC9AA00097DF86 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
+		240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewTests.swift; sourceTree = "<group>"; };
+		240AAEEC26BB3D0E00CC9FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		240AAEF426BC933000CC9FB6 /* ViewInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewInspector.framework; path = Carthage/Build/Mac/ViewInspector.framework; sourceTree = "<group>"; };
 		240C977B2552E6F10083C9B8 /* JobsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsRepo.swift; sourceTree = "<group>"; };
 		2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3WorkflowTests.swift; sourceTree = "<group>"; };
 		242F3E7725565EE600EFC526 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
@@ -131,6 +158,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		240AAEE526BB3D0E00CC9FB6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240AAEF626BC976500CC9FB6 /* ViewInspector.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2474EDD3253F072D00184F1A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +190,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		240AAEE926BB3D0E00CC9FB6 /* cistatusbarViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */,
+				240AAEEC26BB3D0E00CC9FB6 /* Info.plist */,
+			);
+			path = cistatusbarViewTests;
+			sourceTree = "<group>";
+		};
+		240AAEF326BC933000CC9FB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				240AAEF426BC933000CC9FB6 /* ViewInspector.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2415DBC3258903D700E77C88 /* api */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,8 +277,10 @@
 			children = (
 				2474EDD8253F072D00184F1A /* cistatusbar */,
 				2474EDF1253F072F00184F1A /* cistatusbarTests */,
+				240AAEE926BB3D0E00CC9FB6 /* cistatusbarViewTests */,
 				2474EDFC253F072F00184F1A /* cistatusbarUITests */,
 				2474EDD7253F072D00184F1A /* Products */,
+				240AAEF326BC933000CC9FB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -236,6 +290,7 @@
 				2474EDD6253F072D00184F1A /* cistatusbar.app */,
 				2474EDEE253F072F00184F1A /* cistatusbarTests.xctest */,
 				2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */,
+				240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -324,6 +379,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		240AAEE726BB3D0E00CC9FB6 /* cistatusbarViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 240AAEF126BB3D0E00CC9FB6 /* Build configuration list for PBXNativeTarget "cistatusbarViewTests" */;
+			buildPhases = (
+				240AAEE426BB3D0E00CC9FB6 /* Sources */,
+				240AAEE526BB3D0E00CC9FB6 /* Frameworks */,
+				240AAEE626BB3D0E00CC9FB6 /* Resources */,
+				24C3FC9B26BC9AA00097DF86 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				240AAEEE26BB3D0E00CC9FB6 /* PBXTargetDependency */,
+			);
+			name = cistatusbarViewTests;
+			productName = cistatusbarViewTests;
+			productReference = 240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		2474EDD5253F072D00184F1A /* cistatusbar */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2474EE02253F072F00184F1A /* Build configuration list for PBXNativeTarget "cistatusbar" */;
@@ -383,9 +457,13 @@
 		2474EDCE253F072D00184F1A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1250;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
+					240AAEE726BB3D0E00CC9FB6 = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = 2474EDD5253F072D00184F1A;
+					};
 					2474EDD5253F072D00184F1A = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -414,11 +492,19 @@
 				2474EDD5253F072D00184F1A /* cistatusbar */,
 				2474EDED253F072F00184F1A /* cistatusbarTests */,
 				2474EDF8253F072F00184F1A /* cistatusbarUITests */,
+				240AAEE726BB3D0E00CC9FB6 /* cistatusbarViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		240AAEE626BB3D0E00CC9FB6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2474EDD4253F072D00184F1A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,6 +540,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		240AAEE426BB3D0E00CC9FB6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2474EDD2253F072D00184F1A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -520,6 +614,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		240AAEEE26BB3D0E00CC9FB6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2474EDD5253F072D00184F1A /* cistatusbar */;
+			targetProxy = 240AAEED26BB3D0E00CC9FB6 /* PBXContainerItemProxy */;
+		};
 		2474EDF0253F072F00184F1A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2474EDD5253F072D00184F1A /* cistatusbar */;
@@ -544,6 +643,56 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		240AAEEF26BB3D0E00CC9FB6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PBB9GZ72D8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = cistatusbarViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cistatusbar.app/Contents/MacOS/cistatusbar";
+			};
+			name = Debug;
+		};
+		240AAEF026BB3D0E00CC9FB6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = PBB9GZ72D8;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = cistatusbarViewTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarViewTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/cistatusbar.app/Contents/MacOS/cistatusbar";
+			};
+			name = Release;
+		};
 		2474EE00253F072F00184F1A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -665,7 +814,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cistatusbar/cistatusbar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"cistatusbar/Preview Content\"";
@@ -690,7 +839,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = cistatusbar/cistatusbar.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"cistatusbar/Preview Content\"";
@@ -792,6 +941,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		240AAEF126BB3D0E00CC9FB6 /* Build configuration list for PBXNativeTarget "cistatusbarViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				240AAEEF26BB3D0E00CC9FB6 /* Debug */,
+				240AAEF026BB3D0E00CC9FB6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		2474EDD1253F072D00184F1A /* Build configuration list for PBXProject "cistatusbar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

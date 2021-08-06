@@ -48,6 +48,16 @@
                ReferencedContainer = "container:cistatusbar.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "240AAEE726BB3D0E00CC9FB6"
+               BuildableName = "cistatusbarViewTests.xctest"
+               BlueprintName = "cistatusbarViewTests"
+               ReferencedContainer = "container:cistatusbar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct PreferencesView: View {
+    internal var didAppear: ((Self) -> Void)?
     @EnvironmentObject private var viewModel: PreferencesViewModel
     
     var body: some View {
@@ -9,7 +10,10 @@ struct PreferencesView: View {
             JobInfoDetail()
         }
         .frame(alignment: .trailing)
-        .onAppear(perform: viewModel.onAppear)
+        .onAppear {
+            self.didAppear?(self)
+            viewModel.onAppear()
+        }
     }
 }
 

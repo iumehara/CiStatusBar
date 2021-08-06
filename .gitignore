@@ -28,3 +28,6 @@ playground.xcworkspace
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 .idea
+
+Carthage/Build/
+Carthage/Checkouts/
