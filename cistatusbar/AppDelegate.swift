@@ -46,6 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             preferencesWindow?.contentView = NSHostingView(rootView: preferencesView)
         }
         preferencesWindow?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {

@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct PreferencesView: View {
-    internal var didAppear: ((Self) -> Void)?
-    @EnvironmentObject private var viewModel: PreferencesViewModel
+    internal let inspection = Inspection<Self>()
+    @EnvironmentObject var viewModel: PreferencesViewModel
     
     var body: some View {
         HStack(alignment: .top) {
@@ -11,9 +11,9 @@ struct PreferencesView: View {
         }
         .frame(alignment: .trailing)
         .onAppear {
-            self.didAppear?(self)
             viewModel.onAppear()
         }
+        .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
     }
 }
 
@@ -25,7 +25,6 @@ struct PreferencesView_Previews: PreviewProvider {
         let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
         let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
                                             jobRepo: jobRepo)
-        return PreferencesView()
-            .environmentObject(viewModel)
+        return PreferencesView().environmentObject(viewModel)
     }
 }

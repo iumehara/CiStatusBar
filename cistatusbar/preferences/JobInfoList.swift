@@ -2,29 +2,40 @@ import SwiftUI
 import Combine
 
 struct JobInfoList: View {
-    @EnvironmentObject private var viewModel: PreferencesViewModel
+    @EnvironmentObject var viewModel: PreferencesViewModel
     
     var body: some View {
-        VStack(alignment: .center, spacing: 0) {
+        VStack(alignment: .leading) {
             List {
                 ForEach(viewModel.jobInfos) { jobInfo in
-                    Button(action: { self.jobClicked(jobInfo) }) {
-                        Text(viewModel.currentJobInfo.id == jobInfo.id ? viewModel.currentJobInfo.name : jobInfo.name)
+                    HStack {
+                        Text(viewModel.isCurrent(jobInfo) ? viewModel.currentJobInfo.name : jobInfo.name)
+                        Spacer()
                     }
-                    .buttonStyle(ListButtonStyle(isSelected: viewModel.currentJobInfo.id == jobInfo.id))
+                    .contentShape(Rectangle())
+                    .foregroundColor(viewModel.isCurrent(jobInfo) ? .white : .black)
+                    .listRowBackground(viewModel.isCurrent(jobInfo) ? Color.blue : Color.white)
+                    .frame(width: 200, height: 20, alignment: .leading)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
+                    .onTapGesture(perform: {
+                        self.jobClicked(jobInfo)
+                    })
                 }
             }
+            .padding(.horizontal, -8)
+            .listStyle(PlainListStyle())
 
             HStack(alignment: .bottom, spacing: 0) {
-                Button(action: self.addClicked) { Text("+") }
+                Button(action: self.addClicked) {Text("+")}
                     .frame(width: 30)
+                    .disabled(viewModel.isAddButtonDisabled)
                 Button(action: self.deleteClicked) { Text("-") }
                     .frame(width: 30)
                 Spacer()
-                    .frame(width: 60)
+                    .frame(maxWidth: .infinity)
             }
         }
-        .frame(width: 120)
+        .frame(width: 200)
     }
     
     private func addClicked() {
@@ -37,23 +48,6 @@ struct JobInfoList: View {
     
     private func jobClicked(_ jobInfo: JobInfo) {
         viewModel.jobInfoSelected(jobInfo)
-    }
-
-    struct ListButtonStyle: ButtonStyle {
-        private var isSelected: Bool
-        
-        init(isSelected: Bool) {
-            self.isSelected = isSelected
-        }
-        
-        func makeBody(configuration: Self.Configuration) -> some View {
-            configuration.label
-                .font(.headline)
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-                .contentShape(Rectangle())
-                .foregroundColor(isSelected ? Color.white : Color.black)
-                .listRowBackground(isSelected ? Color.blue : Color.white)
-        }
     }
 }
 

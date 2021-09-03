@@ -12,11 +12,12 @@ final class PreferencesViewModel: ObservableObject {
     @Published var jobInfos: [JobInfo] = []
     @Published var currentJobInfo: JobInfo = JobInfo.empty()
     @Published var connectionStatus = ConnectionStatus.none
-    
+    @Published var isAddButtonDisabled = false
+
     private var jobInfoRepo: JobInfoRepo
     private var jobRepo: JobsRepo
     private var disposables = Set<AnyCancellable>()
-
+    
     init(jobInfoRepo: JobInfoRepo,
          jobRepo: JobsRepo) {
         self.jobInfoRepo = jobInfoRepo
@@ -56,11 +57,16 @@ final class PreferencesViewModel: ObservableObject {
                                  url: "",
                                  apiType: .gitHubV3Workflow)
         self.jobInfos.append(newJobInfo)
+        self.isAddButtonDisabled = true
         self.currentJobInfo = newJobInfo
     }
     
     func deleteJobInfo() {
         guard let jobInfoId = currentJobInfo.id else {
+            self.isAddButtonDisabled = false
+            jobInfos.removeAll(where: {jobInfo in
+                jobInfo.id == nil
+            })
             return
         }
         self.jobInfoRepo.delete(id: jobInfoId)
@@ -75,11 +81,20 @@ final class PreferencesViewModel: ObservableObject {
     }
     
     func saveJobInfo() {
+        if currentJobInfo.id == nil {
+            self.isAddButtonDisabled = false
+        }
+
         self.jobInfoRepo.save(jobInfo: currentJobInfo)
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { value in self.reset() },
+            .sink(receiveCompletion: { value in
+                    self.reset() },
                   receiveValue: { _ in })
             .store(in: &disposables)
+    }
+    
+    func isCurrent(_ jobInfo: JobInfo) -> Bool {
+        return self.currentJobInfo.id == jobInfo.id
     }
     
     private func fetchData() {

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct JobInfoDetail: View {
-    @EnvironmentObject private var viewModel: PreferencesViewModel
+    @EnvironmentObject var viewModel: PreferencesViewModel
 
     var body: some View {
         VStack(alignment: .leading) {

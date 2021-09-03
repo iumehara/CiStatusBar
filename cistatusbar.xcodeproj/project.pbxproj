@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */; };
 		2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */; };
+		240814E226D98CA9006654AA /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240814E126D98CA9006654AA /* Inspection.swift */; };
 		240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */; };
 		240AAEF626BC976500CC9FB6 /* ViewInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; };
 		240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
@@ -38,6 +39,7 @@
 		2474EDE4253F072E00184F1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE3253F072E00184F1A /* Preview Assets.xcassets */; };
 		2474EDE7253F072E00184F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE5253F072E00184F1A /* Main.storyboard */; };
 		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
+		248DFD0826C48089005961E6 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DFD0726C48089005961E6 /* TestDoubles.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
 		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -104,6 +106,7 @@
 
 /* Begin PBXFileReference section */
 		2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
+		240814E126D98CA9006654AA /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewTests.swift; sourceTree = "<group>"; };
 		240AAEEC26BB3D0E00CC9FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 		2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cistatusbarUITests.swift; sourceTree = "<group>"; };
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		248DFD0726C48089005961E6 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
 		24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepoImplTests.swift; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			children = (
 				240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */,
 				240AAEEC26BB3D0E00CC9FB6 /* Info.plist */,
+				248DFD0726C48089005961E6 /* TestDoubles.swift */,
 			);
 			path = cistatusbarViewTests;
 			sourceTree = "<group>";
@@ -310,6 +315,7 @@
 				2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */,
 				2474EDE5253F072E00184F1A /* Main.storyboard */,
 				2474EDE2253F072E00184F1A /* Preview Content */,
+				240814E126D98CA9006654AA /* Inspection.swift */,
 			);
 			path = cistatusbar;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				248DFD0826C48089005961E6 /* TestDoubles.swift in Sources */,
 				240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +562,7 @@
 				242F3EB225566F6F00EFC526 /* JobInfoDaoImpl.swift in Sources */,
 				2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */,
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
+				240814E226D98CA9006654AA /* Inspection.swift in Sources */,
 				242F3F3B2559915D00EFC526 /* JobInfoRepo.swift in Sources */,
 				242F3F6A255E5F2100EFC526 /* JobInfoList.swift in Sources */,
 				242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */,
