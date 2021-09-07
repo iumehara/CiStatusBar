@@ -2,8 +2,8 @@ import Foundation
 import Combine
 
 class RunHttpClientImpl: RunHttpClient {
-    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
-        guard let url = URL(string: jobInfo.url) else {
+    func get(job: Job) -> AnyPublisher<Run, CisbError> {
+        guard let url = URL(string: job.url) else {
             return Fail(error: CisbError()).eraseToAnyPublisher()
         }
         
@@ -16,8 +16,8 @@ class RunHttpClientImpl: RunHttpClient {
                 CisbError()
             }
             .flatMap(maxPublishers: .max(1)) { pair in
-                return self.decodeResponse(apiType: jobInfo.apiType,
-                                           jobName: jobInfo.name,
+                return self.decodeResponse(apiType: job.apiType,
+                                           jobName: job.name,
                                            data: pair.data)
             }
         .eraseToAnyPublisher()

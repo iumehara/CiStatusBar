@@ -2,5 +2,5 @@ import Foundation
 import Combine
 
 protocol RunHttpClient {
-    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError>
+    func get(job: Job) -> AnyPublisher<Run, CisbError>
 }

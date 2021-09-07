@@ -3,7 +3,7 @@ import CoreData
 import Foundation
 import Combine
 
-class JobInfoDaoImpl: JobInfoDao {
+class JobDaoImpl: JobDao {
     private let appDelegate: AppDelegate
     private let managedContext: NSManagedObjectContext
     
@@ -12,19 +12,17 @@ class JobInfoDaoImpl: JobInfoDao {
         self.managedContext = appDelegate.persistentContainer.viewContext
     }
     
-    func getAll() -> AnyPublisher<[JobInfo], CisbError> {
+    func getAll() -> AnyPublisher<[Job], CisbError> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDJobInfo")
         
         do {
-            guard let cdJobInfos: [CDJobInfo] = try managedContext.fetch(fetchRequest) as? [CDJobInfo] else {
+            guard let cdJobs: [CDJobInfo] = try managedContext.fetch(fetchRequest) as? [CDJobInfo] else {
                 return Just([])
                     .mapError { error in CisbError() }
                     .eraseToAnyPublisher()
             }
 
-            let jobs = cdJobInfos.compactMap { cdJobInfo in
-                return domainFrom(cdJobInfo)
-            }
+            let jobs = cdJobs.compactMap { domainFrom($0) }
             
             return Just(jobs)
                 .mapError { error in CisbError() }
@@ -37,19 +35,19 @@ class JobInfoDaoImpl: JobInfoDao {
         }
     }
     
-    func create(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
-        guard let url = URL(string: jobInfo.url) else {
+    func create(job: Job) -> AnyPublisher<Bool, CisbError> {
+        guard let url = URL(string: job.url) else {
             return Fail(error: CisbError()).eraseToAnyPublisher()
         }
 
         let entity = NSEntityDescription.entity(forEntityName: "CDJobInfo", in: managedContext)!
-        let cdJobInfo = NSManagedObject(entity: entity, insertInto: managedContext)
+        let cdJob = NSManagedObject(entity: entity, insertInto: managedContext)
         let id = UUID()
-        let apiType = jobInfo.apiType.rawValue
-        cdJobInfo.setValue(id, forKey: "id")
-        cdJobInfo.setValue(url, forKey: "url")
-        cdJobInfo.setValue(jobInfo.name, forKey: "name")
-        cdJobInfo.setValue(apiType, forKey: "api_type")
+        let apiType = job.apiType.rawValue
+        cdJob.setValue(id, forKey: "id")
+        cdJob.setValue(url, forKey: "url")
+        cdJob.setValue(job.name, forKey: "name")
+        cdJob.setValue(apiType, forKey: "api_type")
     
         do {
             try managedContext.save()
@@ -63,9 +61,9 @@ class JobInfoDaoImpl: JobInfoDao {
         }
     }
     
-    func update(jobInfo: JobInfo) -> AnyPublisher<Bool, CisbError> {
-        guard let id = jobInfo.id,
-              let url = URL(string: jobInfo.url) else {
+    func update(job: Job) -> AnyPublisher<Bool, CisbError> {
+        guard let id = job.id,
+              let url = URL(string: job.url) else {
             return Fail(error: CisbError()).eraseToAnyPublisher()
         }
 
@@ -73,17 +71,17 @@ class JobInfoDaoImpl: JobInfoDao {
         fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
         do {
-            guard let cdJobInfos: [CDJobInfo] = try managedContext.fetch(fetchRequest) as? [CDJobInfo],
-                  cdJobInfos.count > 0 else {
+            guard let cdJobs: [CDJobInfo] = try managedContext.fetch(fetchRequest) as? [CDJobInfo],
+                  cdJobs.count > 0 else {
                 return Fail(error: CisbError()).eraseToAnyPublisher()
             }
 
-            let cdJobInfo = cdJobInfos[0]
+            let cdJob = cdJobs[0]
         
-            cdJobInfo.setValue(id, forKey: "id")
-            cdJobInfo.setValue(url, forKey: "url")
-            cdJobInfo.setValue(jobInfo.name, forKey: "name")
-            cdJobInfo.setValue(jobInfo.apiType.rawValue, forKey: "api_type")
+            cdJob.setValue(id, forKey: "id")
+            cdJob.setValue(url, forKey: "url")
+            cdJob.setValue(job.name, forKey: "name")
+            cdJob.setValue(job.apiType.rawValue, forKey: "api_type")
         
             try managedContext.save()
             
@@ -114,17 +112,17 @@ class JobInfoDaoImpl: JobInfoDao {
     }
     
 
-    private func domainFrom(_ cdJobInfo: CDJobInfo) -> JobInfo? {
+    private func domainFrom(_ cdJob: CDJobInfo) -> Job? {
         guard
-            let id = cdJobInfo.id,
-            let name = cdJobInfo.name,
-            let url = cdJobInfo.url?.absoluteString,
-            let apiTypeString = cdJobInfo.api_type,
+            let id = cdJob.id,
+            let name = cdJob.name,
+            let url = cdJob.url?.absoluteString,
+            let apiTypeString = cdJob.api_type,
             let apiType = ApiType(rawValue: apiTypeString) else {
                 return nil
             }
         
-        return JobInfo(id: id,
+        return Job(id: id,
                        name: name,
                        url: url,
                        apiType: apiType)

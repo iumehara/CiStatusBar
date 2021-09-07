@@ -1,11 +1,11 @@
 import XCTest
 import Combine
 
-class JobInfoRepoImplTests: XCTestCase {
+class JobRepoImplTests: XCTestCase {
 
-    func test_getAll_returnsJobInfos() throws {
-        let jobInfoDao = JobInfoDaoStub()
-        let repo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+    func test_getAll_returnsJobs() throws {
+        let jobDao = JobDaoStub()
+        let repo = JobRepoImpl(jobDao: jobDao)
 
         _ = repo.getAll()
             .sink(
@@ -21,45 +21,45 @@ class JobInfoRepoImplTests: XCTestCase {
     }
 
     func test_save_withUuidCallsUpdateOnDaoWithCorrectArgs() throws {
-        let jobInfoDao = JobInfoDaoSpy()
-        let repo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+        let jobDao = JobDaoSpy()
+        let repo = JobRepoImpl(jobDao: jobDao)
         
-        let jobInfo = JobInfo(id: UUID(), name: "repo 1", url: "http://www.example.com", apiType: .gitHubV3Workflow)
-        _ = repo.save(jobInfo: jobInfo)
+        let job = Job(id: UUID(), name: "repo 1", url: "http://www.example.com", apiType: .gitHubV3Workflow)
+        _ = repo.save(job: job)
             .sink(
                 receiveCompletion: { completion in
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
-                    XCTAssertEqual(jobInfoDao.update_calledWith, jobInfo)
+                    XCTAssertEqual(jobDao.update_calledWith, job)
                 },
                 receiveValue: { _ in}
             )
     }
 
     func test_save_withoutUuidCallsCreateOnDaoWithCorrectArgs() throws {
-        let jobInfoDao = JobInfoDaoSpy()
-        let repo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+        let jobDao = JobDaoSpy()
+        let repo = JobRepoImpl(jobDao: jobDao)
         
-        let jobInfo = JobInfo(id: nil, name: "repo 1", url: "http://www.example.com", apiType: .gitHubV3Workflow)
-        _ = repo.save(jobInfo: jobInfo)
+        let job = Job(id: nil, name: "repo 1", url: "http://www.example.com", apiType: .gitHubV3Workflow)
+        _ = repo.save(job: job)
             .sink(
                 receiveCompletion: { completion in
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
-                    XCTAssertEqual(jobInfoDao.create_calledWith, jobInfo)
+                    XCTAssertEqual(jobDao.create_calledWith, job)
                 },
                 receiveValue: { _ in}
             )
     }
 
     func test_delete_callsDeleteOnDaoWithCorrectArgs() throws {
-        let jobInfoDao = JobInfoDaoSpy()
-        let repo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
+        let jobDao = JobDaoSpy()
+        let repo = JobRepoImpl(jobDao: jobDao)
         
         let uuid = UUID()
         _ = repo.delete(id: uuid)
             .sink(
                 receiveCompletion: { completion in
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
-                    XCTAssertEqual(jobInfoDao.delete_calledWith, uuid)
+                    XCTAssertEqual(jobDao.delete_calledWith, uuid)
                 },
                 receiveValue: { _ in}
             )

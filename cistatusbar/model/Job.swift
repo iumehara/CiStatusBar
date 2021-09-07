@@ -1,13 +1,13 @@
 import Foundation
 
-struct JobInfo: Equatable, Identifiable {
+struct Job: Equatable, Identifiable {
     var id: UUID?
     var name: String
     var url: String
     var apiType: ApiType
     
-    static func empty() -> JobInfo {
-        return JobInfo(id: nil,
+    static func empty() -> Job {
+        return Job(id: nil,
                        name: "",
                        url: "",
                        apiType: .gitHubV3Workflow)

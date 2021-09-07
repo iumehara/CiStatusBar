@@ -2,28 +2,28 @@ import Foundation
 import Combine
 
 class RunRepoImpl: RunRepo {
-    private var jobInfoDao: JobInfoDao
+    private var jobDao: JobDao
     private var runHttpClient: RunHttpClient
     
-    init(jobInfoDao: JobInfoDao, runHttpClient: RunHttpClient) {
-        self.jobInfoDao = jobInfoDao
+    init(jobDao: JobDao, runHttpClient: RunHttpClient) {
+        self.jobDao = jobDao
         self.runHttpClient = runHttpClient
     }
     
-    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
-        return self.runHttpClient.get(jobInfo: jobInfo)
+    func get(job: Job) -> AnyPublisher<Run, CisbError> {
+        return self.runHttpClient.get(job: job)
             .mapError { error in CisbError() }
             .eraseToAnyPublisher()
     }
 
     func getAll() -> AnyPublisher<[Run], CisbError> {
-        return self.jobInfoDao.getAll()
-            .flatMap { (jobInfos: [JobInfo]) -> AnyPublisher<[Run], CisbError> in
-                if jobInfos.count == 0 {
+        return self.jobDao.getAll()
+            .flatMap { (jobs: [Job]) -> AnyPublisher<[Run], CisbError> in
+                if jobs.count == 0 {
                     return self.empty()
                 }
                 
-                return self.zipMany(jobInfos: jobInfos)
+                return self.zipMany(jobs: jobs)
             }
             .eraseToAnyPublisher()
     }
@@ -34,8 +34,8 @@ class RunRepoImpl: RunRepo {
             .eraseToAnyPublisher()
     }
     
-    private func zipMany(jobInfos: [JobInfo]) -> AnyPublisher<[Run], CisbError> {
-        let requests = jobInfos.map { self.runHttpClient.get(jobInfo: $0) }
+    private func zipMany(jobs: [Job]) -> AnyPublisher<[Run], CisbError> {
+        let requests = jobs.map { self.runHttpClient.get(job: $0) }
         return requests
             .dropFirst()
             .reduce(into: AnyPublisher(requests[0].map{[$0]})) { zippedRequests, nextRequest in

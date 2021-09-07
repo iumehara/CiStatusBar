@@ -1,6 +1,7 @@
 import SwiftUI
+import SwiftUI
 
-struct JobInfoDetail: View {
+struct JobDetail: View {
     @EnvironmentObject var viewModel: PreferencesViewModel
 
     var body: some View {
@@ -9,14 +10,14 @@ struct JobInfoDetail: View {
                 Text("name:")
                     .padding(10.0)
                     .frame(width: 60, alignment: .leading)
-                TextField("name", text: $viewModel.currentJobInfo.name)
+                TextField("name", text: $viewModel.currentJob.name)
                     .padding(10.0)
                     .frame(width: 200, alignment: .leading)
                 Spacer()
             }
             
             HStack(alignment: .center, spacing: 0) {
-                Picker(selection: $viewModel.currentJobInfo.apiType,
+                Picker(selection: $viewModel.currentJob.apiType,
                        label: Text("api:").padding(.leading, 10).frame(width: 60, alignment: .leading)) {
                     ForEach(ApiType.allCases) { apiType in
                         Text(apiType.details().description).tag(apiType)
@@ -28,13 +29,13 @@ struct JobInfoDetail: View {
             }
 
             VStack(alignment: .leading) {
-                Text("format: \(viewModel.currentJobInfo.apiType.details().format)")
+                Text("format: \(viewModel.currentJob.apiType.details().format)")
                 HStack() {
                     Text("docs:  ")
                     Button(action: {
-                        NSWorkspace.shared.open(viewModel.currentJobInfo.apiType.details().apiReference)
+                        NSWorkspace.shared.open(viewModel.currentJob.apiType.details().apiReference)
                     }) {
-                        Text(viewModel.currentJobInfo.apiType.details().apiReference.absoluteString)
+                        Text(viewModel.currentJob.apiType.details().apiReference.absoluteString)
                             .underline()
                             .foregroundColor(Color.blue)
                     }
@@ -53,14 +54,14 @@ struct JobInfoDetail: View {
                 Text("url:")
                     .padding(10.0)
                     .frame(width: 60, alignment: .leading)
-                TextField("url", text: $viewModel.currentJobInfo.url)
+                TextField("url", text: $viewModel.currentJob.url)
                     .padding(10.0)
                     .frame(width: 600, alignment: .leading)
                 Spacer()
             }
 
             
-            if viewModel.jobInfos.count > 0 {
+            if viewModel.jobs.count > 0 {
                 VStack(alignment: .leading) {
                     Button(action: self.testClicked) { Text("Test Connection") }
                         .padding(.leading, 70)
@@ -105,19 +106,19 @@ struct JobInfoDetail: View {
     }
     
     private func saveClicked() {
-        self.viewModel.saveJobInfo()
+        self.viewModel.saveJob()
     }
 }
 
-struct JobInfoDetail_Previews: PreviewProvider {
+struct JobDetail_Previews: PreviewProvider {
     static var previews: some View {
-        let jobInfoDao = JobInfoDaoStub()
-        let jobHttpClient = RunHttpClientImpl()
-        let jobRepo = RunRepoImpl(jobInfoDao: jobInfoDao, runHttpClient: jobHttpClient)
-        let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
-        let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                            runRepo: jobRepo)
+        let jobDao = JobDaoStub()
+        let runHttpClient = RunHttpClientImpl()
+        let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: runHttpClient)
+        let jobRepo = JobRepoImpl(jobDao: jobDao)
+        let viewModel = PreferencesViewModel(jobRepo: jobRepo,
+                                            runRepo: runRepo)
         viewModel.onAppear()
-        return JobInfoDetail().environmentObject(viewModel)
+        return JobDetail().environmentObject(viewModel)
     }
 }

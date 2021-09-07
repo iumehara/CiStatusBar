@@ -9,18 +9,18 @@ enum ConnectionStatus {
 }
 
 final class PreferencesViewModel: ObservableObject {
-    @Published var jobInfos: [JobInfo] = []
-    @Published var currentJobInfo: JobInfo = JobInfo.empty()
+    @Published var jobs: [Job] = []
+    @Published var currentJob: Job = Job.empty()
     @Published var connectionStatus = ConnectionStatus.none
     @Published var isAddButtonDisabled = false
 
-    private var jobInfoRepo: JobInfoRepo
+    private var jobRepo: JobRepo
     private var runRepo: RunRepo
     private var disposables = Set<AnyCancellable>()
     
-    init(jobInfoRepo: JobInfoRepo,
+    init(jobRepo: JobRepo,
          runRepo: RunRepo) {
-        self.jobInfoRepo = jobInfoRepo
+        self.jobRepo = jobRepo
         self.runRepo = runRepo
     }
 
@@ -28,14 +28,14 @@ final class PreferencesViewModel: ObservableObject {
         fetchData()
     }
     
-    func jobInfoSelected(_ jobInfo: JobInfo) {
-        self.currentJobInfo = jobInfo
+    func jobSelected(_ job: Job) {
+        self.currentJob = job
         self.connectionStatus = .none
     }
         
     func testConnection() {
         self.connectionStatus = .connecting
-        self.runRepo.get(jobInfo: currentJobInfo)
+        self.runRepo.get(job: currentJob)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { value in
@@ -50,26 +50,26 @@ final class PreferencesViewModel: ObservableObject {
             .store(in: &disposables)
     }
 
-    func createJobInfo() {
-        let count = jobInfos.count + 1
-        let newJobInfo = JobInfo(id: nil,
-                                 name: "job \(count)",
-                                 url: "",
-                                 apiType: .gitHubV3Workflow)
-        self.jobInfos.append(newJobInfo)
+    func createJob() {
+        let count = jobs.count + 1
+        let newJob = Job(id: nil,
+                         name: "job \(count)",
+                         url: "",
+                         apiType: .gitHubV3Workflow)
+        self.jobs.append(newJob)
         self.isAddButtonDisabled = true
-        self.currentJobInfo = newJobInfo
+        self.currentJob = newJob
     }
     
-    func deleteJobInfo() {
-        guard let jobInfoId = currentJobInfo.id else {
+    func deleteJob() {
+        guard let jobId = currentJob.id else {
             self.isAddButtonDisabled = false
-            jobInfos.removeAll(where: {jobInfo in
-                jobInfo.id == nil
+            jobs.removeAll(where: { job in
+                job.id == nil
             })
             return
         }
-        self.jobInfoRepo.delete(id: jobInfoId)
+        self.jobRepo.delete(id: jobId)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { value in self.reset() },
                   receiveValue: { _ in })
@@ -80,12 +80,12 @@ final class PreferencesViewModel: ObservableObject {
         fetchData()
     }
     
-    func saveJobInfo() {
-        if currentJobInfo.id == nil {
+    func saveJob() {
+        if currentJob.id == nil {
             self.isAddButtonDisabled = false
         }
 
-        self.jobInfoRepo.save(jobInfo: currentJobInfo)
+        self.jobRepo.save(job: currentJob)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { value in
                     self.reset() },
@@ -93,26 +93,26 @@ final class PreferencesViewModel: ObservableObject {
             .store(in: &disposables)
     }
     
-    func isCurrent(_ jobInfo: JobInfo) -> Bool {
-        return self.currentJobInfo.id == jobInfo.id
+    func isCurrent(_ job: Job) -> Bool {
+        return self.currentJob.id == job.id
     }
     
     private func fetchData() {
-        self.jobInfoRepo.getAll()
+        self.jobRepo.getAll()
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { value in
                     self.connectionStatus = .none
                     if value == .failure(CisbError()) {
-                        self.jobInfos = []
+                        self.jobs = []
                     }
                 },
                 receiveValue: { value in
-                    self.jobInfos = value
+                    self.jobs = value
                     if (value.count == 0) {
-                        self.createJobInfo()
+                        self.createJob()
                     } else {
-                        self.currentJobInfo = value[0]
+                        self.currentJob = value[0]
                     }
                 }
             )

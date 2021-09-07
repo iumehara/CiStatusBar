@@ -3,8 +3,8 @@ import ViewInspector
 @testable import cistatusbar
 
 extension PreferencesView: Inspectable {}
-extension JobInfoList: Inspectable {}
-extension JobInfoDetail: Inspectable {}
+extension JobList: Inspectable {}
+extension JobDetail: Inspectable {}
 extension Inspection: InspectionEmissary { }
 
 class PreferencesViewTests: XCTestCase {
@@ -14,13 +14,13 @@ class PreferencesViewTests: XCTestCase {
     
     override func setUp() {
         let runRepo = RunRepoSpy()
-        let jobInfoRepo = JobInfoRepoSpy()
-        viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
+        let jobRepo = JobRepoSpy()
+        viewModel = PreferencesViewModel(jobRepo: jobRepo,
                                          runRepo: runRepo)
         preferencesView = PreferencesView()
     }
     
-    func test_onAppear_jobsInfoListDisplays() throws {
+    func test_onAppear_jobListDisplays() throws {
         let expectation = preferencesView.inspection.inspect(after: 1) { view in
             XCTAssertNotNil(try? view.find(text: "First Project Test"))
             XCTAssertNotNil(try? view.find(text: "First Project Build"))
@@ -30,7 +30,7 @@ class PreferencesViewTests: XCTestCase {
         wait(for: [expectation], timeout: 1)
     }
 
-    func test_onAppear_jobsInfoDetailsDisplays() throws {
+    func test_onAppear_jobsDetailsDisplays() throws {
         let expectation = preferencesView.inspection.inspect(after: 2) { view in
             XCTAssertNotNil(try? view.find(ViewType.TextField.self, where: {try $0.input() == "First Project Test"}))
         }

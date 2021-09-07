@@ -6,8 +6,8 @@ struct PreferencesView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            JobInfoList()
-            JobInfoDetail()
+            JobList()
+            JobDetail()
         }
         .frame(alignment: .trailing)
         .onAppear {
@@ -19,12 +19,12 @@ struct PreferencesView: View {
 
 struct PreferencesView_Previews: PreviewProvider {
     static var previews: some View {
-        let jobInfoDao = JobInfoDaoImpl()
-        let jobHttpClient = RunHttpClientImpl()
-        let jobRepo = RunRepoImpl(jobInfoDao: jobInfoDao, runHttpClient: jobHttpClient)
-        let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
-        let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                            runRepo: jobRepo)
+        let jobDao = JobDaoImpl()
+        let run = RunHttpClientImpl()
+        let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: run)
+        let jobRepo = JobRepoImpl(jobDao: jobDao)
+        let viewModel = PreferencesViewModel(jobRepo: jobRepo,
+                                            runRepo: runRepo)
         return PreferencesView().environmentObject(viewModel)
     }
 }

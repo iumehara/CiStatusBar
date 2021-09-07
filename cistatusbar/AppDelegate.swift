@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
         statusItem?.menu = menu
 
-        let repo = RunRepoImpl(jobInfoDao: JobInfoDaoImpl(),
+        let repo = RunRepoImpl(jobDao: JobDaoImpl(),
                                 runHttpClient: RunHttpClientImpl())
         let presenter = StatusItemPresenter(repo: repo,
                                             button: button,
@@ -27,12 +27,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @objc func showPreferences() {
         if preferencesWindow == nil {
-            let jobInfoDao = JobInfoDaoImpl()
+            let jobDao = JobDaoImpl()
             let jobHttpClient = RunHttpClientImpl()
-            let jobRepo = RunRepoImpl(jobInfoDao: jobInfoDao, runHttpClient: jobHttpClient)
-            let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
-            let preferencesViewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                                            runRepo: jobRepo)
+            let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: jobHttpClient)
+            let jobRepo = JobRepoImpl(jobDao: jobDao)
+            let preferencesViewModel = PreferencesViewModel(jobRepo: jobRepo,
+                                                            runRepo: runRepo)
             let preferencesView = PreferencesView().environmentObject(preferencesViewModel)
             preferencesWindow = NSWindow(
                 contentRect: NSRect(x: 20, y: 20, width: 700, height: 200),

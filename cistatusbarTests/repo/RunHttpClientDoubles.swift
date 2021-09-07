@@ -2,10 +2,10 @@ import Foundation
 import Combine
 
 class RunHttpClientSpy: RunHttpClient {
-    var get_calledWithJobInfos: [JobInfo] = []
+    var get_calledWithJobs: [Job] = []
     
-    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
-        self.get_calledWithJobInfos.append(jobInfo)
+    func get(job: Job) -> AnyPublisher<Run, CisbError> {
+        self.get_calledWithJobs.append(job)
         
         return Just(Run(name: "", status: .unknown))
             .setFailureType(to: CisbError.self)
@@ -16,7 +16,7 @@ class RunHttpClientSpy: RunHttpClient {
 class RunHttpClientSuccessStub: RunHttpClient {
     var id = 0
 
-    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
+    func get(job: Job) -> AnyPublisher<Run, CisbError> {
         id += 1
 
         return Just(Run(name: "unit tests \(id)", status: .success))

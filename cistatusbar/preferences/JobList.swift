@@ -1,24 +1,24 @@
 import SwiftUI
 import Combine
 
-struct JobInfoList: View {
+struct JobList: View {
     @EnvironmentObject var viewModel: PreferencesViewModel
     
     var body: some View {
         VStack(alignment: .leading) {
             List {
-                ForEach(viewModel.jobInfos) { jobInfo in
+                ForEach(viewModel.jobs) { job in
                     HStack {
-                        Text(viewModel.isCurrent(jobInfo) ? viewModel.currentJobInfo.name : jobInfo.name)
+                        Text(viewModel.isCurrent(job) ? viewModel.currentJob.name : job.name)
                         Spacer()
                     }
                     .contentShape(Rectangle())
-                    .foregroundColor(viewModel.isCurrent(jobInfo) ? .white : .black)
-                    .listRowBackground(viewModel.isCurrent(jobInfo) ? Color.blue : Color.white)
+                    .foregroundColor(viewModel.isCurrent(job) ? .white : .black)
+                    .listRowBackground(viewModel.isCurrent(job) ? Color.blue : Color.white)
                     .frame(width: 200, height: 20, alignment: .leading)
                     .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                     .onTapGesture(perform: {
-                        self.jobClicked(jobInfo)
+                        self.jobClicked(job)
                     })
                 }
             }
@@ -39,28 +39,28 @@ struct JobInfoList: View {
     }
     
     private func addClicked() {
-        viewModel.createJobInfo()
+        viewModel.createJob()
     }
 
     private func deleteClicked() {
-        viewModel.deleteJobInfo()
+        viewModel.deleteJob()
     }
     
-    private func jobClicked(_ jobInfo: JobInfo) {
-        viewModel.jobInfoSelected(jobInfo)
+    private func jobClicked(_ job: Job) {
+        viewModel.jobSelected(job)
     }
 }
 
-struct JobInfoList_Previews: PreviewProvider {
+struct JobList_Previews: PreviewProvider {
     static var previews: some View {
-        let jobInfoDao = JobInfoDaoImpl()
-        let jobHttpClient = RunHttpClientImpl()
-        let jobRepo = RunRepoImpl(jobInfoDao: jobInfoDao, runHttpClient: jobHttpClient)
-        let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
-        let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                            runRepo: jobRepo)
+        let jobDao = JobDaoImpl()
+        let runHttpClient = RunHttpClientImpl()
+        let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: runHttpClient)
+        let jobRepo = JobRepoImpl(jobDao: jobDao)
+        let viewModel = PreferencesViewModel(jobRepo: jobRepo,
+                                            runRepo: runRepo)
 
         viewModel.onAppear()
-        return JobInfoList().environmentObject(viewModel)
+        return JobList().environmentObject(viewModel)
     }
 }

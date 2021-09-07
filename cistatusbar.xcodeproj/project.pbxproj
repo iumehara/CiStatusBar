@@ -17,22 +17,22 @@
 		242F3E7825565EE600EFC526 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Run.swift */; };
 		242F3E7D25565F4800EFC526 /* CisbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7C25565F4800EFC526 /* CisbError.swift */; };
 		242F3E8D255660F100EFC526 /* RunRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* RunRepoImpl.swift */; };
-		242F3EAA25566F3800EFC526 /* JobInfoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobInfoDao.swift */; };
-		242F3EB225566F6F00EFC526 /* JobInfoDaoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */; };
+		242F3EAA25566F3800EFC526 /* JobDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobDao.swift */; };
+		242F3EB225566F6F00EFC526 /* JobDaoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB125566F6F00EFC526 /* JobDaoImpl.swift */; };
 		242F3EBA2556741700EFC526 /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
 		242F3ECE255676DF00EFC526 /* RunHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* RunHttpClient.swift */; };
 		242F3ED3255676EE00EFC526 /* RunHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */; };
 		242F3EDC2556793E00EFC526 /* RunRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */; };
 		242F3EE7255679A300EFC526 /* RunHttpClientDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */; };
 		242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7C25565F4800EFC526 /* CisbError.swift */; };
-		242F3F0925567B3A00EFC526 /* JobInfoDaoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */; };
+		242F3F0925567B3A00EFC526 /* JobDaoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F0825567B3A00EFC526 /* JobDaoDoubles.swift */; };
 		242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F32255980DF00EFC526 /* PreferencesView.swift */; };
-		242F3F3B2559915D00EFC526 /* JobInfoRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */; };
-		242F3F40255992C800EFC526 /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
-		242F3F65255E5E8400EFC526 /* JobInfoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */; };
-		242F3F6A255E5F2100EFC526 /* JobInfoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F69255E5F2100EFC526 /* JobInfoList.swift */; };
+		242F3F3B2559915D00EFC526 /* JobRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobRepo.swift */; };
+		242F3F40255992C800EFC526 /* JobRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobRepoImpl.swift */; };
+		242F3F65255E5E8400EFC526 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F64255E5E8400EFC526 /* JobDetail.swift */; };
+		242F3F6A255E5F2100EFC526 /* JobList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F69255E5F2100EFC526 /* JobList.swift */; };
 		242F3F99255FCC0400EFC526 /* JobInfoDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F98255FCC0400EFC526 /* JobInfoDaoTests.swift */; };
-		2465885E2563B552002A0F89 /* JobInfoDaoStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2465885D2563B552002A0F89 /* JobInfoDaoStub.swift */; };
+		2465885E2563B552002A0F89 /* JobDaoStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2465885D2563B552002A0F89 /* JobDaoStub.swift */; };
 		2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDD9253F072D00184F1A /* AppDelegate.swift */; };
 		2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */; };
 		2474EDE1253F072E00184F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE0253F072E00184F1A /* Assets.xcassets */; };
@@ -43,7 +43,7 @@
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
 		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */; };
+		24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */; };
 		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
 		24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */; };
 		24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */; };
@@ -55,9 +55,9 @@
 		24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
 		24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */; };
-		24F184B225916C0A002A600E /* JobInfoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobInfoDao.swift */; };
-		24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */; };
-		24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
+		24F184B225916C0A002A600E /* JobDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobDao.swift */; };
+		24F184BE25916C15002A600E /* JobRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobRepo.swift */; };
+		24F184C225916C19002A600E /* JobRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobRepoImpl.swift */; };
 		24F184C625916C1C002A600E /* RunRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* RunRepo.swift */; };
 		24F184CA25916C20002A600E /* RunRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* RunRepoImpl.swift */; };
 		24F184F32591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */; };
@@ -65,8 +65,8 @@
 		24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */; };
 		24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */; };
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
-		ECF9525D9753C657A4A2BB3F /* JobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */; };
-		ECF955AC8DEF9AEE4F8659AF /* JobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */; };
+		ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,21 +119,21 @@
 		242F3E7C25565F4800EFC526 /* CisbError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CisbError.swift; sourceTree = "<group>"; };
 		242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClientDoubles.swift; sourceTree = "<group>"; };
 		242F3E8C255660F100EFC526 /* RunRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepoImpl.swift; sourceTree = "<group>"; };
-		242F3EA925566F3800EFC526 /* JobInfoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDao.swift; sourceTree = "<group>"; };
-		242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoImpl.swift; sourceTree = "<group>"; };
+		242F3EA925566F3800EFC526 /* JobDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDao.swift; sourceTree = "<group>"; };
+		242F3EB125566F6F00EFC526 /* JobDaoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDaoImpl.swift; sourceTree = "<group>"; };
 		242F3EB92556741700EFC526 /* ApiProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocols.swift; sourceTree = "<group>"; };
 		242F3ECD255676DF00EFC526 /* RunHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClient.swift; sourceTree = "<group>"; };
 		242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClientImpl.swift; sourceTree = "<group>"; };
 		242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepoImplTests.swift; sourceTree = "<group>"; };
-		242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoDoubles.swift; sourceTree = "<group>"; };
+		242F3F0825567B3A00EFC526 /* JobDaoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDaoDoubles.swift; sourceTree = "<group>"; };
 		242F3F32255980DF00EFC526 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
-		242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepo.swift; sourceTree = "<group>"; };
-		242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepoImpl.swift; sourceTree = "<group>"; };
+		242F3F3A2559915D00EFC526 /* JobRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepo.swift; sourceTree = "<group>"; };
+		242F3F3F255992C800EFC526 /* JobRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepoImpl.swift; sourceTree = "<group>"; };
 		242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
-		242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDetail.swift; sourceTree = "<group>"; };
-		242F3F69255E5F2100EFC526 /* JobInfoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoList.swift; sourceTree = "<group>"; };
+		242F3F64255E5E8400EFC526 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
+		242F3F69255E5F2100EFC526 /* JobList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobList.swift; sourceTree = "<group>"; };
 		242F3F98255FCC0400EFC526 /* JobInfoDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoTests.swift; sourceTree = "<group>"; };
-		2465885D2563B552002A0F89 /* JobInfoDaoStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoStub.swift; sourceTree = "<group>"; };
+		2465885D2563B552002A0F89 /* JobDaoStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDaoStub.swift; sourceTree = "<group>"; };
 		2474EDD6253F072D00184F1A /* cistatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cistatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDD9253F072D00184F1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2474EDDE253F072D00184F1A /* cistatusbar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = cistatusbar.xcdatamodel; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		248DFD0726C48089005961E6 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
-		24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepoImplTests.swift; sourceTree = "<group>"; };
+		24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepoImplTests.swift; sourceTree = "<group>"; };
 		24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4PipelineTests.swift; sourceTree = "<group>"; };
 		24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
 		24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_RunningResponse.json; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
-		ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInfo.swift; sourceTree = "<group>"; };
+		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,13 +228,13 @@
 		242F3E7525565E5600EFC526 /* repo */ = {
 			isa = PBXGroup;
 			children = (
+				242F3EA925566F3800EFC526 /* JobDao.swift */,
+				242F3EB125566F6F00EFC526 /* JobDaoImpl.swift */,
+				2465885D2563B552002A0F89 /* JobDaoStub.swift */,
+				242F3F3A2559915D00EFC526 /* JobRepo.swift */,
+				242F3F3F255992C800EFC526 /* JobRepoImpl.swift */,
 				242F3ECD255676DF00EFC526 /* RunHttpClient.swift */,
 				242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */,
-				242F3EA925566F3800EFC526 /* JobInfoDao.swift */,
-				242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */,
-				2465885D2563B552002A0F89 /* JobInfoDaoStub.swift */,
-				242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */,
-				242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */,
 				240C977B2552E6F10083C9B8 /* RunRepo.swift */,
 				242F3E8C255660F100EFC526 /* RunRepoImpl.swift */,
 			);
@@ -246,7 +246,7 @@
 			children = (
 				242F3E7725565EE600EFC526 /* Run.swift */,
 				242F3E7C25565F4800EFC526 /* CisbError.swift */,
-				ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */,
+				ECF959F84D5EE92F45BCD4F5 /* Job.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -255,9 +255,9 @@
 			isa = PBXGroup;
 			children = (
 				242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */,
-				242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */,
+				242F3F0825567B3A00EFC526 /* JobDaoDoubles.swift */,
 				242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */,
-				24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */,
+				24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -267,8 +267,8 @@
 			children = (
 				242F3F32255980DF00EFC526 /* PreferencesView.swift */,
 				242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */,
-				242F3F64255E5E8400EFC526 /* JobInfoDetail.swift */,
-				242F3F69255E5F2100EFC526 /* JobInfoList.swift */,
+				242F3F64255E5E8400EFC526 /* JobDetail.swift */,
+				242F3F69255E5F2100EFC526 /* JobList.swift */,
 			);
 			path = preferences;
 			sourceTree = "<group>";
@@ -563,15 +563,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				242F3EB225566F6F00EFC526 /* JobInfoDaoImpl.swift in Sources */,
+				242F3EB225566F6F00EFC526 /* JobDaoImpl.swift in Sources */,
 				2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */,
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
 				240814E226D98CA9006654AA /* Inspection.swift in Sources */,
-				242F3F3B2559915D00EFC526 /* JobInfoRepo.swift in Sources */,
-				242F3F6A255E5F2100EFC526 /* JobInfoList.swift in Sources */,
+				242F3F3B2559915D00EFC526 /* JobRepo.swift in Sources */,
+				242F3F6A255E5F2100EFC526 /* JobList.swift in Sources */,
 				242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */,
 				2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */,
-				242F3F65255E5E8400EFC526 /* JobInfoDetail.swift in Sources */,
+				242F3F65255E5E8400EFC526 /* JobDetail.swift in Sources */,
 				240C977C2552E6F10083C9B8 /* RunRepo.swift in Sources */,
 				242F3E7825565EE600EFC526 /* Run.swift in Sources */,
 				24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */,
@@ -580,12 +580,12 @@
 				242F3ED3255676EE00EFC526 /* RunHttpClientImpl.swift in Sources */,
 				24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */,
 				242F3E7D25565F4800EFC526 /* CisbError.swift in Sources */,
-				2465885E2563B552002A0F89 /* JobInfoDaoStub.swift in Sources */,
-				242F3F40255992C800EFC526 /* JobInfoRepoImpl.swift in Sources */,
+				2465885E2563B552002A0F89 /* JobDaoStub.swift in Sources */,
+				242F3F40255992C800EFC526 /* JobRepoImpl.swift in Sources */,
 				24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */,
 				242F3EBA2556741700EFC526 /* ApiProtocols.swift in Sources */,
-				242F3EAA25566F3800EFC526 /* JobInfoDao.swift in Sources */,
-				ECF9525D9753C657A4A2BB3F /* JobInfo.swift in Sources */,
+				242F3EAA25566F3800EFC526 /* JobDao.swift in Sources */,
+				ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,22 +597,22 @@
 				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
-				24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */,
+				24F184BE25916C15002A600E /* JobRepo.swift in Sources */,
 				242F3EDC2556793E00EFC526 /* RunRepoImplTests.swift in Sources */,
 				24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */,
 				24F1849E25916BB6002A600E /* Run.swift in Sources */,
 				24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */,
 				242F3EE7255679A300EFC526 /* RunHttpClientDoubles.swift in Sources */,
-				242F3F0925567B3A00EFC526 /* JobInfoDaoDoubles.swift in Sources */,
-				24F184B225916C0A002A600E /* JobInfoDao.swift in Sources */,
-				24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */,
+				242F3F0925567B3A00EFC526 /* JobDaoDoubles.swift in Sources */,
+				24F184B225916C0A002A600E /* JobDao.swift in Sources */,
+				24F184C225916C19002A600E /* JobRepoImpl.swift in Sources */,
 				24F184CA25916C20002A600E /* RunRepoImpl.swift in Sources */,
 				24F184C625916C1C002A600E /* RunRepo.swift in Sources */,
-				24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */,
+				24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */,
 				24F1849A25915415002A600E /* RunHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
-				ECF955AC8DEF9AEE4F8659AF /* JobInfo.swift in Sources */,
+				ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
