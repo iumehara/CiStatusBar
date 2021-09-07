@@ -1,13 +1,13 @@
 import XCTest
 import Combine
 
-class JobRepoImplTests: XCTestCase {
+class RunRepoImplTests: XCTestCase {
     func test_get_callsHttpClientWithCorrectArgs() throws {
         let jobInfoDao = JobInfoDaoStub()
-        let jobHttpClient = JobHttpClientSpy()
+        let runHttpClient = RunHttpClientSpy()
         
-        let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
-                                jobHttpClient: jobHttpClient)
+        let repo = RunRepoImpl(jobInfoDao: jobInfoDao,
+                                runHttpClient: runHttpClient)
         let jobInfo = JobInfo(id: UUID(),
                             name: "first job",
                             url: "https://api.firstjob.example.com",
@@ -16,8 +16,8 @@ class JobRepoImplTests: XCTestCase {
         _ = repo.get(jobInfo: jobInfo)
             .sink(
                 receiveCompletion: { completion in
-                    XCTAssertEqual(jobHttpClient.get_calledWithJobInfos.count, 1)
-                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(jobInfo))
+                    XCTAssertEqual(runHttpClient.get_calledWithJobInfos.count, 1)
+                    XCTAssertTrue(runHttpClient.get_calledWithJobInfos.contains(jobInfo))
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
                 },
                 receiveValue: { _ in}
@@ -26,10 +26,10 @@ class JobRepoImplTests: XCTestCase {
     
     func test_get_returnsJobs() throws {
         let jobInfoDao = JobInfoDaoStub()
-        let jobHttpClient = JobHttpClientSuccessStub()
+        let runHttpClient = RunHttpClientSuccessStub()
 
-        let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
-                                jobHttpClient: jobHttpClient)
+        let repo = RunRepoImpl(jobInfoDao: jobInfoDao,
+                                runHttpClient: runHttpClient)
         let jobInfo = JobInfo(id: UUID(),
                             name: "first job",
                             url: "https://api.firstjob.example.com",
@@ -41,24 +41,24 @@ class JobRepoImplTests: XCTestCase {
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
                 },
                 receiveValue: { value in
-                    XCTAssertEqual(value, Job(name: "unit tests 1", status: .success))
+                    XCTAssertEqual(value, Run(name: "unit tests 1", status: .success))
                 }
             )
     }
     
     func test_getAll_callsHttpClientWithCorrectArgs() throws {
         let jobInfoDao = JobInfoDaoStub()
-        let jobHttpClient = JobHttpClientSpy()
+        let runHttpClient = RunHttpClientSpy()
         
-        let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
-                                jobHttpClient: jobHttpClient)
+        let repo = RunRepoImpl(jobInfoDao: jobInfoDao,
+                                runHttpClient: runHttpClient)
         
         _ = repo.getAll()
             .sink(
                 receiveCompletion: { completion in
-                    XCTAssertEqual(jobHttpClient.get_calledWithJobInfos.count, 2)
-                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[0]))
-                    XCTAssertTrue(jobHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[1]))
+                    XCTAssertEqual(runHttpClient.get_calledWithJobInfos.count, 2)
+                    XCTAssertTrue(runHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[0]))
+                    XCTAssertTrue(runHttpClient.get_calledWithJobInfos.contains(jobInfoDao.getAll_stubResponse[1]))
                     XCTAssertEqual(completion, Subscribers.Completion<CisbError>.finished)
                 },
                 receiveValue: { _ in}
@@ -67,10 +67,10 @@ class JobRepoImplTests: XCTestCase {
     
     func test_getAll_returnsJobs() throws {
         let jobInfoDao = JobInfoDaoStub()
-        let jobHttpClient = JobHttpClientSuccessStub()
+        let runHttpClient = RunHttpClientSuccessStub()
 
-        let repo = JobsRepoImpl(jobInfoDao: jobInfoDao,
-                                jobHttpClient: jobHttpClient)
+        let repo = RunRepoImpl(jobInfoDao: jobInfoDao,
+                                runHttpClient: runHttpClient)
 
         _ = repo.getAll()
             .sink(
@@ -79,8 +79,8 @@ class JobRepoImplTests: XCTestCase {
                 },
                 receiveValue: { value in
                     XCTAssertEqual(value, [
-                        Job(name: "unit tests 1", status: .success),
-                        Job(name: "unit tests 2", status: .success)
+                        Run(name: "unit tests 1", status: .success),
+                        Run(name: "unit tests 2", status: .success)
                     ])
                 }
             )

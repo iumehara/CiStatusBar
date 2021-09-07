@@ -1,24 +1,24 @@
 import Foundation
 import Combine
 
-class JobsRepoImpl: JobsRepo {
+class RunRepoImpl: RunRepo {
     private var jobInfoDao: JobInfoDao
-    private var jobHttpClient: JobHttpClient
+    private var runHttpClient: RunHttpClient
     
-    init(jobInfoDao: JobInfoDao, jobHttpClient: JobHttpClient) {
+    init(jobInfoDao: JobInfoDao, runHttpClient: RunHttpClient) {
         self.jobInfoDao = jobInfoDao
-        self.jobHttpClient = jobHttpClient
+        self.runHttpClient = runHttpClient
     }
     
-    func get(jobInfo: JobInfo) -> AnyPublisher<Job, CisbError> {
-        return self.jobHttpClient.get(jobInfo: jobInfo)
+    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
+        return self.runHttpClient.get(jobInfo: jobInfo)
             .mapError { error in CisbError() }
             .eraseToAnyPublisher()
     }
 
-    func getAll() -> AnyPublisher<[Job], CisbError> {
+    func getAll() -> AnyPublisher<[Run], CisbError> {
         return self.jobInfoDao.getAll()
-            .flatMap { (jobInfos: [JobInfo]) -> AnyPublisher<[Job], CisbError> in
+            .flatMap { (jobInfos: [JobInfo]) -> AnyPublisher<[Run], CisbError> in
                 if jobInfos.count == 0 {
                     return self.empty()
                 }
@@ -28,18 +28,18 @@ class JobsRepoImpl: JobsRepo {
             .eraseToAnyPublisher()
     }
 
-    private func empty()  -> AnyPublisher<[Job], CisbError> {
+    private func empty()  -> AnyPublisher<[Run], CisbError> {
         return Just([])
             .mapError { error in CisbError() }
             .eraseToAnyPublisher()
     }
     
-    private func zipMany(jobInfos: [JobInfo]) -> AnyPublisher<[Job], CisbError> {
-        let requests = jobInfos.map { self.jobHttpClient.get(jobInfo: $0) }
+    private func zipMany(jobInfos: [JobInfo]) -> AnyPublisher<[Run], CisbError> {
+        let requests = jobInfos.map { self.runHttpClient.get(jobInfo: $0) }
         return requests
             .dropFirst()
             .reduce(into: AnyPublisher(requests[0].map{[$0]})) { zippedRequests, nextRequest in
-                zippedRequests = zippedRequests.zip(nextRequest) { zippedRequestsResult, nextRequestResult -> [Job] in
+                zippedRequests = zippedRequests.zip(nextRequest) { zippedRequestsResult, nextRequestResult -> [Run] in
                     return zippedRequestsResult + [nextRequestResult]
                     
                 }

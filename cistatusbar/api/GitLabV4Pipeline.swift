@@ -46,11 +46,11 @@ struct GitLabV4Pipeline {
     }
     
     struct ResponseDecoder: ApiResponseDecoder {
-        func decode(jobName: String, data: Data) -> AnyPublisher<Job, CisbError> {
+        func decode(jobName: String, data: Data) -> AnyPublisher<Run, CisbError> {
             let type = [GitLabV4Pipeline.Response].self
             return Just(data)
                 .decode(type: type, decoder: JSONDecoder())
-                .map { Job(name: jobName, status: $0[0].toStatus()) }
+                .map { Run(name: jobName, status: $0[0].toStatus()) }
                 .mapError { e in CisbError()}
                 .eraseToAnyPublisher()
         }

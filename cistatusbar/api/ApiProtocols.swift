@@ -36,6 +36,6 @@ protocol ApiResponse: Codable {
 }
 
 protocol ApiResponseDecoder {
-    func decode(jobName: String, data: Data) -> AnyPublisher<Job, CisbError>
+    func decode(jobName: String, data: Data) -> AnyPublisher<Run, CisbError>
 }
 

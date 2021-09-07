@@ -12,18 +12,18 @@
 		240814E226D98CA9006654AA /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240814E126D98CA9006654AA /* Inspection.swift */; };
 		240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */; };
 		240AAEF626BC976500CC9FB6 /* ViewInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; };
-		240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
+		240C977C2552E6F10083C9B8 /* RunRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* RunRepo.swift */; };
 		2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */; };
-		242F3E7825565EE600EFC526 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Job.swift */; };
+		242F3E7825565EE600EFC526 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Run.swift */; };
 		242F3E7D25565F4800EFC526 /* CisbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7C25565F4800EFC526 /* CisbError.swift */; };
-		242F3E8D255660F100EFC526 /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
+		242F3E8D255660F100EFC526 /* RunRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* RunRepoImpl.swift */; };
 		242F3EAA25566F3800EFC526 /* JobInfoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobInfoDao.swift */; };
 		242F3EB225566F6F00EFC526 /* JobInfoDaoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */; };
 		242F3EBA2556741700EFC526 /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
-		242F3ECE255676DF00EFC526 /* JobHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* JobHttpClient.swift */; };
-		242F3ED3255676EE00EFC526 /* JobHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* JobHttpClientImpl.swift */; };
-		242F3EDC2556793E00EFC526 /* JobRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EDB2556793E00EFC526 /* JobRepoImplTests.swift */; };
-		242F3EE7255679A300EFC526 /* JobHttpClientDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E872556600200EFC526 /* JobHttpClientDoubles.swift */; };
+		242F3ECE255676DF00EFC526 /* RunHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* RunHttpClient.swift */; };
+		242F3ED3255676EE00EFC526 /* RunHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */; };
+		242F3EDC2556793E00EFC526 /* RunRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */; };
+		242F3EE7255679A300EFC526 /* RunHttpClientDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */; };
 		242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7C25565F4800EFC526 /* CisbError.swift */; };
 		242F3F0925567B3A00EFC526 /* JobInfoDaoDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */; };
 		242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F32255980DF00EFC526 /* PreferencesView.swift */; };
@@ -49,22 +49,24 @@
 		24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */; };
 		24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */; };
 		24E33C1B2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */; };
-		24F1849A25915415002A600E /* JobHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* JobHttpClient.swift */; };
-		24F1849E25916BB6002A600E /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Job.swift */; };
+		24F1849A25915415002A600E /* RunHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* RunHttpClient.swift */; };
+		24F1849E25916BB6002A600E /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Run.swift */; };
 		24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
 		24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
-		24F184AE25916C07002A600E /* JobHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* JobHttpClientImpl.swift */; };
+		24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */; };
 		24F184B225916C0A002A600E /* JobInfoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EA925566F3800EFC526 /* JobInfoDao.swift */; };
 		24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */; };
 		24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */; };
-		24F184C625916C1C002A600E /* JobsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* JobsRepo.swift */; };
-		24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */; };
+		24F184C625916C1C002A600E /* RunRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240C977B2552E6F10083C9B8 /* RunRepo.swift */; };
+		24F184CA25916C20002A600E /* RunRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E8C255660F100EFC526 /* RunRepoImpl.swift */; };
 		24F184F32591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */; };
 		24F184FD2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F184FC2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json */; };
 		24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */; };
 		24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */; };
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
+		ECF9525D9753C657A4A2BB3F /* JobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */; };
+		ECF955AC8DEF9AEE4F8659AF /* JobInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,18 +113,18 @@
 		240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewTests.swift; sourceTree = "<group>"; };
 		240AAEEC26BB3D0E00CC9FB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		240AAEF426BC933000CC9FB6 /* ViewInspector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ViewInspector.framework; path = Carthage/Build/Mac/ViewInspector.framework; sourceTree = "<group>"; };
-		240C977B2552E6F10083C9B8 /* JobsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsRepo.swift; sourceTree = "<group>"; };
+		240C977B2552E6F10083C9B8 /* RunRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepo.swift; sourceTree = "<group>"; };
 		2415DBC4258903F000E77C88 /* GitHubV3WorkflowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3WorkflowTests.swift; sourceTree = "<group>"; };
-		242F3E7725565EE600EFC526 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		242F3E7725565EE600EFC526 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		242F3E7C25565F4800EFC526 /* CisbError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CisbError.swift; sourceTree = "<group>"; };
-		242F3E872556600200EFC526 /* JobHttpClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobHttpClientDoubles.swift; sourceTree = "<group>"; };
-		242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobsRepoImpl.swift; sourceTree = "<group>"; };
+		242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClientDoubles.swift; sourceTree = "<group>"; };
+		242F3E8C255660F100EFC526 /* RunRepoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepoImpl.swift; sourceTree = "<group>"; };
 		242F3EA925566F3800EFC526 /* JobInfoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDao.swift; sourceTree = "<group>"; };
 		242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoImpl.swift; sourceTree = "<group>"; };
 		242F3EB92556741700EFC526 /* ApiProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiProtocols.swift; sourceTree = "<group>"; };
-		242F3ECD255676DF00EFC526 /* JobHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobHttpClient.swift; sourceTree = "<group>"; };
-		242F3ED2255676EE00EFC526 /* JobHttpClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobHttpClientImpl.swift; sourceTree = "<group>"; };
-		242F3EDB2556793E00EFC526 /* JobRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepoImplTests.swift; sourceTree = "<group>"; };
+		242F3ECD255676DF00EFC526 /* RunHttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClient.swift; sourceTree = "<group>"; };
+		242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunHttpClientImpl.swift; sourceTree = "<group>"; };
+		242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunRepoImplTests.swift; sourceTree = "<group>"; };
 		242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoDoubles.swift; sourceTree = "<group>"; };
 		242F3F32255980DF00EFC526 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
 		242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoRepo.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
+		ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JobInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,15 +228,15 @@
 		242F3E7525565E5600EFC526 /* repo */ = {
 			isa = PBXGroup;
 			children = (
-				242F3ECD255676DF00EFC526 /* JobHttpClient.swift */,
-				242F3ED2255676EE00EFC526 /* JobHttpClientImpl.swift */,
+				242F3ECD255676DF00EFC526 /* RunHttpClient.swift */,
+				242F3ED2255676EE00EFC526 /* RunHttpClientImpl.swift */,
 				242F3EA925566F3800EFC526 /* JobInfoDao.swift */,
 				242F3EB125566F6F00EFC526 /* JobInfoDaoImpl.swift */,
 				2465885D2563B552002A0F89 /* JobInfoDaoStub.swift */,
 				242F3F3A2559915D00EFC526 /* JobInfoRepo.swift */,
 				242F3F3F255992C800EFC526 /* JobInfoRepoImpl.swift */,
-				240C977B2552E6F10083C9B8 /* JobsRepo.swift */,
-				242F3E8C255660F100EFC526 /* JobsRepoImpl.swift */,
+				240C977B2552E6F10083C9B8 /* RunRepo.swift */,
+				242F3E8C255660F100EFC526 /* RunRepoImpl.swift */,
 			);
 			path = repo;
 			sourceTree = "<group>";
@@ -241,8 +244,9 @@
 		242F3E7625565EDB00EFC526 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				242F3E7725565EE600EFC526 /* Job.swift */,
+				242F3E7725565EE600EFC526 /* Run.swift */,
 				242F3E7C25565F4800EFC526 /* CisbError.swift */,
+				ECF959F84D5EE92F45BCD4F5 /* JobInfo.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -250,9 +254,9 @@
 		242F3EDA2556792B00EFC526 /* repo */ = {
 			isa = PBXGroup;
 			children = (
-				242F3E872556600200EFC526 /* JobHttpClientDoubles.swift */,
+				242F3E872556600200EFC526 /* RunHttpClientDoubles.swift */,
 				242F3F0825567B3A00EFC526 /* JobInfoDaoDoubles.swift */,
-				242F3EDB2556793E00EFC526 /* JobRepoImplTests.swift */,
+				242F3EDB2556793E00EFC526 /* RunRepoImplTests.swift */,
 				24C58D68259B1FAB00FCB38F /* JobInfoRepoImplTests.swift */,
 			);
 			path = repo;
@@ -568,12 +572,12 @@
 				242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */,
 				2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */,
 				242F3F65255E5E8400EFC526 /* JobInfoDetail.swift in Sources */,
-				240C977C2552E6F10083C9B8 /* JobsRepo.swift in Sources */,
-				242F3E7825565EE600EFC526 /* Job.swift in Sources */,
+				240C977C2552E6F10083C9B8 /* RunRepo.swift in Sources */,
+				242F3E7825565EE600EFC526 /* Run.swift in Sources */,
 				24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */,
-				242F3E8D255660F100EFC526 /* JobsRepoImpl.swift in Sources */,
-				242F3ECE255676DF00EFC526 /* JobHttpClient.swift in Sources */,
-				242F3ED3255676EE00EFC526 /* JobHttpClientImpl.swift in Sources */,
+				242F3E8D255660F100EFC526 /* RunRepoImpl.swift in Sources */,
+				242F3ECE255676DF00EFC526 /* RunHttpClient.swift in Sources */,
+				242F3ED3255676EE00EFC526 /* RunHttpClientImpl.swift in Sources */,
 				24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */,
 				242F3E7D25565F4800EFC526 /* CisbError.swift in Sources */,
 				2465885E2563B552002A0F89 /* JobInfoDaoStub.swift in Sources */,
@@ -581,6 +585,7 @@
 				24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */,
 				242F3EBA2556741700EFC526 /* ApiProtocols.swift in Sources */,
 				242F3EAA25566F3800EFC526 /* JobInfoDao.swift in Sources */,
+				ECF9525D9753C657A4A2BB3F /* JobInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,25 +593,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24F184AE25916C07002A600E /* JobHttpClientImpl.swift in Sources */,
+				24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */,
 				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
 				24F184BE25916C15002A600E /* JobInfoRepo.swift in Sources */,
-				242F3EDC2556793E00EFC526 /* JobRepoImplTests.swift in Sources */,
+				242F3EDC2556793E00EFC526 /* RunRepoImplTests.swift in Sources */,
 				24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */,
-				24F1849E25916BB6002A600E /* Job.swift in Sources */,
+				24F1849E25916BB6002A600E /* Run.swift in Sources */,
 				24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */,
-				242F3EE7255679A300EFC526 /* JobHttpClientDoubles.swift in Sources */,
+				242F3EE7255679A300EFC526 /* RunHttpClientDoubles.swift in Sources */,
 				242F3F0925567B3A00EFC526 /* JobInfoDaoDoubles.swift in Sources */,
 				24F184B225916C0A002A600E /* JobInfoDao.swift in Sources */,
 				24F184C225916C19002A600E /* JobInfoRepoImpl.swift in Sources */,
-				24F184CA25916C20002A600E /* JobsRepoImpl.swift in Sources */,
-				24F184C625916C1C002A600E /* JobsRepo.swift in Sources */,
+				24F184CA25916C20002A600E /* RunRepoImpl.swift in Sources */,
+				24F184C625916C1C002A600E /* RunRepo.swift in Sources */,
 				24C58D69259B1FAB00FCB38F /* JobInfoRepoImplTests.swift in Sources */,
-				24F1849A25915415002A600E /* JobHttpClient.swift in Sources */,
+				24F1849A25915415002A600E /* RunHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
+				ECF955AC8DEF9AEE4F8659AF /* JobInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

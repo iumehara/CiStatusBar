@@ -15,13 +15,13 @@ final class PreferencesViewModel: ObservableObject {
     @Published var isAddButtonDisabled = false
 
     private var jobInfoRepo: JobInfoRepo
-    private var jobRepo: JobsRepo
+    private var runRepo: RunRepo
     private var disposables = Set<AnyCancellable>()
     
     init(jobInfoRepo: JobInfoRepo,
-         jobRepo: JobsRepo) {
+         runRepo: RunRepo) {
         self.jobInfoRepo = jobInfoRepo
-        self.jobRepo = jobRepo
+        self.runRepo = runRepo
     }
 
     func onAppear() {
@@ -35,7 +35,7 @@ final class PreferencesViewModel: ObservableObject {
         
     func testConnection() {
         self.connectionStatus = .connecting
-        self.jobRepo.get(jobInfo: currentJobInfo)
+        self.runRepo.get(jobInfo: currentJobInfo)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { value in

@@ -12,15 +12,15 @@ enum MenuItemTag: Int {
 }
 
 class StatusItemPresenter: NSObject {
-    private var repo: JobsRepo
+    private var repo: RunRepo
     private var button: NSStatusBarButton!
     private var menu: NSMenu!
     private var disposables = Set<AnyCancellable>()
-    private var jobs: [Job] = []
+    private var runs: [Run] = []
     private var lastUpdate: Date?
     private var subscription: AnyCancellable? = nil
     
-    init(repo: JobsRepo,
+    init(repo: RunRepo,
          button: NSStatusBarButton,
          menu: NSMenu) {
         self.repo = repo
@@ -57,17 +57,17 @@ class StatusItemPresenter: NSObject {
                     switch value {
                     case .failure:
                         self.button.displayUnavailable()
-                        self.updateMenu(jobs: [])
+                        self.updateMenu(runs: [])
                         break
                     case .finished:
                         self.lastUpdate = Date()
                         break
                     }
                 },
-                receiveValue:  { jobs in
-                    self.jobs = jobs
-                    self.updateButton(jobs: jobs)
-                    self.updateMenu(jobs: jobs)
+                receiveValue:  { runs in
+                    self.runs = runs
+                    self.updateButton(runs: runs)
+                    self.updateMenu(runs: runs)
                 })
             .store(in: &disposables)
     }
@@ -77,8 +77,8 @@ class StatusItemPresenter: NSObject {
         button.action = #selector(self.updateSelector)
     }
         
-    private func updateButton(jobs: [Job]) {
-        let statuses = jobs.map { job in job.status }
+    private func updateButton(runs: [Run]) {
+        let statuses = runs.map { run in run.status }
         
         if statuses.contains(ApiResponseStatus.fail) {
             self.button.displayFailed()
@@ -93,9 +93,9 @@ class StatusItemPresenter: NSObject {
         self.button.displaySuccessful()
     }
         
-    private func updateMenu(jobs: [Job]) {
+    private func updateMenu(runs: [Run]) {
         let updateSectionItemCount = 2
-        let jobsSectionItemCount = jobs.count + 2
+        let jobsSectionItemCount = runs.count + 2
         let preferencesSectionItemCount = 2
         let quitSectionItemCount = 1
         let expectedNumberOfItems = updateSectionItemCount + jobsSectionItemCount + preferencesSectionItemCount + quitSectionItemCount
@@ -104,11 +104,11 @@ class StatusItemPresenter: NSObject {
         if (menu.items.count != expectedNumberOfItems) {
             menu.removeAllItems()
             setupUpdateSection()
-            setupJobsSection(jobs: jobs)
+            setupJobsSection(runs: runs)
             setupPreferencesSection()
             setupQuitSection()
         } else {
-            jobs.forEach { job in
+            runs.forEach { job in
                 let menuItem = menu.item(at: jobItemIndex)
                 menuItem?.title = menu.jobMenuItemTitle(name: job.name, status: job.status)
                 jobItemIndex += 1
@@ -127,15 +127,15 @@ class StatusItemPresenter: NSObject {
         menu.addItem(NSMenuItem.separator())
     }
     
-    private func setupJobsSection(jobs: [Job]) {
+    private func setupJobsSection(runs: [Run]) {
         let updatedTime = NSMenuItem(title: "Updated: N/A", action: nil, keyEquivalent: "")
         updatedTime.tag = MenuItemTag.jobUpdatedLabel.rawValue
         menu.addItem(updatedTime)
         
         var jobItemIndex = 3
         
-        jobs.forEach { job in
-            let menuItem = menu.createJobMenuItem(name: job.name, status: job.status)
+        runs.forEach { run in
+            let menuItem = menu.createJobMenuItem(name: run.name, status: run.status)
             menu.insertItem(menuItem, at: jobItemIndex)
             jobItemIndex += 1
         }

@@ -54,11 +54,11 @@ struct JobInfoList: View {
 struct JobInfoList_Previews: PreviewProvider {
     static var previews: some View {
         let jobInfoDao = JobInfoDaoImpl()
-        let jobHttpClient = JobHttpClientImpl()
-        let jobRepo = JobsRepoImpl(jobInfoDao: jobInfoDao, jobHttpClient: jobHttpClient)
+        let jobHttpClient = RunHttpClientImpl()
+        let jobRepo = RunRepoImpl(jobInfoDao: jobInfoDao, runHttpClient: jobHttpClient)
         let jobInfoRepo = JobInfoRepoImpl(jobInfoDao: jobInfoDao)
         let viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                            jobRepo: jobRepo)
+                                            runRepo: jobRepo)
 
         viewModel.onAppear()
         return JobInfoList().environmentObject(viewModel)

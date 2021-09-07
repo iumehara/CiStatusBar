@@ -33,7 +33,7 @@ extension AbstractResponseTests {
                           expectedStatus: ApiResponseStatus) {
         _ = getDecoder().decode(jobName: jobName, data: dataFrom(filetype: typeOfJsonFileToParse))
             .sink(receiveCompletion: { completion in XCTAssertEqual(completion, .finished) },
-                  receiveValue: { value in XCTAssertEqual(value, Job(name: jobName, status: expectedStatus)) })
+                  receiveValue: { value in XCTAssertEqual(value, Run(name: jobName, status: expectedStatus)) })
     }
 
     private func dataFrom(filetype: String) -> Data {

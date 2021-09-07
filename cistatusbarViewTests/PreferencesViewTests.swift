@@ -13,17 +13,17 @@ class PreferencesViewTests: XCTestCase {
     var expectation: XCTestExpectation!
     
     override func setUp() {
-        let jobsRepo = JobsRepoSpy()
+        let runRepo = RunRepoSpy()
         let jobInfoRepo = JobInfoRepoSpy()
         viewModel = PreferencesViewModel(jobInfoRepo: jobInfoRepo,
-                                         jobRepo: jobsRepo)
+                                         runRepo: runRepo)
         preferencesView = PreferencesView()
     }
     
     func test_onAppear_jobsInfoListDisplays() throws {
         let expectation = preferencesView.inspection.inspect(after: 1) { view in
-            XCTAssertNotNil(try? view.find(button: "First Project Test"))
-            XCTAssertNotNil(try? view.find(button: "First Project Build"))
+            XCTAssertNotNil(try? view.find(text: "First Project Test"))
+            XCTAssertNotNil(try? view.find(text: "First Project Build"))
         }
         
         ViewHosting.host(view: preferencesView.environmentObject(viewModel))
@@ -41,13 +41,13 @@ class PreferencesViewTests: XCTestCase {
 
     func test_onAddButtonClick_addsDefaultJobToList() throws {
         expectation = preferencesView.inspection.inspect { view in
-            XCTAssertNil(try? view.find(button: "job 1"))
+            XCTAssertNil(try? view.find(text: "job 1"))
             XCTAssertNil(try? view.find(ViewType.TextField.self, where: {try $0.input() == "job 1"}))
 
             let addButton = try view.find(button: "+")
             try addButton.tap()
 
-            XCTAssertNotNil(try? view.find(button: "job 1"))
+            XCTAssertNotNil(try? view.find(text: "job 1"))
             XCTAssertNotNil(try? view.find(ViewType.TextField.self, where: {try $0.input() == "job 1"}))
         }
 

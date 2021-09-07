@@ -2,19 +2,19 @@ import Foundation
 import Combine
 @testable import cistatusbar
 
-class JobsRepoSpy: JobsRepo {
+class RunRepoSpy: RunRepo {
     var get_calledWith: JobInfo?
-    func get(jobInfo: JobInfo) -> AnyPublisher<Job, CisbError> {
+    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
         get_calledWith = jobInfo
-        return Result.Publisher(Job(name: "First Project Test", status: .success)).eraseToAnyPublisher()
+        return Result.Publisher(Run(name: "First Project Test", status: .success)).eraseToAnyPublisher()
     }
     
     var getAll_called = false
-    func getAll() -> AnyPublisher<[Job], CisbError> {
+    func getAll() -> AnyPublisher<[Run], CisbError> {
         getAll_called = true
         return Result.Publisher([
-                Job(name: "First Project Test", status: .success),
-                Job(name: "First Project Build", status: .success)
+                Run(name: "First Project Test", status: .success),
+                Run(name: "First Project Build", status: .success)
              ])
             .eraseToAnyPublisher()
     }

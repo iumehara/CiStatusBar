@@ -1,8 +1,8 @@
 import Foundation
 import Combine
 
-class JobHttpClientImpl: JobHttpClient {
-    func get(jobInfo: JobInfo) -> AnyPublisher<Job, CisbError> {
+class RunHttpClientImpl: RunHttpClient {
+    func get(jobInfo: JobInfo) -> AnyPublisher<Run, CisbError> {
         guard let url = URL(string: jobInfo.url) else {
             return Fail(error: CisbError()).eraseToAnyPublisher()
         }
@@ -25,7 +25,7 @@ class JobHttpClientImpl: JobHttpClient {
 
     private func decodeResponse(apiType: ApiType,
                                 jobName: String,
-                                data: Data) -> AnyPublisher<Job, CisbError> {
+                                data: Data) -> AnyPublisher<Run, CisbError> {
         
         switch apiType {
         case .gitHubV3Workflow:
