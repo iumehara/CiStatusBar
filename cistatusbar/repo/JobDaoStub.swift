@@ -6,7 +6,7 @@ class JobDaoStub: JobDao {
         let jobs = [
             Job(id: UUID(),
                     name: "test",
-                    url: "Zhttps://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
+                    url: "https://api.github.com/repos/iumehara/OhiruFinder/actions/workflows/3189591/runs",
                     apiType: .gitHubV3Workflow),
             Job(id: UUID(),
                     name: "deploy",
@@ -15,25 +15,25 @@ class JobDaoStub: JobDao {
         ]
         
         return Just(jobs)
-            .mapError { error in CisbError()}
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     
     func create(job: Job) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError()}
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     
     func update(job: Job) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError()}
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     
     func delete(id: UUID) -> AnyPublisher<Bool, CisbError> {
         return Just(true)
-            .mapError { error in CisbError()}
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
 }

@@ -49,6 +49,7 @@
 		24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */; };
 		24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */; };
 		24E33C1B2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */; };
+		24E854CA26E96CF400843504 /* CIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E854C926E96CF400843504 /* CIColor.swift */; };
 		24F1849A25915415002A600E /* RunHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* RunHttpClient.swift */; };
 		24F1849E25916BB6002A600E /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Run.swift */; };
 		24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
@@ -156,6 +157,7 @@
 		24E33C102591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_RunningResponse.json; sourceTree = "<group>"; };
 		24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_UnknownResponse.json; sourceTree = "<group>"; };
 		24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_FailResponse.json; sourceTree = "<group>"; };
+		24E854C926E96CF400843504 /* CIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIColor.swift; sourceTree = "<group>"; };
 		24F184F22591AAE6002A600E /* GitHubV3WorkflowTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_SuccessResponse.json; sourceTree = "<group>"; };
 		24F184FC2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_RunningResponse.json; sourceTree = "<group>"; };
 		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		2474EDD8253F072D00184F1A /* cistatusbar */ = {
 			isa = PBXGroup;
 			children = (
+				24E854C826E96CE700843504 /* styles */,
 				24B8A9CF25820D0F000F1201 /* api */,
 				242F3F44255A86A800EFC526 /* preferences */,
 				242F3E7625565EDB00EFC526 /* model */,
@@ -372,6 +375,14 @@
 				24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */,
 			);
 			path = GitLabV4Pipeline;
+			sourceTree = "<group>";
+		};
+		24E854C826E96CE700843504 /* styles */ = {
+			isa = PBXGroup;
+			children = (
+				24E854C926E96CF400843504 /* CIColor.swift */,
+			);
+			path = styles;
 			sourceTree = "<group>";
 		};
 		24F184FB2591AD5B002A600E /* GitHubV3Workflow */ = {
@@ -568,6 +579,7 @@
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
 				240814E226D98CA9006654AA /* Inspection.swift in Sources */,
 				242F3F3B2559915D00EFC526 /* JobRepo.swift in Sources */,
+				24E854CA26E96CF400843504 /* CIColor.swift in Sources */,
 				242F3F6A255E5F2100EFC526 /* JobList.swift in Sources */,
 				242F3F33255980DF00EFC526 /* PreferencesView.swift in Sources */,
 				2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */,

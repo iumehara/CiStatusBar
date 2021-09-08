@@ -1,5 +1,4 @@
 import SwiftUI
-import Combine
 
 struct JobList: View {
     @EnvironmentObject var viewModel: PreferencesViewModel
@@ -13,8 +12,8 @@ struct JobList: View {
                         Spacer()
                     }
                     .contentShape(Rectangle())
-                    .foregroundColor(viewModel.isCurrent(job) ? .white : .black)
-                    .listRowBackground(viewModel.isCurrent(job) ? Color.blue : Color.white)
+                    .foregroundColor(viewModel.isCurrent(job) ? CIColor.white : CIColor.text)
+                    .listRowBackground(viewModel.isCurrent(job) ? CIColor.highlight : CIColor.white)
                     .frame(width: 200, height: 20, alignment: .leading)
                     .listRowInsets(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                     .onTapGesture(perform: {

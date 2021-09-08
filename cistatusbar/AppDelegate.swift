@@ -28,8 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @objc func showPreferences() {
         if preferencesWindow == nil {
             let jobDao = JobDaoImpl()
-            let jobHttpClient = RunHttpClientImpl()
-            let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: jobHttpClient)
+            let runHttpClient = RunHttpClientImpl()
+            let runRepo = RunRepoImpl(jobDao: jobDao, runHttpClient: runHttpClient)
             let jobRepo = JobRepoImpl(jobDao: jobDao)
             let preferencesViewModel = PreferencesViewModel(jobRepo: jobRepo,
                                                             runRepo: runRepo)

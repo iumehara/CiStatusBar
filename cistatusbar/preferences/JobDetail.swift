@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftUI
 
 struct JobDetail: View {
     @EnvironmentObject var viewModel: PreferencesViewModel
@@ -24,7 +23,7 @@ struct JobDetail: View {
                     }
                 }
                 .frame(width: 300)
-                .foregroundColor(.black)
+                .foregroundColor(CIColor.text)
                 Spacer()
             }
 
@@ -37,7 +36,7 @@ struct JobDetail: View {
                     }) {
                         Text(viewModel.currentJob.apiType.details().apiReference.absoluteString)
                             .underline()
-                            .foregroundColor(Color.blue)
+                            .foregroundColor(CIColor.link)
                     }
                     .buttonStyle(PlainButtonStyle())
                     .onHover { inside in
@@ -74,11 +73,11 @@ struct JobDetail: View {
                     case .valid:
                         Text("valid")
                             .padding(.leading, 70)
-                            .foregroundColor(.green)
+                            .foregroundColor(CIColor.ok)
                     case .invalid:
                         Text("invalid")
                             .padding(.leading, 70)
-                            .foregroundColor(.red)
+                            .foregroundColor(CIColor.warning)
                     default:
                         Text("click to test connection")
                             .padding(.leading, 70)
@@ -95,6 +94,7 @@ struct JobDetail: View {
             }
         }
         .frame(width: 700)
+        .background(CIColor.background)
     }
     
     private func testClicked() {
