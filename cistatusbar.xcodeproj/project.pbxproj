@@ -68,6 +68,7 @@
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
 		ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
 		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -164,6 +165,7 @@
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
 		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIconProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -323,6 +325,7 @@
 				2474EDE5253F072E00184F1A /* Main.storyboard */,
 				2474EDE2253F072E00184F1A /* Preview Content */,
 				240814E126D98CA9006654AA /* Inspection.swift */,
+				ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */,
 			);
 			path = cistatusbar;
 			sourceTree = "<group>";
@@ -598,6 +601,7 @@
 				242F3EBA2556741700EFC526 /* ApiProtocols.swift in Sources */,
 				242F3EAA25566F3800EFC526 /* JobDao.swift in Sources */,
 				ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */,
+				ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

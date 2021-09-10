@@ -19,6 +19,7 @@ class StatusItemPresenter: NSObject {
     private var runs: [Run] = []
     private var lastUpdate: Date?
     private var subscription: AnyCancellable? = nil
+    private var iconProvider = DefaultIconProvider()
     
     init(repo: RunRepo,
          button: NSStatusBarButton,
@@ -41,58 +42,60 @@ class StatusItemPresenter: NSObject {
     
     private func startTimer(frequency: Double) {
         subscription = Timer.publish(every: frequency, on: .main, in: .common)
-            .autoconnect()
-            .receive(on: DispatchQueue.main)
-            .sink() {_ in
-                self.update()
-            }
+                .autoconnect()
+                .receive(on: DispatchQueue.main)
+                .sink { _ in
+                    self.update()
+                }
     }
     
     func update() {
-        self.button.displayLoading()
+        self.button.setIcon(iconProvider.loading)
         self.repo.getAll()
-            .receive(on: DispatchQueue.main)
-            .sink(
-                receiveCompletion: { value in
-                    switch value {
-                    case .failure:
-                        self.button.displayUnavailable()
-                        self.updateMenu(runs: [])
-                        break
-                    case .finished:
-                        self.lastUpdate = Date()
-                        break
-                    }
-                },
-                receiveValue:  { runs in
-                    self.runs = runs
-                    self.updateButton(runs: runs)
-                    self.updateMenu(runs: runs)
-                })
-            .store(in: &disposables)
+                .receive(on: DispatchQueue.main)
+                .sink(
+                        receiveCompletion: { value in
+                            switch value {
+                            case .failure:
+                                self.button.setIcon(self.iconProvider.unknown)
+                                self.updateMenu(runs: [])
+                                break
+                            case .finished:
+                                self.lastUpdate = Date()
+                                break
+                            }
+                        },
+                        receiveValue: { runs in
+                            self.runs = runs
+                            self.updateButton(runs: runs)
+                            self.updateMenu(runs: runs)
+                        })
+                .store(in: &disposables)
     }
     
     private func presentButton() {
         button.target = self
         button.action = #selector(self.updateSelector)
     }
-        
+    
     private func updateButton(runs: [Run]) {
-        let statuses = runs.map { run in run.status }
+        let statuses = runs.map { run in
+            run.status
+        }
         
         if statuses.contains(ApiResponseStatus.fail) {
-            self.button.displayFailed()
+            self.button.setIcon(iconProvider.fail)
             return
         }
         
         if statuses.contains(ApiResponseStatus.unknown) {
-            self.button.displayUnavailable()
+            self.button.setIcon(iconProvider.unknown)
             return
         }
         
-        self.button.displaySuccessful()
+        self.button.setIcon(iconProvider.success)
     }
-        
+    
     private func updateMenu(runs: [Run]) {
         let updateSectionItemCount = 2
         let jobsSectionItemCount = runs.count + 2
@@ -108,13 +111,13 @@ class StatusItemPresenter: NSObject {
             setupPreferencesSection()
             setupQuitSection()
         } else {
-            runs.forEach { job in
+            runs.forEach { run in
                 let menuItem = menu.item(at: jobItemIndex)
-                menuItem?.title = menu.jobMenuItemTitle(name: job.name, status: job.status)
+                menuItem?.title = jobMenuItemTitle(name: run.name, status: run.status)
                 jobItemIndex += 1
             }
         }
-
+        
         menu.displayUpdateTime(date: Date())
     }
     
@@ -123,7 +126,7 @@ class StatusItemPresenter: NSObject {
         update.target = self
         update.tag = MenuItemTag.updateButton.rawValue
         menu.addItem(update)
-
+        
         menu.addItem(NSMenuItem.separator())
     }
     
@@ -135,8 +138,8 @@ class StatusItemPresenter: NSObject {
         var jobItemIndex = 3
         
         runs.forEach { run in
-            let menuItem = menu.createJobMenuItem(name: run.name, status: run.status)
-            menu.insertItem(menuItem, at: jobItemIndex)
+            let title = jobMenuItemTitle(name: run.name, status: run.status)
+            menu.insertMenuItemWithTitle(title, at: jobItemIndex)
             jobItemIndex += 1
         }
         
@@ -148,7 +151,7 @@ class StatusItemPresenter: NSObject {
         preferences.target = self
         preferences.tag = MenuItemTag.preferencesButton.rawValue
         menu.addItem(preferences)
-
+        
         menu.addItem(NSMenuItem.separator())
     }
     
@@ -159,38 +162,23 @@ class StatusItemPresenter: NSObject {
         menu.addItem(quit)
     }
     
+    private func jobMenuItemTitle(name: String, status: ApiResponseStatus) -> String {
+        let statusIcon = iconProvider.iconFor(status: status)
+        return "\(statusIcon) \(name)"
+    }
+    
     @objc func updateSelector(_ sender: Any?) {
         update()
     }
     
     @objc func launchPreferences(_ sender: Any?) {
-        NSApp.sendAction(#selector(AppDelegate.showPreferences),to: nil, from: nil)
+        NSApp.sendAction(#selector(AppDelegate.showPreferences), to: nil, from: nil)
     }
 }
 
 extension NSStatusBarButton {
-    func displaySuccessful() {
-        self.title = "🟢"
-        self.isBordered = false
-        self.wantsLayer = true
-    }
-
-    func displayFailed() {
-        self.title = "🔴"
-        self.isBordered = false
-        self.wantsLayer = true
-    }
-    
-    func displayUnavailable() {
-        self.title = "⁉️"
-        self.isBordered = false
-        self.wantsLayer = true
-    }
-
-    func displayLoading() {
-        self.title = "⌚️"
-        self.isBordered = false
-        self.wantsLayer = true
+    func setIcon(_ icon: String) {
+        self.title = icon
     }
 }
 
@@ -204,28 +192,12 @@ extension NSMenu {
         menuItem?.isEnabled = false
     }
     
-    func createJobMenuItem(name: String, status: ApiResponseStatus) -> NSMenuItem {
-        let title = jobMenuItemTitle(name: name, status: status)
+    func insertMenuItemWithTitle(_ title: String, at index: Int) {
         let image = NSImage(size: NSMakeSize(1, 16))
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
         menuItem.image = image
         menuItem.isEnabled = false
-        return menuItem
-    }
-    
-    func jobMenuItemTitle(name: String, status: ApiResponseStatus) -> String {
-        var statusIcon: String
-        switch status {
-        case ApiResponseStatus.success:
-            statusIcon = "🟢"
-        case ApiResponseStatus.fail:
-            statusIcon = "🔴"
-        case ApiResponseStatus.running:
-            statusIcon = "⌚️"
-        default:
-            statusIcon = "⁉️"
-        }
         
-        return "\(statusIcon) \(name)"
+        self.insertItem(menuItem, at: index)
     }
 }
