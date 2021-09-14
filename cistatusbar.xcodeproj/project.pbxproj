@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		24005E672562C9340025669E /* PreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */; };
-		2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */; };
 		240814E226D98CA9006654AA /* Inspection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240814E126D98CA9006654AA /* Inspection.swift */; };
 		240AAEEB26BB3D0E00CC9FB6 /* PreferencesViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */; };
 		240AAEF626BC976500CC9FB6 /* ViewInspector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; };
@@ -66,9 +65,14 @@
 		24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */; };
 		24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */; };
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
+		ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */; };
 		ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF9545425D96AFCBB189D4B /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */; };
+		ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF950C69048FA8A044E9B7A /* AppLauncher.swift */; };
 		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
 		ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
+		ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */; };
+		ECF95B257EC79D5941F2E1DC /* CisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,7 +113,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
 		240814E126D98CA9006654AA /* Inspection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inspection.swift; sourceTree = "<group>"; };
 		240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		240AAEEA26BB3D0E00CC9FB6 /* PreferencesViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewTests.swift; sourceTree = "<group>"; };
@@ -164,8 +167,13 @@
 		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
+		ECF950C69048FA8A044E9B7A /* AppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
 		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIconProvider.swift; sourceTree = "<group>"; };
+		ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CisbButton.swift; sourceTree = "<group>"; };
+		ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAppLauncher.swift; sourceTree = "<group>"; };
+		ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CisbMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,13 +327,13 @@
 				2474EDE9253F072E00184F1A /* cistatusbar.entitlements */,
 				2474EDE8253F072E00184F1A /* Info.plist */,
 				2474EDD9253F072D00184F1A /* AppDelegate.swift */,
-				2405DB1325504A6B00990ECA /* StatusItemPresenter.swift */,
 				2474EDE0253F072E00184F1A /* Assets.xcassets */,
 				2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */,
 				2474EDE5253F072E00184F1A /* Main.storyboard */,
 				2474EDE2253F072E00184F1A /* Preview Content */,
 				240814E126D98CA9006654AA /* Inspection.swift */,
 				ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */,
+				ECF9584DB9AC66C3070DD618 /* statusItem */,
 			);
 			path = cistatusbar;
 			sourceTree = "<group>";
@@ -398,6 +406,18 @@
 				24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */,
 			);
 			path = GitHubV3Workflow;
+			sourceTree = "<group>";
+		};
+		ECF9584DB9AC66C3070DD618 /* statusItem */ = {
+			isa = PBXGroup;
+			children = (
+				ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */,
+				ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */,
+				ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */,
+				ECF950C69048FA8A044E9B7A /* AppLauncher.swift */,
+				ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */,
+			);
+			path = statusItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -578,7 +598,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				242F3EB225566F6F00EFC526 /* JobDaoImpl.swift in Sources */,
-				2405DB1425504A6B00990ECA /* StatusItemPresenter.swift in Sources */,
 				2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */,
 				240814E226D98CA9006654AA /* Inspection.swift in Sources */,
 				242F3F3B2559915D00EFC526 /* JobRepo.swift in Sources */,
@@ -602,6 +621,11 @@
 				242F3EAA25566F3800EFC526 /* JobDao.swift in Sources */,
 				ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */,
 				ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */,
+				ECF9545425D96AFCBB189D4B /* StatusItemPresenter.swift in Sources */,
+				ECF95B257EC79D5941F2E1DC /* CisbButton.swift in Sources */,
+				ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */,
+				ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */,
+				ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

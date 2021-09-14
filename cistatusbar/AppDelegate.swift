@@ -5,7 +5,7 @@ import SwiftUI
 class AppDelegate: NSObject, NSApplicationDelegate {
     var statusItem: NSStatusItem?
     var preferencesWindow: NSWindow?
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(40))
         
@@ -16,12 +16,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let menu = NSMenu()
         statusItem?.menu = menu
-
+        
         let repo = RunRepoImpl(jobDao: JobDaoImpl(),
-                                runHttpClient: RunHttpClientImpl())
+                               runHttpClient: RunHttpClientImpl())
         let presenter = StatusItemPresenter(repo: repo,
-                                            button: button,
-                                            menu: menu)
+                                            button: DefaultCisbButton(button),
+                                            menu: DefaultCisbMenu(menu))
         presenter.present()
     }
     
@@ -35,10 +35,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                             runRepo: runRepo)
             let preferencesView = PreferencesView().environmentObject(preferencesViewModel)
             preferencesWindow = NSWindow(
-                contentRect: NSRect(x: 20, y: 20, width: 700, height: 200),
-                styleMask: [.titled, .closable],
-                backing: .buffered,
-                defer: false)
+                    contentRect: NSRect(x: 20, y: 20, width: 700, height: 200),
+                    styleMask: [.titled, .closable],
+                    backing: .buffered,
+                    defer: false)
             preferencesWindow?.center()
             preferencesWindow?.title = "Preferences"
             preferencesWindow?.setFrameAutosaveName("Preferences")
@@ -52,9 +52,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
+    
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
@@ -67,7 +67,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if let error = error {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -81,13 +81,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving and Undo support
-
+    
     @IBAction func saveAction(_ sender: AnyObject?) {
         // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
         let context = persistentContainer.viewContext
-
+        
         if !context.commitEditing() {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
         }
@@ -101,12 +101,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
     }
-
+    
     func windowWillReturnUndoManager(window: NSWindow) -> UndoManager? {
         // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
         return persistentContainer.viewContext.undoManager
     }
-
+    
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Save changes in the application's managed object context before the application terminates.
         let context = persistentContainer.viewContext
@@ -124,7 +124,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             try context.save()
         } catch {
             let nserror = error as NSError
-
+            
             // Customize this code block to include application-specific recovery steps.
             let result = sender.presentError(nserror)
             if (result) {
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
-
+    
 }
 
 

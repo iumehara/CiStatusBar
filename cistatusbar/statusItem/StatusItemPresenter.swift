@@ -11,10 +11,10 @@ enum MenuItemTag: Int {
     case quitButton = 10
 }
 
-class StatusItemPresenter: NSObject {
+class StatusItemPresenter {
     private var repo: RunRepo
-    private var button: NSStatusBarButton!
-    private var menu: NSMenu!
+    private var button: DefaultCisbButton!
+    private var menu: DefaultCisbMenu!
     private var disposables = Set<AnyCancellable>()
     private var runs: [Run] = []
     private var lastUpdate: Date?
@@ -22,8 +22,8 @@ class StatusItemPresenter: NSObject {
     private var iconProvider = DefaultIconProvider()
     
     init(repo: RunRepo,
-         button: NSStatusBarButton,
-         menu: NSMenu) {
+         button: DefaultCisbButton,
+         menu: DefaultCisbMenu) {
         self.repo = repo
         self.button = button
         self.menu = menu
@@ -74,8 +74,7 @@ class StatusItemPresenter: NSObject {
     }
     
     private func presentButton() {
-        button.target = self
-        button.action = #selector(self.updateSelector)
+        button.setAction(self, selector: #selector(self.updateSelector))
     }
     
     private func updateButton(runs: [Run]) {
@@ -104,7 +103,7 @@ class StatusItemPresenter: NSObject {
         let expectedNumberOfItems = updateSectionItemCount + jobsSectionItemCount + preferencesSectionItemCount + quitSectionItemCount
         
         var jobItemIndex = updateSectionItemCount + 1
-        if (menu.items.count != expectedNumberOfItems) {
+        if (menu.menuItemsCount() != expectedNumberOfItems) {
             menu.removeAllItems()
             setupUpdateSection()
             setupJobsSection(runs: runs)
@@ -112,59 +111,64 @@ class StatusItemPresenter: NSObject {
             setupQuitSection()
         } else {
             runs.forEach { run in
-                let menuItem = menu.item(at: jobItemIndex)
-                menuItem?.title = jobMenuItemTitle(name: run.name, status: run.status)
+                let title = jobMenuItemTitle(name: run.name, status: run.status)
+                menu.updateMenuItem(title: title, at: jobItemIndex)
                 jobItemIndex += 1
             }
         }
         
-        menu.displayUpdateTime(date: Date())
+        menu.updateMenuItem(title: getCurrentTimeLabel(), withTag: MenuItemTag.jobUpdatedLabel.rawValue)
     }
     
     private func setupUpdateSection() {
-        let update = NSMenuItem(title: "Update", action: #selector(self.updateSelector(_:)), keyEquivalent: "")
-        update.target = self
-        update.tag = MenuItemTag.updateButton.rawValue
-        menu.addItem(update)
+        menu.addMenuItem(title: "Update",
+                         tag: MenuItemTag.updateButton.rawValue,
+                         action: #selector(self.updateSelector(_:)),
+                         delegate: self)
         
-        menu.addItem(NSMenuItem.separator())
+        menu.addMenuItemSeparator(tag: MenuItemTag.updateSectionSeparator.rawValue)
     }
     
     private func setupJobsSection(runs: [Run]) {
-        let updatedTime = NSMenuItem(title: "Updated: N/A", action: nil, keyEquivalent: "")
-        updatedTime.tag = MenuItemTag.jobUpdatedLabel.rawValue
-        menu.addItem(updatedTime)
+        menu.addMenuItem(title: "Updated: N/A", tag: MenuItemTag.jobUpdatedLabel.rawValue)
         
         var jobItemIndex = 3
         
         runs.forEach { run in
             let title = jobMenuItemTitle(name: run.name, status: run.status)
-            menu.insertMenuItemWithTitle(title, at: jobItemIndex)
+            menu.insertMenuItem(title, at: jobItemIndex)
             jobItemIndex += 1
         }
         
-        menu.addItem(NSMenuItem.separator())
+        menu.addMenuItemSeparator(tag: MenuItemTag.jobsSectionSeparator.rawValue)
     }
     
     private func setupPreferencesSection() {
-        let preferences = NSMenuItem(title: "Preferences...", action: #selector(self.launchPreferences(_:)), keyEquivalent: "")
-        preferences.target = self
-        preferences.tag = MenuItemTag.preferencesButton.rawValue
-        menu.addItem(preferences)
+        menu.addMenuItem(title: "Preferences...",
+                         tag: MenuItemTag.preferencesButton.rawValue,
+                         action: #selector(launchPreferences(_:)),
+                         delegate: self)
         
-        menu.addItem(NSMenuItem.separator())
+        menu.addMenuItemSeparator(tag: MenuItemTag.preferencesSectionSeparator.rawValue)
     }
     
     private func setupQuitSection() {
-        let action = #selector(NSApp.terminate(_:))
-        let quit = NSMenuItem(title: "Quit CI Status Bar", action: action, keyEquivalent: "")
-        quit.tag = MenuItemTag.quitButton.rawValue
-        menu.addItem(quit)
+        menu.addMenuItem(title: "Quit CI Status Bar",
+                         tag: MenuItemTag.quitButton.rawValue,
+                         action: #selector(quitApp(_:)),
+                         delegate: self)
     }
     
     private func jobMenuItemTitle(name: String, status: ApiResponseStatus) -> String {
         let statusIcon = iconProvider.iconFor(status: status)
         return "\(statusIcon) \(name)"
+    }
+    
+    private func getCurrentTimeLabel() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm:ss"
+        let date = formatter.string(from: Date())
+        return "Updated: \(date)"
     }
     
     @objc func updateSelector(_ sender: Any?) {
@@ -174,30 +178,85 @@ class StatusItemPresenter: NSObject {
     @objc func launchPreferences(_ sender: Any?) {
         NSApp.sendAction(#selector(AppDelegate.showPreferences), to: nil, from: nil)
     }
-}
-
-extension NSStatusBarButton {
-    func setIcon(_ icon: String) {
-        self.title = icon
+    
+    @objc func quitApp(_ sender: Any?) {
+        NSApp.terminate(sender)
     }
 }
 
-extension NSMenu {
-    func displayUpdateTime(date: Date) {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm:ss"
-        let date = formatter.string(from: Date())
-        let menuItem = self.item(withTag: MenuItemTag.jobUpdatedLabel.rawValue)
-        menuItem?.title = "Updated: \(date)"
-        menuItem?.isEnabled = false
+class DefaultCisbButton: CisbButton {
+    private var button: NSStatusBarButton!
+    
+    init(_ button: NSStatusBarButton) {
+        self.button = button
     }
     
-    func insertMenuItemWithTitle(_ title: String, at index: Int) {
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setIcon(_ icon: String) {
+        self.button.title = icon
+    }
+    
+    func setAction(_ delegate: StatusItemPresenter, selector: Selector) {
+        self.button.target = delegate
+        self.button.action = selector
+    }
+}
+
+class DefaultCisbMenu: CisbMenu {
+    private var menu: NSMenu!
+    
+    init(_ menu: NSMenu) {
+        self.menu = menu
+    }
+    
+    func addMenuItem(title: String, tag: Int, action: Selector, delegate: StatusItemPresenter) {
+        let menuItem = NSMenuItem(title: title, action: action, keyEquivalent: "")
+        menuItem.target = delegate
+        menuItem.tag = tag
+        menuItem.isEnabled = true
+        menu.addItem(menuItem)
+    }
+    
+    func addMenuItem(title: String, tag: Int) {
+        let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
+        menuItem.tag = tag
+        menuItem.isEnabled = false
+        menu.addItem(menuItem)
+    }
+    
+    func addMenuItemSeparator(tag: Int) {
+        let menuItem = NSMenuItem.separator()
+        menuItem.tag = tag
+        menuItem.isEnabled = false
+        menu.addItem(menuItem)
+    }
+    
+    func insertMenuItem(_ title: String, at index: Int) {
         let image = NSImage(size: NSMakeSize(1, 16))
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
         menuItem.image = image
         menuItem.isEnabled = false
-        
-        self.insertItem(menuItem, at: index)
+        menu.insertItem(menuItem, at: index)
+    }
+    
+    func updateMenuItem(title: String, withTag tag: Int) {
+        let menuItem = menu.item(withTag: tag)
+        menuItem?.title = title
+    }
+    
+    func updateMenuItem(title: String, at index: Int) {
+        let menuItem = menu.item(at: index)
+        menuItem?.title = title
+    }
+    
+    func removeAllItems() {
+        menu.removeAllItems()
+    }
+    
+    func menuItemsCount() -> Int {
+        return menu.items.count
     }
 }
