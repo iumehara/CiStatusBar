@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 import Combine
 
 enum MenuItemTag: Int {
@@ -11,19 +11,22 @@ enum MenuItemTag: Int {
     case quitButton = 10
 }
 
-class StatusItemPresenter {
+class StatusItemPresenter: NSObject {
+    private var appLauncher: AppLauncher!
     private var repo: RunRepo
-    private var button: DefaultCisbButton!
-    private var menu: DefaultCisbMenu!
+    private var button: CisbButton!
+    private var menu: CisbMenu!
     private var disposables = Set<AnyCancellable>()
     private var runs: [Run] = []
     private var lastUpdate: Date?
     private var subscription: AnyCancellable? = nil
     private var iconProvider = DefaultIconProvider()
     
-    init(repo: RunRepo,
-         button: DefaultCisbButton,
-         menu: DefaultCisbMenu) {
+    init(appLauncher: AppLauncher,
+         repo: RunRepo,
+         button: CisbButton,
+         menu: CisbMenu) {
+        self.appLauncher = appLauncher
         self.repo = repo
         self.button = button
         self.menu = menu
@@ -176,87 +179,10 @@ class StatusItemPresenter {
     }
     
     @objc func launchPreferences(_ sender: Any?) {
-        NSApp.sendAction(#selector(AppDelegate.showPreferences), to: nil, from: nil)
+        self.appLauncher.launchPreferences()
     }
     
     @objc func quitApp(_ sender: Any?) {
-        NSApp.terminate(sender)
-    }
-}
-
-class DefaultCisbButton: CisbButton {
-    private var button: NSStatusBarButton!
-    
-    init(_ button: NSStatusBarButton) {
-        self.button = button
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setIcon(_ icon: String) {
-        self.button.title = icon
-    }
-    
-    func setAction(_ delegate: StatusItemPresenter, selector: Selector) {
-        self.button.target = delegate
-        self.button.action = selector
-    }
-}
-
-class DefaultCisbMenu: CisbMenu {
-    private var menu: NSMenu!
-    
-    init(_ menu: NSMenu) {
-        self.menu = menu
-    }
-    
-    func addMenuItem(title: String, tag: Int, action: Selector, delegate: StatusItemPresenter) {
-        let menuItem = NSMenuItem(title: title, action: action, keyEquivalent: "")
-        menuItem.target = delegate
-        menuItem.tag = tag
-        menuItem.isEnabled = true
-        menu.addItem(menuItem)
-    }
-    
-    func addMenuItem(title: String, tag: Int) {
-        let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
-        menuItem.tag = tag
-        menuItem.isEnabled = false
-        menu.addItem(menuItem)
-    }
-    
-    func addMenuItemSeparator(tag: Int) {
-        let menuItem = NSMenuItem.separator()
-        menuItem.tag = tag
-        menuItem.isEnabled = false
-        menu.addItem(menuItem)
-    }
-    
-    func insertMenuItem(_ title: String, at index: Int) {
-        let image = NSImage(size: NSMakeSize(1, 16))
-        let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
-        menuItem.image = image
-        menuItem.isEnabled = false
-        menu.insertItem(menuItem, at: index)
-    }
-    
-    func updateMenuItem(title: String, withTag tag: Int) {
-        let menuItem = menu.item(withTag: tag)
-        menuItem?.title = title
-    }
-    
-    func updateMenuItem(title: String, at index: Int) {
-        let menuItem = menu.item(at: index)
-        menuItem?.title = title
-    }
-    
-    func removeAllItems() {
-        menu.removeAllItems()
-    }
-    
-    func menuItemsCount() -> Int {
-        return menu.items.count
+        self.appLauncher.quitApp()
     }
 }

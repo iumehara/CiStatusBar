@@ -49,6 +49,14 @@
 		24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C152591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json */; };
 		24E33C1B2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24E33C1A2591CC5C00EFCBAF /* GitLabV4PipelineTests_FailResponse.json */; };
 		24E854CA26E96CF400843504 /* CIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E854C926E96CF400843504 /* CIColor.swift */; };
+		24E854CC26F28BFD00843504 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF950C69048FA8A044E9B7A /* AppLauncher.swift */; };
+		24E854CD26F28C2000843504 /* CisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */; };
+		24E854CE26F28C2500843504 /* CisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */; };
+		24E854CF26F291EB00843504 /* StatusItemPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF952B58B840F899306A129 /* StatusItemPresenterTests.swift */; };
+		24E854D126F2921500843504 /* DefaultCisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */; };
+		24E854D226F2929300843504 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
+		24E854D326F292A400843504 /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */; };
+		24E854D426F3EDB400843504 /* testDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9560CFA1397B6E246E3A1 /* testDoubles.swift */; };
 		24F1849A25915415002A600E /* RunHttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3ECD255676DF00EFC526 /* RunHttpClient.swift */; };
 		24F1849E25916BB6002A600E /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3E7725565EE600EFC526 /* Run.swift */; };
 		24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3EB92556741700EFC526 /* ApiProtocols.swift */; };
@@ -67,10 +75,12 @@
 		24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F185192591B613002A600E /* AbstractDecoderTests.swift */; };
 		ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */; };
 		ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF953D864C6B824B4A14872 /* DefaultCisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */; };
 		ECF9545425D96AFCBB189D4B /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */; };
 		ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF950C69048FA8A044E9B7A /* AppLauncher.swift */; };
 		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
 		ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
+		ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */; };
 		ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */; };
 		ECF95B257EC79D5941F2E1DC /* CisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */; };
 /* End PBXBuildFile section */
@@ -168,9 +178,13 @@
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
 		ECF950C69048FA8A044E9B7A /* AppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		ECF952B58B840F899306A129 /* StatusItemPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenterTests.swift; sourceTree = "<group>"; };
+		ECF9560CFA1397B6E246E3A1 /* testDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testDoubles.swift; sourceTree = "<group>"; };
 		ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
+		ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbButton.swift; sourceTree = "<group>"; };
 		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIconProvider.swift; sourceTree = "<group>"; };
+		ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbMenu.swift; sourceTree = "<group>"; };
 		ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CisbButton.swift; sourceTree = "<group>"; };
 		ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultAppLauncher.swift; sourceTree = "<group>"; };
 		ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CisbMenu.swift; sourceTree = "<group>"; };
@@ -352,6 +366,7 @@
 				2415DBC3258903D700E77C88 /* api */,
 				242F3EDA2556792B00EFC526 /* repo */,
 				2474EDF4253F072F00184F1A /* Info.plist */,
+				ECF955D3F71EC0EF39594149 /* statusItem */,
 			);
 			path = cistatusbarTests;
 			sourceTree = "<group>";
@@ -408,6 +423,15 @@
 			path = GitHubV3Workflow;
 			sourceTree = "<group>";
 		};
+		ECF955D3F71EC0EF39594149 /* statusItem */ = {
+			isa = PBXGroup;
+			children = (
+				ECF952B58B840F899306A129 /* StatusItemPresenterTests.swift */,
+				ECF95887E9CF9F7949BCB526 /* testDoubles */,
+			);
+			path = statusItem;
+			sourceTree = "<group>";
+		};
 		ECF9584DB9AC66C3070DD618 /* statusItem */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,8 +440,18 @@
 				ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */,
 				ECF950C69048FA8A044E9B7A /* AppLauncher.swift */,
 				ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */,
+				ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */,
+				ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */,
 			);
 			path = statusItem;
+			sourceTree = "<group>";
+		};
+		ECF95887E9CF9F7949BCB526 /* testDoubles */ = {
+			isa = PBXGroup;
+			children = (
+				ECF9560CFA1397B6E246E3A1 /* testDoubles.swift */,
+			);
+			path = testDoubles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,6 +660,8 @@
 				ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */,
 				ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */,
 				ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */,
+				ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */,
+				ECF953D864C6B824B4A14872 /* DefaultCisbMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,26 +669,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24E854D226F2929300843504 /* DefaultIconProvider.swift in Sources */,
 				24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */,
 				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
+				24E854CF26F291EB00843504 /* StatusItemPresenterTests.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
 				24F184BE25916C15002A600E /* JobRepo.swift in Sources */,
 				242F3EDC2556793E00EFC526 /* RunRepoImplTests.swift in Sources */,
 				24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */,
+				24E854D126F2921500843504 /* DefaultCisbMenu.swift in Sources */,
 				24F1849E25916BB6002A600E /* Run.swift in Sources */,
 				24F184AA25916BC7002A600E /* GitLabV4Pipeline.swift in Sources */,
+				24E854CC26F28BFD00843504 /* AppLauncher.swift in Sources */,
 				242F3EE7255679A300EFC526 /* RunHttpClientDoubles.swift in Sources */,
 				242F3F0925567B3A00EFC526 /* JobDaoDoubles.swift in Sources */,
 				24F184B225916C0A002A600E /* JobDao.swift in Sources */,
 				24F184C225916C19002A600E /* JobRepoImpl.swift in Sources */,
+				24E854CE26F28C2500843504 /* CisbMenu.swift in Sources */,
+				24E854D426F3EDB400843504 /* testDoubles.swift in Sources */,
 				24F184CA25916C20002A600E /* RunRepoImpl.swift in Sources */,
 				24F184C625916C1C002A600E /* RunRepo.swift in Sources */,
 				24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */,
+				24E854CD26F28C2000843504 /* CisbButton.swift in Sources */,
 				24F1849A25915415002A600E /* RunHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
 				ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */,
+				24E854D326F292A400843504 /* StatusItemPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
