@@ -19,7 +19,6 @@ class StatusItemPresenter: NSObject {
     private var menu: CisbMenu!
     private var disposables = Set<AnyCancellable>()
     private var runs: [Run] = []
-    private var subscription: AnyCancellable? = nil
     private var iconProvider = DefaultIconProvider()
     
     init(appLauncher: AppLauncher,
@@ -41,7 +40,8 @@ class StatusItemPresenter: NSObject {
     }
     
     private func startUpdateScheduler() {
-        self.subscription = timeService.startTimer(frequency: 1, callback: self.update)
+        timeService.startTimer(frequency: 1, callback: self.update)?
+                .store(in: &disposables)
     }
     
     func update() {
@@ -49,7 +49,11 @@ class StatusItemPresenter: NSObject {
         self.repo.getAll()
                 .receive(on: DispatchQueue.main)
                 .sink(
-                        receiveCompletion: { value in
+                        receiveCompletion: { [weak self] value in
+                            guard let self = self else {
+                                return
+                            }
+                            
                             switch value {
                             case .failure:
                                 self.button.setIcon(self.iconProvider.unknown)
@@ -59,7 +63,10 @@ class StatusItemPresenter: NSObject {
                                 break
                             }
                         },
-                        receiveValue: { runs in
+                        receiveValue: { [weak self] runs in
+                            guard let self = self else {
+                                return
+                            }
                             self.runs = runs
                             self.updateButton(runs: runs)
                             self.updateMenu(runs: runs)
