@@ -13,20 +13,22 @@ enum MenuItemTag: Int {
 
 class StatusItemPresenter: NSObject {
     private var appLauncher: AppLauncher!
-    private var repo: RunRepo
+    private var timeService: TimeService!
+    private var repo: RunRepo!
     private var button: CisbButton!
     private var menu: CisbMenu!
     private var disposables = Set<AnyCancellable>()
     private var runs: [Run] = []
-    private var lastUpdate: Date?
     private var subscription: AnyCancellable? = nil
     private var iconProvider = DefaultIconProvider()
     
     init(appLauncher: AppLauncher,
+         timeService: TimeService,
          repo: RunRepo,
          button: CisbButton,
          menu: CisbMenu) {
         self.appLauncher = appLauncher
+        self.timeService = timeService
         self.repo = repo
         self.button = button
         self.menu = menu
@@ -39,17 +41,7 @@ class StatusItemPresenter: NSObject {
     }
     
     private func startUpdateScheduler() {
-        let frequency = 5 * 60.0
-        self.startTimer(frequency: frequency)
-    }
-    
-    private func startTimer(frequency: Double) {
-        subscription = Timer.publish(every: frequency, on: .main, in: .common)
-                .autoconnect()
-                .receive(on: DispatchQueue.main)
-                .sink { _ in
-                    self.update()
-                }
+        self.subscription = timeService.startTimer(frequency: 1, callback: self.update)
     }
     
     func update() {
@@ -64,7 +56,6 @@ class StatusItemPresenter: NSObject {
                                 self.updateMenu(runs: [])
                                 break
                             case .finished:
-                                self.lastUpdate = Date()
                                 break
                             }
                         },
@@ -169,9 +160,10 @@ class StatusItemPresenter: NSObject {
     
     private func getCurrentTimeLabel() -> String {
         let formatter = DateFormatter()
+        formatter.timeZone = timeService.timeZone()
         formatter.dateFormat = "hh:mm:ss"
-        let date = formatter.string(from: Date())
-        return "Updated: \(date)"
+        let dateString = formatter.string(from: timeService.dateNow())
+        return "Updated: \(dateString)"
     }
     
     @objc func updateSelector(_ sender: Any?) {

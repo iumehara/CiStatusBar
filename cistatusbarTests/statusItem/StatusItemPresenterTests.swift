@@ -3,6 +3,7 @@ import Combine
 
 class StatusItemPresenterTests: XCTestCase {
     private var appLauncher: SpyAppLauncher!
+    private var timeService: SpyTimeService!
     private var repo: StubRunRepo!
     private var button: SpyCisbButton!
     private var menu: SpyCisbMenu!
@@ -14,7 +15,12 @@ class StatusItemPresenterTests: XCTestCase {
         repo = StubRunRepo()
         button = SpyCisbButton()
         menu = SpyCisbMenu()
-        presenter = StatusItemPresenter(appLauncher: appLauncher, repo: repo, button: button, menu: menu)
+        timeService = SpyTimeService()
+        presenter = StatusItemPresenter(appLauncher: appLauncher,
+                                        timeService: timeService,
+                                        repo: repo,
+                                        button: button,
+                                        menu: menu)
     }
     
     func test_present_displaysMenuItemsInCorrectOrder() throws {
@@ -25,7 +31,7 @@ class StatusItemPresenterTests: XCTestCase {
             XCTAssertEqual(self.menu.menuItemsCount(), 9)
             XCTAssertEqual(self.menu.menuItems[0].title, "Update")
             XCTAssertEqual(self.menu.menuItems[1].title, "separator")
-            XCTAssertTrue(self.menu.menuItems[2].title.contains("Updated: "))
+            XCTAssertEqual(self.menu.menuItems[2].title, "Updated: 02:02:02")
             XCTAssertEqual(self.menu.menuItems[3].title, "🟢 Project Build")
             XCTAssertEqual(self.menu.menuItems[4].title, "🔴 Project Test")
             XCTAssertEqual(self.menu.menuItems[5].title, "separator")
@@ -35,6 +41,19 @@ class StatusItemPresenterTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: testTimeout)
+    }
+    
+    func test_present_startsTimer() {
+        presenter.present()
+    
+        let expectation = XCTestExpectation(description: "to be fulfilled after assertion")
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.timeService.startTimer_calledWith?.frequency, 1)
+            XCTAssertNotNil(self.timeService.startTimer_calledWith?.callback)
+            expectation.fulfill()
+        }
+        wait(for: [expectation], timeout: testTimeout)
+    
     }
     
     func test_present_displaysCorrectMenuButtonIcon_allSuccess() {
@@ -87,6 +106,7 @@ class StatusItemPresenterTests: XCTestCase {
         
         let setup = XCTestExpectation(description: "waiting for initial present to fulfill")
         DispatchQueue.main.async {
+            XCTAssertEqual(self.menu.menuItems[2].title, "Updated: 02:02:02")
             XCTAssertEqual(self.menu.menuItems[3].title, "🟢 Project Build")
             XCTAssertEqual(self.menu.menuItems[4].title, "🔴 Project Test")
             setup.fulfill()
@@ -94,6 +114,7 @@ class StatusItemPresenterTests: XCTestCase {
         wait(for: [setup], timeout: testTimeout)
         
         repo.getAll_response = [Run(name: "Project Test", status: .success)]
+        timeService.isoDateNow = "2020-02-02T02:02:03+0000"
         
         let updateMenuItem = self.menu.menuItems.filter {
             $0.title == "Update"
@@ -102,6 +123,7 @@ class StatusItemPresenterTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "to be fulfilled after assertion")
         DispatchQueue.main.async {
+            XCTAssertEqual(self.menu.menuItems[2].title, "Updated: 02:02:03")
             XCTAssertEqual(self.menu.menuItems[3].title, "🟢 Project Test")
             expectation.fulfill()
         }

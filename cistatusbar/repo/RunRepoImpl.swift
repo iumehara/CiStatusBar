@@ -30,7 +30,7 @@ class RunRepoImpl: RunRepo {
 
     private func empty()  -> AnyPublisher<[Run], CisbError> {
         return Just([])
-            .mapError { error in CisbError() }
+            .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
     

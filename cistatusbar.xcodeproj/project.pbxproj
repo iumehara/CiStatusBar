@@ -39,6 +39,7 @@
 		2474EDE7253F072E00184F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE5253F072E00184F1A /* Main.storyboard */; };
 		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
 		248DFD0826C48089005961E6 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DFD0726C48089005961E6 /* TestDoubles.swift */; };
+		249E95A526F8BF6E00D97902 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959097AAC1C66AF9AA54D /* TimeService.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
 		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -79,9 +80,11 @@
 		ECF9545425D96AFCBB189D4B /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */; };
 		ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF950C69048FA8A044E9B7A /* AppLauncher.swift */; };
 		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF957BFE2AED0CB53F2CD64 /* DefaultTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9524045600EFAAEF5401D /* DefaultTimeService.swift */; };
 		ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
 		ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */; };
 		ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */; };
+		ECF959A254968A81DA8971A2 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959097AAC1C66AF9AA54D /* TimeService.swift */; };
 		ECF95B257EC79D5941F2E1DC /* CisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -178,10 +181,12 @@
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
 		ECF950C69048FA8A044E9B7A /* AppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
+		ECF9524045600EFAAEF5401D /* DefaultTimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTimeService.swift; sourceTree = "<group>"; };
 		ECF952B58B840F899306A129 /* StatusItemPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenterTests.swift; sourceTree = "<group>"; };
 		ECF9560CFA1397B6E246E3A1 /* testDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testDoubles.swift; sourceTree = "<group>"; };
 		ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
 		ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbButton.swift; sourceTree = "<group>"; };
+		ECF959097AAC1C66AF9AA54D /* TimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIconProvider.swift; sourceTree = "<group>"; };
 		ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbMenu.swift; sourceTree = "<group>"; };
@@ -442,6 +447,8 @@
 				ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */,
 				ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */,
 				ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */,
+				ECF959097AAC1C66AF9AA54D /* TimeService.swift */,
+				ECF9524045600EFAAEF5401D /* DefaultTimeService.swift */,
 			);
 			path = statusItem;
 			sourceTree = "<group>";
@@ -569,8 +576,8 @@
 			targets = (
 				2474EDD5253F072D00184F1A /* cistatusbar */,
 				2474EDED253F072F00184F1A /* cistatusbarTests */,
-				2474EDF8253F072F00184F1A /* cistatusbarUITests */,
 				240AAEE726BB3D0E00CC9FB6 /* cistatusbarViewTests */,
+				2474EDF8253F072F00184F1A /* cistatusbarUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -662,6 +669,8 @@
 				ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */,
 				ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */,
 				ECF953D864C6B824B4A14872 /* DefaultCisbMenu.swift in Sources */,
+				ECF959A254968A81DA8971A2 /* TimeService.swift in Sources */,
+				ECF957BFE2AED0CB53F2CD64 /* DefaultTimeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,6 +681,7 @@
 				24E854D226F2929300843504 /* DefaultIconProvider.swift in Sources */,
 				24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */,
 				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
+				249E95A526F8BF6E00D97902 /* TimeService.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
 				24E854CF26F291EB00843504 /* StatusItemPresenterTests.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,

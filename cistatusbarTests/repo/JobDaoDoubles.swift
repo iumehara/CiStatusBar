@@ -14,26 +14,23 @@ class JobDaoStub: JobDao {
                 apiType: .gitHubV3Workflow),
     ]
     func getAll() -> AnyPublisher<[Job], CisbError> {
-        let response = Just(getAll_stubResponse)
-            .setFailureType(to: CisbError.self)
-            .eraseToAnyPublisher()
-        return response
+        return successResponse(of: self.getAll_stubResponse)
     }
     
     func create(job: Job) -> AnyPublisher<Bool, CisbError> {
-        return Just(true)
-            .setFailureType(to: CisbError.self)
-            .eraseToAnyPublisher()
+        return successResponse(of: true)
     }
     
     func update(job: Job) -> AnyPublisher<Bool, CisbError> {
-        return Just(true)
-            .setFailureType(to: CisbError.self)
-            .eraseToAnyPublisher()
+        return successResponse(of: true)
     }
     
     func delete(id: UUID) -> AnyPublisher<Bool, CisbError> {
-        return Just(true)
+        return successResponse(of: true)
+    }
+    
+    private func successResponse<T>(of response: T) -> AnyPublisher<T, CisbError> {
+        return Just(response)
             .setFailureType(to: CisbError.self)
             .eraseToAnyPublisher()
     }
@@ -47,21 +44,27 @@ class JobDaoSpy: JobDao {
 
     func getAll() -> AnyPublisher<[Job], CisbError> {
         self.getAll_called = true
-        return Just([]).mapError { error in CisbError()}.eraseToAnyPublisher()
+        return successResponse(of: [])
     }
     
     func create(job: Job) -> AnyPublisher<Bool, CisbError> {
         self.create_calledWith = job
-        return Just(true).mapError { error in CisbError() }.eraseToAnyPublisher()
+        return successResponse(of: true)
     }
     
     func update(job: Job) -> AnyPublisher<Bool, CisbError> {
         self.update_calledWith = job
-        return Just(true).mapError { error in CisbError() }.eraseToAnyPublisher()
+        return successResponse(of: true)
     }
     
     func delete(id: UUID) -> AnyPublisher<Bool, CisbError> {
         self.delete_calledWith = id
-        return Just(true).mapError { error in CisbError() }.eraseToAnyPublisher()
+        return successResponse(of: true)
+    }
+    
+    private func successResponse<T>(of response: T) -> AnyPublisher<T, CisbError> {
+        return Just(response)
+            .setFailureType(to: CisbError.self)
+            .eraseToAnyPublisher()
     }
 }

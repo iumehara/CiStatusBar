@@ -17,21 +17,15 @@ class JobDaoImpl: JobDao {
         
         do {
             guard let cdJobs: [CDJobInfo] = try managedContext.fetch(fetchRequest) as? [CDJobInfo] else {
-                return Just([])
-                    .mapError { error in CisbError() }
-                    .eraseToAnyPublisher()
+                return successResponse(of: [])
             }
 
             let jobs = cdJobs.compactMap { domainFrom($0) }
             
-            return Just(jobs)
-                .mapError { error in CisbError() }
-                .eraseToAnyPublisher()
+            return successResponse(of: jobs)
             
         } catch _ as NSError {
-            return Just([])
-                .mapError { error in CisbError() }
-                .eraseToAnyPublisher()
+            return successResponse(of: [])
         }
     }
     
@@ -51,13 +45,9 @@ class JobDaoImpl: JobDao {
     
         do {
             try managedContext.save()
-            return Just(true)
-                .mapError { error in CisbError()}
-                .eraseToAnyPublisher()
+            return successResponse(of: true)
         } catch {
-            return Just(false)
-                .mapError { error in CisbError()}
-                .eraseToAnyPublisher()
+            return successResponse(of: false)
         }
     }
     
@@ -85,9 +75,7 @@ class JobDaoImpl: JobDao {
         
             try managedContext.save()
             
-            return Just(true)
-                .mapError { error in CisbError()}
-                .eraseToAnyPublisher()
+            return successResponse(of: true)
         } catch _ as NSError {
             return Fail(error: CisbError()).eraseToAnyPublisher()
         }
@@ -101,13 +89,9 @@ class JobDaoImpl: JobDao {
         do {
             try self.managedContext.execute(deleteRequest)
             try self.managedContext.save()
-            return Just(true)
-                .mapError { error in CisbError()}
-                .eraseToAnyPublisher()
+            return successResponse(of: true)
         } catch {
-            return Just(false)
-                .mapError { error in CisbError()}
-                .eraseToAnyPublisher()
+            return successResponse(of: false)
         }
     }
     
@@ -126,5 +110,11 @@ class JobDaoImpl: JobDao {
                        name: name,
                        url: url,
                        apiType: apiType)
+    }
+    
+    private func successResponse<T>(of response: T) -> AnyPublisher<T, CisbError> {
+        return Just(response)
+            .setFailureType(to: CisbError.self)
+            .eraseToAnyPublisher()
     }
 }

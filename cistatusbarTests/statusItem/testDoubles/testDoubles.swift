@@ -102,3 +102,25 @@ class SpyCisbMenu: CisbMenu {
         menuItems.count
     }
 }
+
+class SpyTimeService: TimeService {
+    var isoDateNow = "2020-02-02T02:02:02+0000"
+    
+    func dateNow() -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone.init(abbreviation: "UTC")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter.date(from: isoDateNow)!
+    }
+    
+    func timeZone() -> TimeZone {
+        TimeZone.init(abbreviation: "UTC")!
+    }
+    
+    var startTimer_calledWith: (frequency: Int, callback: () -> Void)? = nil
+    
+    func startTimer(frequency: Int, callback: @escaping () -> Void) -> AnyCancellable? {
+        startTimer_calledWith = (frequency: frequency, callback: callback)
+        return AnyCancellable({})
+    }
+}

@@ -22,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let appLauncher = DefaultAppLauncher(preferencesWindow: preferencesWindow)
         let presenter = StatusItemPresenter(appLauncher: appLauncher,
+                                            timeService: DefaultTimeService(),
                                             repo: repo,
                                             button: DefaultCisbButton(button),
                                             menu: DefaultCisbMenu(menu))
