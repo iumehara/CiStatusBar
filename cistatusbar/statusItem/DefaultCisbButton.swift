@@ -14,10 +14,5 @@ class DefaultCisbButton: CisbButton {
     func setIcon(_ icon: String) {
         self.button.title = icon
     }
-    
-    func setAction(_ delegate: StatusItemPresenter, selector: Selector) {
-        self.button.target = delegate
-        self.button.action = selector
-    }
 }
 

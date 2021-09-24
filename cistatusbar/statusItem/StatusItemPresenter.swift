@@ -1,15 +1,6 @@
 import Foundation
 import Combine
-
-enum MenuItemTag: Int {
-    case updateButton = 1
-    case updateSectionSeparator = 2
-    case jobUpdatedLabel = 3
-    case jobsSectionSeparator = 7
-    case preferencesButton = 8
-    case preferencesSectionSeparator = 9
-    case quitButton = 10
-}
+import Cocoa
 
 class StatusItemPresenter: NSObject {
     private var appLauncher: AppLauncher!
@@ -18,7 +9,6 @@ class StatusItemPresenter: NSObject {
     private var button: CisbButton!
     private var menu: CisbMenu!
     private var disposables = Set<AnyCancellable>()
-    private var runs: [Run] = []
     private var iconProvider = DefaultIconProvider()
     
     init(appLauncher: AppLauncher,
@@ -34,19 +24,30 @@ class StatusItemPresenter: NSObject {
     }
     
     func present() {
-        presentButton()
+        menu.setDelegate(self)
         update()
         startUpdateScheduler()
     }
     
     private func startUpdateScheduler() {
-        timeService.startTimer(frequency: 1, callback: self.update)?
+        timeService.startScheduler(frequency: 1, callback: self.update)?
                 .store(in: &disposables)
     }
     
     func update() {
-        self.button.setIcon(iconProvider.loading)
+        displayLoading()
+        timeService.startTimer()
+        
         self.repo.getAll()
+                .map { [weak self] result -> [Run] in
+                    if let self = self {
+                        let interval = self.timeService.timeIntervalSinceStart()
+                        if interval < 3 {
+                            self.timeService.sleep(for: 3 - interval)
+                        }
+                    }
+                    return result
+                }
                 .receive(on: DispatchQueue.main)
                 .sink(
                         receiveCompletion: { [weak self] value in
@@ -67,15 +68,17 @@ class StatusItemPresenter: NSObject {
                             guard let self = self else {
                                 return
                             }
-                            self.runs = runs
+                            
                             self.updateButton(runs: runs)
                             self.updateMenu(runs: runs)
+                            self.menu.updateMenuItem(title: "Update", withTag: .updateButton, isEnabled: true)
                         })
                 .store(in: &disposables)
     }
     
-    private func presentButton() {
-        button.setAction(self, selector: #selector(self.updateSelector))
+    private func displayLoading() {
+        button.setIcon(iconProvider.loading)
+        menu.updateMenuItem(title: "Updating...", withTag: .updateButton, isEnabled: false)
     }
     
     private func updateButton(runs: [Run]) {
@@ -118,20 +121,20 @@ class StatusItemPresenter: NSObject {
             }
         }
         
-        menu.updateMenuItem(title: getCurrentTimeLabel(), withTag: MenuItemTag.jobUpdatedLabel.rawValue)
+        menu.updateMenuItem(title: getCurrentTimeLabel(), withTag: .jobUpdatedLabel, isEnabled: false)
     }
     
     private func setupUpdateSection() {
         menu.addMenuItem(title: "Update",
-                         tag: MenuItemTag.updateButton.rawValue,
+                         tag: .updateButton,
                          action: #selector(self.updateSelector(_:)),
                          delegate: self)
         
-        menu.addMenuItemSeparator(tag: MenuItemTag.updateSectionSeparator.rawValue)
+        menu.addMenuItemSeparator(tag: .updateSectionSeparator)
     }
     
     private func setupJobsSection(runs: [Run]) {
-        menu.addMenuItem(title: "Updated: N/A", tag: MenuItemTag.jobUpdatedLabel.rawValue)
+        menu.addMenuItem(title: "Updated: N/A", tag: .jobUpdatedLabel)
         
         var jobItemIndex = 3
         
@@ -141,21 +144,21 @@ class StatusItemPresenter: NSObject {
             jobItemIndex += 1
         }
         
-        menu.addMenuItemSeparator(tag: MenuItemTag.jobsSectionSeparator.rawValue)
+        menu.addMenuItemSeparator(tag: .jobsSectionSeparator)
     }
     
     private func setupPreferencesSection() {
         menu.addMenuItem(title: "Preferences...",
-                         tag: MenuItemTag.preferencesButton.rawValue,
+                         tag: .preferencesButton,
                          action: #selector(launchPreferences(_:)),
                          delegate: self)
         
-        menu.addMenuItemSeparator(tag: MenuItemTag.preferencesSectionSeparator.rawValue)
+        menu.addMenuItemSeparator(tag: .preferencesSectionSeparator)
     }
     
     private func setupQuitSection() {
         menu.addMenuItem(title: "Quit CI Status Bar",
-                         tag: MenuItemTag.quitButton.rawValue,
+                         tag: .quitButton,
                          action: #selector(quitApp(_:)),
                          delegate: self)
     }
@@ -185,3 +188,10 @@ class StatusItemPresenter: NSObject {
         self.appLauncher.quitApp()
     }
 }
+
+extension StatusItemPresenter: NSMenuDelegate {
+    func menuWillOpen(_ menu: NSMenu) {
+        update()
+    }
+}
+

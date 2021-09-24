@@ -48,8 +48,8 @@ class StatusItemPresenterTests: XCTestCase {
     
         let expectation = XCTestExpectation(description: "to be fulfilled after assertion")
         DispatchQueue.main.async {
-            XCTAssertEqual(self.timeService.startTimer_calledWith?.frequency, 1)
-            XCTAssertNotNil(self.timeService.startTimer_calledWith?.callback)
+            XCTAssertEqual(self.timeService.startScheduler_calledWith?.frequency, 1)
+            XCTAssertNotNil(self.timeService.startScheduler_calledWith?.callback)
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: testTimeout)
@@ -99,6 +99,19 @@ class StatusItemPresenterTests: XCTestCase {
             expectation.fulfill()
         }
         wait(for: [expectation], timeout: testTimeout)
+    }
+    
+    func test_present_sleepsForUpTo3Second() {
+        presenter.present()
+        
+        let expectation = XCTestExpectation(description: "to be fulfilled after assertion")
+        timeService.timeIntervalSinceStart_returnValue = 1
+        DispatchQueue.main.async {
+            XCTAssertEqual(self.timeService.startTimer_called, true)
+            XCTAssertEqual(self.timeService.sleep_calledWith, 2)
+            expectation.fulfill()
+        }
+        self.wait(for: [expectation], timeout: self.testTimeout)
     }
     
     func test_clickUpdate_displaysUpdatedStatus() {

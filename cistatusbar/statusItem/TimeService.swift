@@ -4,5 +4,8 @@ import Combine
 protocol TimeService {
     func dateNow() -> Date
     func timeZone() -> TimeZone
-    func startTimer(frequency: Int, callback: @escaping () -> Void) -> AnyCancellable?
+    func startScheduler(frequency: Int, callback: @escaping () -> Void) -> AnyCancellable?
+    func startTimer()
+    func timeIntervalSinceStart() -> Int
+    func sleep(for seconds: Int)
 }

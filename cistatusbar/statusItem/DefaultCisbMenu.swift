@@ -1,29 +1,45 @@
 import Cocoa
+
+enum MenuItemTag: Int {
+    case updateButton = 1
+    case updateSectionSeparator = 2
+    case jobUpdatedLabel = 3
+    case jobsSectionSeparator = 7
+    case preferencesButton = 8
+    case preferencesSectionSeparator = 9
+    case quitButton = 10
+}
+
 class DefaultCisbMenu: CisbMenu {
     private var menu: NSMenu!
     
     init(_ menu: NSMenu) {
         self.menu = menu
+        self.menu.autoenablesItems = false
     }
     
-    func addMenuItem(title: String, tag: Int, action: Selector, delegate: StatusItemPresenter) {
+    func setDelegate(_ delegate: NSMenuDelegate) {
+        menu.delegate = delegate
+    }
+    
+    func addMenuItem(title: String, tag: MenuItemTag, action: Selector, delegate: StatusItemPresenter) {
         let menuItem = NSMenuItem(title: title, action: action, keyEquivalent: "")
         menuItem.target = delegate
-        menuItem.tag = tag
+        menuItem.tag = tag.rawValue
         menuItem.isEnabled = true
         menu.addItem(menuItem)
     }
     
-    func addMenuItem(title: String, tag: Int) {
+    func addMenuItem(title: String, tag: MenuItemTag) {
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
-        menuItem.tag = tag
+        menuItem.tag = tag.rawValue
         menuItem.isEnabled = false
         menu.addItem(menuItem)
     }
     
-    func addMenuItemSeparator(tag: Int) {
+    func addMenuItemSeparator(tag: MenuItemTag) {
         let menuItem = NSMenuItem.separator()
-        menuItem.tag = tag
+        menuItem.tag = tag.rawValue
         menuItem.isEnabled = false
         menu.addItem(menuItem)
     }
@@ -36,9 +52,10 @@ class DefaultCisbMenu: CisbMenu {
         menu.insertItem(menuItem, at: index)
     }
     
-    func updateMenuItem(title: String, withTag tag: Int) {
-        let menuItem = menu.item(withTag: tag)
-        menuItem?.title = title
+    func updateMenuItem(title: String, withTag tag: MenuItemTag, isEnabled: Bool) {
+        guard let menuItem = menu.item(withTag: tag.rawValue) else { return }
+        menuItem.title = title
+        menuItem.isEnabled = isEnabled
     }
     
     func updateMenuItem(title: String, at index: Int) {
@@ -51,6 +68,6 @@ class DefaultCisbMenu: CisbMenu {
     }
     
     func menuItemsCount() -> Int {
-        return menu.items.count
+        menu.items.count
     }
 }

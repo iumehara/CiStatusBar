@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import Cocoa
 
 class SpyAppLauncher: AppLauncher {
     var launchPreferences_wasCalled = false
@@ -47,6 +48,11 @@ class SpyCisbButton: CisbButton {
 }
 
 class SpyCisbMenu: CisbMenu {
+    var setDelegate_calledWith: NSMenuDelegate? = nil
+    func setDelegate(_ delegate: NSMenuDelegate) {
+        setDelegate_calledWith = delegate
+    }
+    
     var menuItems: [MenuItem] = []
     
     class MenuItem {
@@ -66,27 +72,27 @@ class SpyCisbMenu: CisbMenu {
         }
     }
     
-    func addMenuItem(title: String, tag: Int, action: Selector, delegate: StatusItemPresenter) {
-        menuItems.append(MenuItem(title: title, tag: tag, action: action, delegate: delegate))
+    func addMenuItem(title: String, tag: MenuItemTag, action: Selector, delegate: StatusItemPresenter) {
+        menuItems.append(MenuItem(title: title, tag: tag.rawValue, action: action, delegate: delegate))
     }
     
-    func addMenuItem(title: String, tag: Int) {
-        menuItems.append(MenuItem(title: title, tag: tag))
+    func addMenuItem(title: String, tag: MenuItemTag) {
+        menuItems.append(MenuItem(title: title, tag: tag.rawValue))
     }
     
-    func addMenuItemSeparator(tag: Int) {
-        menuItems.append(MenuItem(title: "separator", tag: tag))
+    func addMenuItemSeparator(tag: MenuItemTag) {
+        menuItems.append(MenuItem(title: "separator", tag: tag.rawValue))
     }
     
     func insertMenuItem(_ title: String, at index: Int) {
         menuItems.insert(MenuItem(title: title, tag: nil), at: index)
     }
     
-    func updateMenuItem(title: String, withTag tag: Int) {
+    func updateMenuItem(title: String, withTag tag: MenuItemTag, isEnabled: Bool) {
         let menuItem = menuItems.filter {
-            $0.tag == tag
+            $0.tag == tag.rawValue
         }.first
-        menuItem!.title = title
+        menuItem?.title = title
     }
     
     func updateMenuItem(title: String, at index: Int) {
@@ -117,10 +123,28 @@ class SpyTimeService: TimeService {
         TimeZone.init(abbreviation: "UTC")!
     }
     
-    var startTimer_calledWith: (frequency: Int, callback: () -> Void)? = nil
+    var startScheduler_calledWith: (frequency: Int, callback: () -> Void)? = nil
     
-    func startTimer(frequency: Int, callback: @escaping () -> Void) -> AnyCancellable? {
-        startTimer_calledWith = (frequency: frequency, callback: callback)
+    func startScheduler(frequency: Int, callback: @escaping () -> Void) -> AnyCancellable? {
+        startScheduler_calledWith = (frequency: frequency, callback: callback)
         return AnyCancellable({})
+    }
+    
+    var startTimer_called = false
+    
+    func startTimer() {
+        startTimer_called = true
+    }
+    
+    var timeIntervalSinceStart_returnValue = 1
+    
+    func timeIntervalSinceStart() -> Int {
+        timeIntervalSinceStart_returnValue
+    }
+    
+    var sleep_calledWith: Int? = nil
+    
+    func sleep(for seconds: Int) {
+        sleep_calledWith = seconds
     }
 }
