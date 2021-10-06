@@ -30,7 +30,6 @@
 		242F3F40255992C800EFC526 /* JobRepoImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F3F255992C800EFC526 /* JobRepoImpl.swift */; };
 		242F3F65255E5E8400EFC526 /* JobDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F64255E5E8400EFC526 /* JobDetail.swift */; };
 		242F3F6A255E5F2100EFC526 /* JobList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F69255E5F2100EFC526 /* JobList.swift */; };
-		242F3F99255FCC0400EFC526 /* JobInfoDaoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 242F3F98255FCC0400EFC526 /* JobInfoDaoTests.swift */; };
 		2465885E2563B552002A0F89 /* JobDaoStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2465885D2563B552002A0F89 /* JobDaoStub.swift */; };
 		2474EDDA253F072D00184F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDD9253F072D00184F1A /* AppDelegate.swift */; };
 		2474EDDF253F072D00184F1A /* cistatusbar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDDD253F072D00184F1A /* cistatusbar.xcdatamodeld */; };
@@ -150,7 +149,6 @@
 		242F3F45255A86E500EFC526 /* PreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewModel.swift; sourceTree = "<group>"; };
 		242F3F64255E5E8400EFC526 /* JobDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetail.swift; sourceTree = "<group>"; };
 		242F3F69255E5F2100EFC526 /* JobList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobList.swift; sourceTree = "<group>"; };
-		242F3F98255FCC0400EFC526 /* JobInfoDaoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobInfoDaoTests.swift; sourceTree = "<group>"; };
 		2465885D2563B552002A0F89 /* JobDaoStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDaoStub.swift; sourceTree = "<group>"; };
 		2474EDD6253F072D00184F1A /* cistatusbar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cistatusbar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDD9253F072D00184F1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,7 +160,7 @@
 		2474EDE9253F072E00184F1A /* cistatusbar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cistatusbar.entitlements; sourceTree = "<group>"; };
 		2474EDEE253F072F00184F1A /* cistatusbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDF4253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2474EDF9253F072F00184F1A /* cistatusbarE2ETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarE2ETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDFD253F072F00184F1A /* happyPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happyPathTests.swift; sourceTree = "<group>"; };
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		248DFD0726C48089005961E6 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
@@ -304,21 +302,13 @@
 			path = preferences;
 			sourceTree = "<group>";
 		};
-		242F3F97255FCBEC00EFC526 /* repo */ = {
-			isa = PBXGroup;
-			children = (
-				242F3F98255FCC0400EFC526 /* JobInfoDaoTests.swift */,
-			);
-			path = repo;
-			sourceTree = "<group>";
-		};
 		2474EDCD253F072D00184F1A = {
 			isa = PBXGroup;
 			children = (
 				2474EDD8253F072D00184F1A /* cistatusbar */,
 				2474EDF1253F072F00184F1A /* cistatusbarTests */,
 				240AAEE926BB3D0E00CC9FB6 /* cistatusbarViewTests */,
-				2474EDFC253F072F00184F1A /* cistatusbarUITests */,
+				2474EDFC253F072F00184F1A /* cistatusbarE2ETests */,
 				2474EDD7253F072D00184F1A /* Products */,
 				240AAEF326BC933000CC9FB6 /* Frameworks */,
 			);
@@ -329,7 +319,7 @@
 			children = (
 				2474EDD6253F072D00184F1A /* cistatusbar.app */,
 				2474EDEE253F072F00184F1A /* cistatusbarTests.xctest */,
-				2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */,
+				2474EDF9253F072F00184F1A /* cistatusbarE2ETests.xctest */,
 				240AAEE826BB3D0E00CC9FB6 /* cistatusbarViewTests.xctest */,
 			);
 			name = Products;
@@ -376,14 +366,13 @@
 			path = cistatusbarTests;
 			sourceTree = "<group>";
 		};
-		2474EDFC253F072F00184F1A /* cistatusbarUITests */ = {
+		2474EDFC253F072F00184F1A /* cistatusbarE2ETests */ = {
 			isa = PBXGroup;
 			children = (
-				242F3F97255FCBEC00EFC526 /* repo */,
 				2474EDFD253F072F00184F1A /* happyPathTests.swift */,
 				2474EDFF253F072F00184F1A /* Info.plist */,
 			);
-			path = cistatusbarUITests;
+			path = cistatusbarE2ETests;
 			sourceTree = "<group>";
 		};
 		24B8A9CF25820D0F000F1201 /* api */ = {
@@ -518,9 +507,9 @@
 			productReference = 2474EDEE253F072F00184F1A /* cistatusbarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		2474EDF8253F072F00184F1A /* cistatusbarUITests */ = {
+		2474EDF8253F072F00184F1A /* cistatusbarE2ETests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2474EE08253F072F00184F1A /* Build configuration list for PBXNativeTarget "cistatusbarUITests" */;
+			buildConfigurationList = 2474EE08253F072F00184F1A /* Build configuration list for PBXNativeTarget "cistatusbarE2ETests" */;
 			buildPhases = (
 				2474EDF5253F072F00184F1A /* Sources */,
 				2474EDF6253F072F00184F1A /* Frameworks */,
@@ -531,9 +520,9 @@
 			dependencies = (
 				2474EDFB253F072F00184F1A /* PBXTargetDependency */,
 			);
-			name = cistatusbarUITests;
+			name = cistatusbarE2ETests;
 			productName = cistatusbarUITests;
-			productReference = 2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */;
+			productReference = 2474EDF9253F072F00184F1A /* cistatusbarE2ETests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -577,7 +566,7 @@
 				2474EDD5253F072D00184F1A /* cistatusbar */,
 				2474EDED253F072F00184F1A /* cistatusbarTests */,
 				240AAEE726BB3D0E00CC9FB6 /* cistatusbarViewTests */,
-				2474EDF8253F072F00184F1A /* cistatusbarUITests */,
+				2474EDF8253F072F00184F1A /* cistatusbarE2ETests */,
 			);
 		};
 /* End PBXProject section */
@@ -715,7 +704,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2474EDFE253F072F00184F1A /* happyPathTests.swift in Sources */,
-				242F3F99255FCC0400EFC526 /* JobInfoDaoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,13 +1001,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PBB9GZ72D8;
-				INFOPLIST_FILE = cistatusbarUITests/Info.plist;
+				INFOPLIST_FILE = cistatusbarE2ETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarE2ETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = cistatusbar;
@@ -1033,13 +1021,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = PBB9GZ72D8;
-				INFOPLIST_FILE = cistatusbarUITests/Info.plist;
+				INFOPLIST_FILE = cistatusbarE2ETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarE2ETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = cistatusbar;
@@ -1085,7 +1073,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2474EE08253F072F00184F1A /* Build configuration list for PBXNativeTarget "cistatusbarUITests" */ = {
+		2474EE08253F072F00184F1A /* Build configuration list for PBXNativeTarget "cistatusbarE2ETests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2474EE09253F072F00184F1A /* Debug */,

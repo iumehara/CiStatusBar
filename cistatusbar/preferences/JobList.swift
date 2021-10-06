@@ -20,7 +20,6 @@ struct JobList: View {
                         self.jobClicked(job)
                     })
                     .accessibilityIdentifier(viewModel.isCurrent(job) ? viewModel.currentJob.name : job.name)
-                    
                 }
             }
             .padding(.horizontal, -8)

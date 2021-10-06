@@ -43,8 +43,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2474EDF8253F072F00184F1A"
-               BuildableName = "cistatusbarUITests.xctest"
-               BlueprintName = "cistatusbarUITests"
+               BuildableName = "cistatusbarE2ETests.xctest"
+               BlueprintName = "cistatusbarE2ETests"
                ReferencedContainer = "container:cistatusbar.xcodeproj">
             </BuildableReference>
          </TestableReference>
