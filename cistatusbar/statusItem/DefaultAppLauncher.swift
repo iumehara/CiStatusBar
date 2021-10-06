@@ -27,8 +27,17 @@ class DefaultAppLauncher: AppLauncher {
             preferencesWindow?.setFrameAutosaveName("Preferences")
             preferencesWindow?.isReleasedWhenClosed = false
             preferencesWindow?.contentView = NSHostingView(rootView: preferencesView)
+            preferencesWindow?.setAccessibilityIdentifier("PreferencesWindow")
         }
         preferencesWindow?.makeKeyAndOrderFront(nil)
+        
+        var accessibilityChildren: [Any] = []
+        if let currentChildren = NSApp.accessibilityChildren() {
+            accessibilityChildren = currentChildren
+        }
+        accessibilityChildren.append(preferencesWindow!)
+                
+        NSApp.setAccessibilityChildren(accessibilityChildren)
         NSApp.activate(ignoringOtherApps: true)
     }
     

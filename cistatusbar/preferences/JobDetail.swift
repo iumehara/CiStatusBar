@@ -12,6 +12,7 @@ struct JobDetail: View {
                 TextField("name", text: $viewModel.currentJob.name)
                     .padding(10.0)
                     .frame(width: 200, alignment: .leading)
+                    .accessibilityIdentifier("name")
                 Spacer()
             }
             
@@ -56,6 +57,7 @@ struct JobDetail: View {
                 TextField("url", text: $viewModel.currentJob.url)
                     .padding(10.0)
                     .frame(width: 600, alignment: .leading)
+                    .accessibilityIdentifier("url")
                 Spacer()
             }
 
@@ -88,6 +90,7 @@ struct JobDetail: View {
                     Button(action: self.cancelClicked) { Text("Cancel") }
                         .padding(10)
                     Button(action: self.saveClicked) { Text("Save") }
+                        .accessibilityIdentifier("save")
                         .padding(10)
                 }
                 .padding(.leading, 60)

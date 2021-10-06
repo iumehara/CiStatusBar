@@ -37,7 +37,7 @@
 		2474EDE1253F072E00184F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE0253F072E00184F1A /* Assets.xcassets */; };
 		2474EDE4253F072E00184F1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE3253F072E00184F1A /* Preview Assets.xcassets */; };
 		2474EDE7253F072E00184F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2474EDE5253F072E00184F1A /* Main.storyboard */; };
-		2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */; };
+		2474EDFE253F072F00184F1A /* happyPathTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2474EDFD253F072F00184F1A /* happyPathTests.swift */; };
 		248DFD0826C48089005961E6 /* TestDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248DFD0726C48089005961E6 /* TestDoubles.swift */; };
 		249E95A526F8BF6E00D97902 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959097AAC1C66AF9AA54D /* TimeService.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
@@ -163,7 +163,7 @@
 		2474EDEE253F072F00184F1A /* cistatusbarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2474EDF4253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2474EDF9253F072F00184F1A /* cistatusbarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cistatusbarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cistatusbarUITests.swift; sourceTree = "<group>"; };
+		2474EDFD253F072F00184F1A /* happyPathTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = happyPathTests.swift; sourceTree = "<group>"; };
 		2474EDFF253F072F00184F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		248DFD0726C48089005961E6 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
@@ -380,7 +380,7 @@
 			isa = PBXGroup;
 			children = (
 				242F3F97255FCBEC00EFC526 /* repo */,
-				2474EDFD253F072F00184F1A /* cistatusbarUITests.swift */,
+				2474EDFD253F072F00184F1A /* happyPathTests.swift */,
 				2474EDFF253F072F00184F1A /* Info.plist */,
 			);
 			path = cistatusbarUITests;
@@ -714,7 +714,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2474EDFE253F072F00184F1A /* cistatusbarUITests.swift in Sources */,
+				2474EDFE253F072F00184F1A /* happyPathTests.swift in Sources */,
 				242F3F99255FCC0400EFC526 /* JobInfoDaoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,7 +768,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -793,7 +793,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.1;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -852,7 +852,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -907,7 +907,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -934,7 +934,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -959,7 +959,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -979,7 +979,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -999,7 +999,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.umehara.cistatusbarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

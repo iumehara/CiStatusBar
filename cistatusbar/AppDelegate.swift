@@ -7,13 +7,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var preferencesWindow: NSWindow?
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(40))
         
+        statusItem = NSStatusBar.system.statusItem(withLength: CGFloat(40))
         guard let button = statusItem?.button else {
             NSApp.terminate(nil)
             return
         }
         
+        button.setAccessibilityIdentifier("MenuIcon")
+        NSApp.setAccessibilityChildren([button])
+
+    
         let menu = NSMenu()
         statusItem?.menu = menu
         

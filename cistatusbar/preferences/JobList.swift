@@ -19,6 +19,8 @@ struct JobList: View {
                     .onTapGesture(perform: {
                         self.jobClicked(job)
                     })
+                    .accessibilityIdentifier(viewModel.isCurrent(job) ? viewModel.currentJob.name : job.name)
+                    
                 }
             }
             .padding(.horizontal, -8)
@@ -28,8 +30,10 @@ struct JobList: View {
                 Button(action: self.addClicked) {Text("+")}
                     .frame(width: 30)
                     .disabled(viewModel.isAddButtonDisabled)
+                    .accessibilityIdentifier("add job")
                 Button(action: self.deleteClicked) { Text("-") }
                     .frame(width: 30)
+                    .accessibilityIdentifier("remove job")
                 Spacer()
                     .frame(maxWidth: .infinity)
             }

@@ -27,6 +27,7 @@ class DefaultCisbMenu: CisbMenu {
         menuItem.target = delegate
         menuItem.tag = tag.rawValue
         menuItem.isEnabled = true
+        menuItem.setAccessibilityIdentifier(title)
         menu.addItem(menuItem)
     }
     
@@ -48,7 +49,7 @@ class DefaultCisbMenu: CisbMenu {
         let image = NSImage(size: NSMakeSize(1, 16))
         let menuItem = NSMenuItem(title: title, action: nil, keyEquivalent: "")
         menuItem.image = image
-        menuItem.isEnabled = false
+//        menuItem.isEnabled = false
         menu.insertItem(menuItem, at: index)
     }
     
@@ -61,6 +62,7 @@ class DefaultCisbMenu: CisbMenu {
     func updateMenuItem(title: String, at index: Int) {
         let menuItem = menu.item(at: index)
         menuItem?.title = title
+        menuItem?.setAccessibilityIdentifier(title)
     }
     
     func removeAllItems() {
