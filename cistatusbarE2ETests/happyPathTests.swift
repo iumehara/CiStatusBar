@@ -31,7 +31,7 @@ class happyPathTests: XCTestCase {
     }
 
     private func wait() {
-        sleep(5)
+        sleep(20)
     }
     
     private func clickMenuButton() {
