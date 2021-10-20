@@ -37,6 +37,11 @@
                BlueprintName = "cistatusbarTests"
                ReferencedContainer = "container:cistatusbar.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "AbstractResponseTests">
+               </Test>
+            </SkippedTests>
          </TestableReference>
          <TestableReference
             skipped = "NO">

@@ -30,7 +30,8 @@ struct GitLabV4Pipeline {
             switch status {
             case Status.success.rawValue:
                 return .success
-            case Status.failed.rawValue:
+            case Status.failed.rawValue,
+                 Status.canceled.rawValue:
                 return .fail
             case Status.created.rawValue,
                  Status.waiting_for_resource.rawValue,

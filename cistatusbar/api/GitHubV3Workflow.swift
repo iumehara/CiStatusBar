@@ -36,7 +36,7 @@ struct GitHubV3Workflow {
         
         func toStatus() -> ApiResponseStatus {
             if self.workflow_runs.count == 0 {
-                return .fail
+                return .unknown
             }
             
             let workflowRun = self.workflow_runs[0]
@@ -49,7 +49,9 @@ struct GitHubV3Workflow {
                 return .success
             }
 
-            if workflowRun.conclusion == GithubConclusion.failure.rawValue {
+            if workflowRun.conclusion == GithubConclusion.failure.rawValue ||
+                workflowRun.conclusion == GithubConclusion.cancelled.rawValue ||
+                workflowRun.conclusion == GithubConclusion.timed_out.rawValue {
                 return .fail
             }
 

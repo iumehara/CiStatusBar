@@ -1,27 +1,29 @@
 import XCTest
 
-class GitLabV4PipelineTests: XCTestCase, AbstractResponseTests {
-    func getTestClass() -> XCTestCase.Type {
+class GitLabV4PipelineTests: AbstractResponseTests {
+    override func getTestClass() -> XCTestCase.Type {
         return GitLabV4PipelineTests.self
     }
     
-    func getDecoder() -> ApiResponseDecoder {
+    override func getDecoder() -> ApiResponseDecoder {
         return GitLabV4Pipeline.ResponseDecoder()
     }
     
-    func test_success() {
-        run_test_success()
+    func test_everyScenario() {
+        XCTAssertEqual(getStatusFor(status: .created), .running)
+        XCTAssertEqual(getStatusFor(status: .waiting_for_resource), .running)
+        XCTAssertEqual(getStatusFor(status: .preparing), .running)
+        XCTAssertEqual(getStatusFor(status: .pending), .running)
+        XCTAssertEqual(getStatusFor(status: .running), .running)
+        XCTAssertEqual(getStatusFor(status: .success), .success)
+        XCTAssertEqual(getStatusFor(status: .failed), .fail)
+        XCTAssertEqual(getStatusFor(status: .canceled), .fail)
+        XCTAssertEqual(getStatusFor(status: .skipped), .unknown)
+        XCTAssertEqual(getStatusFor(status: .manual), .unknown)
+        XCTAssertEqual(getStatusFor(status: .scheduled), .running)
     }
-    
-    func test_running() {
-        run_test_running()
-    }
-    
-    func test_fail() {
-        run_test_fail()
-    }
-    
-    func test_unknown() {
-        run_test_unknown()
+
+    private func getStatusFor(status: GitLabV4Pipeline.Response.Status) -> ApiResponseStatus {
+        return GitLabV4Pipeline.Response.init(status: status.rawValue).toStatus()
     }
 }

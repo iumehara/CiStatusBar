@@ -41,6 +41,10 @@
 		249E95A526F8BF6E00D97902 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959097AAC1C66AF9AA54D /* TimeService.swift */; };
 		24B8A9D125820D29000F1201 /* GitHubV3Workflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */; };
 		24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */; };
+		24C0B2E627178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2E527178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift */; };
+		24C0B2E827178D6400C34A5F /* AzureDevopsV6Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */; };
+		24C0B2E927178F8700C34A5F /* AzureDevopsV6Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */; };
+		24C0B2EB2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24C0B2EA2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json */; };
 		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */; };
 		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
@@ -76,15 +80,18 @@
 		ECF951A7FEDED1B1EC409F92 /* DefaultAppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95F874EF519115F6A0687 /* DefaultAppLauncher.swift */; };
 		ECF9525D9753C657A4A2BB3F /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
 		ECF953D864C6B824B4A14872 /* DefaultCisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */; };
+		ECF954074C0DC1AAD9D2B1A3 /* AzureDevOpsV6PipelineTests_RunningResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = ECF9508993EE0F98380072D0 /* AzureDevOpsV6PipelineTests_RunningResponse.json */; };
 		ECF9545425D96AFCBB189D4B /* StatusItemPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */; };
 		ECF9551D50D8015B91BBC550 /* AppLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF950C69048FA8A044E9B7A /* AppLauncher.swift */; };
 		ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959F84D5EE92F45BCD4F5 /* Job.swift */; };
+		ECF957555F08CC971ED9B0C0 /* AzureDevOpsV6PipelineTests_FailResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = ECF955141D4F9688382B7A87 /* AzureDevOpsV6PipelineTests_FailResponse.json */; };
 		ECF957BFE2AED0CB53F2CD64 /* DefaultTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF9524045600EFAAEF5401D /* DefaultTimeService.swift */; };
 		ECF95902BD9A7688E8EDCFD9 /* DefaultIconProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */; };
 		ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */; };
 		ECF959763D838E71AA5B4D6A /* CisbMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95FAFE668D41EDB8AEB0F /* CisbMenu.swift */; };
 		ECF959A254968A81DA8971A2 /* TimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF959097AAC1C66AF9AA54D /* TimeService.swift */; };
 		ECF95B257EC79D5941F2E1DC /* CisbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */; };
+		ECF95D2771BDC688C963F479 /* AzureDevOpsV6PipelineTests_UnknownResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = ECF95A7875ACCE167FD4C847 /* AzureDevOpsV6PipelineTests_UnknownResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +173,9 @@
 		248DFD0726C48089005961E6 /* TestDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDoubles.swift; sourceTree = "<group>"; };
 		24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubV3Workflow.swift; sourceTree = "<group>"; };
 		24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4Pipeline.swift; sourceTree = "<group>"; };
+		24C0B2E527178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureDevOpsV6PipelineTests.swift; sourceTree = "<group>"; };
+		24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureDevopsV6Pipeline.swift; sourceTree = "<group>"; };
+		24C0B2EA2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AzureDevOpsV6PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
 		24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepoImplTests.swift; sourceTree = "<group>"; };
 		24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4PipelineTests.swift; sourceTree = "<group>"; };
 		24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
@@ -178,14 +188,17 @@
 		24F1850C2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_UnknownResponse.json; sourceTree = "<group>"; };
 		24F185142591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitHubV3WorkflowTests_FailResponse.json; sourceTree = "<group>"; };
 		24F185192591B613002A600E /* AbstractDecoderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDecoderTests.swift; sourceTree = "<group>"; };
+		ECF9508993EE0F98380072D0 /* AzureDevOpsV6PipelineTests_RunningResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AzureDevOpsV6PipelineTests_RunningResponse.json; sourceTree = "<group>"; };
 		ECF950C69048FA8A044E9B7A /* AppLauncher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLauncher.swift; sourceTree = "<group>"; };
 		ECF9524045600EFAAEF5401D /* DefaultTimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTimeService.swift; sourceTree = "<group>"; };
 		ECF952B58B840F899306A129 /* StatusItemPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenterTests.swift; sourceTree = "<group>"; };
+		ECF955141D4F9688382B7A87 /* AzureDevOpsV6PipelineTests_FailResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AzureDevOpsV6PipelineTests_FailResponse.json; sourceTree = "<group>"; };
 		ECF9560CFA1397B6E246E3A1 /* testDoubles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testDoubles.swift; sourceTree = "<group>"; };
 		ECF9563A32F04BF40C37C2BD /* StatusItemPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemPresenter.swift; sourceTree = "<group>"; };
 		ECF957113729D0F04E64E4CF /* DefaultCisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbButton.swift; sourceTree = "<group>"; };
 		ECF959097AAC1C66AF9AA54D /* TimeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeService.swift; sourceTree = "<group>"; };
 		ECF959F84D5EE92F45BCD4F5 /* Job.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
+		ECF95A7875ACCE167FD4C847 /* AzureDevOpsV6PipelineTests_UnknownResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AzureDevOpsV6PipelineTests_UnknownResponse.json; sourceTree = "<group>"; };
 		ECF95D713358B77A77865CB4 /* DefaultIconProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultIconProvider.swift; sourceTree = "<group>"; };
 		ECF95DB8D6E24F2B045656D1 /* DefaultCisbMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultCisbMenu.swift; sourceTree = "<group>"; };
 		ECF95EA82D1C7C52C89D7B7A /* CisbButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CisbButton.swift; sourceTree = "<group>"; };
@@ -247,6 +260,7 @@
 		2415DBC3258903D700E77C88 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				24C0B2E427178CB700C34A5F /* AzureDevOpsV6Pipeline */,
 				24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */,
 				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
 				24F185192591B613002A600E /* AbstractDecoderTests.swift */,
@@ -379,10 +393,23 @@
 			isa = PBXGroup;
 			children = (
 				242F3EB92556741700EFC526 /* ApiProtocols.swift */,
+				24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */,
 				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
 				24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */,
 			);
 			path = api;
+			sourceTree = "<group>";
+		};
+		24C0B2E427178CB700C34A5F /* AzureDevOpsV6Pipeline */ = {
+			isa = PBXGroup;
+			children = (
+				24C0B2E527178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift */,
+				24C0B2EA2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json */,
+				ECF9508993EE0F98380072D0 /* AzureDevOpsV6PipelineTests_RunningResponse.json */,
+				ECF95A7875ACCE167FD4C847 /* AzureDevOpsV6PipelineTests_UnknownResponse.json */,
+				ECF955141D4F9688382B7A87 /* AzureDevOpsV6PipelineTests_FailResponse.json */,
+			);
+			path = AzureDevOpsV6Pipeline;
 			sourceTree = "<group>";
 		};
 		24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */ = {
@@ -593,6 +620,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24C0B2EB2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json in Resources */,
 				24E33C032591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json in Resources */,
 				24F185152591B4D2002A600E /* GitHubV3WorkflowTests_FailResponse.json in Resources */,
 				24E33C162591CC4E00EFCBAF /* GitLabV4PipelineTests_UnknownResponse.json in Resources */,
@@ -601,6 +629,9 @@
 				24F184FD2591AE42002A600E /* GitHubV3WorkflowTests_RunningResponse.json in Resources */,
 				24E33C112591CC4200EFCBAF /* GitLabV4PipelineTests_RunningResponse.json in Resources */,
 				24F1850D2591B4BC002A600E /* GitHubV3WorkflowTests_UnknownResponse.json in Resources */,
+				ECF954074C0DC1AAD9D2B1A3 /* AzureDevOpsV6PipelineTests_RunningResponse.json in Resources */,
+				ECF95D2771BDC688C963F479 /* AzureDevOpsV6PipelineTests_UnknownResponse.json in Resources */,
+				ECF957555F08CC971ED9B0C0 /* AzureDevOpsV6PipelineTests_FailResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,6 +690,7 @@
 				ECF9593379F818BA43106BFE /* DefaultCisbButton.swift in Sources */,
 				ECF953D864C6B824B4A14872 /* DefaultCisbMenu.swift in Sources */,
 				ECF959A254968A81DA8971A2 /* TimeService.swift in Sources */,
+				24C0B2E827178D6400C34A5F /* AzureDevopsV6Pipeline.swift in Sources */,
 				ECF957BFE2AED0CB53F2CD64 /* DefaultTimeService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,6 +703,7 @@
 				24F184AE25916C07002A600E /* RunHttpClientImpl.swift in Sources */,
 				24F1851A2591B613002A600E /* AbstractDecoderTests.swift in Sources */,
 				249E95A526F8BF6E00D97902 /* TimeService.swift in Sources */,
+				24C0B2E927178F8700C34A5F /* AzureDevopsV6Pipeline.swift in Sources */,
 				24F184A625916BC2002A600E /* GitHubV3Workflow.swift in Sources */,
 				24E854CF26F291EB00843504 /* StatusItemPresenterTests.swift in Sources */,
 				24F184A225916BBF002A600E /* ApiProtocols.swift in Sources */,
@@ -691,6 +724,7 @@
 				24F184C625916C1C002A600E /* RunRepo.swift in Sources */,
 				24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */,
 				24E854CD26F28C2000843504 /* CisbButton.swift in Sources */,
+				24C0B2E627178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift in Sources */,
 				24F1849A25915415002A600E /* RunHttpClient.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
