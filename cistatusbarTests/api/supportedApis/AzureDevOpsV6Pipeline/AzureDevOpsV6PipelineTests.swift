@@ -9,7 +9,7 @@ class AzureDevOpsV6PipelineTests: AbstractResponseTests {
         return AzureDevopsV6Pipeline.ResponseDecoder()
     }
 
-    func test_everyScenario() {
+    override func test_everyScenario() {
         XCTAssertEqual(AzureDevopsV6Pipeline.Response.init(value: []).toStatus(), .unknown)
 
         XCTAssertEqual(getStatusFor(state: .completed, result: .succeeded), .success)

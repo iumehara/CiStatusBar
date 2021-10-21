@@ -9,7 +9,7 @@ class GitHubV3WorkflowTests: AbstractResponseTests {
         return GitHubV3Workflow.ResponseDecoder()
     }
     
-    func test_everyScenario() {
+    override func test_everyScenario() {
         XCTAssertEqual(GitHubV3Workflow.Response(workflow_runs: []).toStatus(), .unknown)
         
         XCTAssertEqual(getStatusFor(status: .queued, conclusion: .success), .running)

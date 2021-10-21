@@ -9,7 +9,7 @@ class GitLabV4PipelineTests: AbstractResponseTests {
         return GitLabV4Pipeline.ResponseDecoder()
     }
     
-    func test_everyScenario() {
+    override func test_everyScenario() {
         XCTAssertEqual(getStatusFor(status: .created), .running)
         XCTAssertEqual(getStatusFor(status: .waiting_for_resource), .running)
         XCTAssertEqual(getStatusFor(status: .preparing), .running)

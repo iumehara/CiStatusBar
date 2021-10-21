@@ -27,6 +27,10 @@ class AbstractResponseTests: XCTestCase {
         run_test(jobName: "unknown job", typeOfJsonFileToParse: "UnknownResponse", expectedStatus: .unknown)
     }
     
+    func test_everyScenario() {
+        fatalError("Subclass must implement this test. Include multiple assertions to cover every combination of inputs that the API could return ")
+    }
+    
     private func run_test(jobName: String,
                           typeOfJsonFileToParse: String,
                           expectedStatus: ApiResponseStatus) {
@@ -48,7 +52,3 @@ class AbstractResponseTests: XCTestCase {
         return try! Data(contentsOf: URL(fileURLWithPath: dataJson))
     }
 }
-//
-//enum TestError: Error {
-//    case runtimeError(String)
-//}

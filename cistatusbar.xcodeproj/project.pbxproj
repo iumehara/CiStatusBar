@@ -45,6 +45,10 @@
 		24C0B2E827178D6400C34A5F /* AzureDevopsV6Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */; };
 		24C0B2E927178F8700C34A5F /* AzureDevopsV6Pipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */; };
 		24C0B2EB2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 24C0B2EA2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json */; };
+		24C0B2EF2720C4A400C34A5F /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2EE2720C4A400C34A5F /* ApiType.swift */; };
+		24C0B2F12720C4DD00C34A5F /* ApiResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2F02720C4DD00C34A5F /* ApiResponseStatus.swift */; };
+		24C0B2F22720C50900C34A5F /* ApiResponseStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2F02720C4DD00C34A5F /* ApiResponseStatus.swift */; };
+		24C0B2F32720C51500C34A5F /* ApiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C0B2EE2720C4A400C34A5F /* ApiType.swift */; };
 		24C3FC9C26BC9AC70097DF86 /* ViewInspector.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 240AAEF426BC933000CC9FB6 /* ViewInspector.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		24C58D69259B1FAB00FCB38F /* JobRepoImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */; };
 		24E33BF82591CAEB00EFCBAF /* GitLabV4PipelineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */; };
@@ -176,6 +180,8 @@
 		24C0B2E527178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureDevOpsV6PipelineTests.swift; sourceTree = "<group>"; };
 		24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureDevopsV6Pipeline.swift; sourceTree = "<group>"; };
 		24C0B2EA2718D42300C34A5F /* AzureDevOpsV6PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = AzureDevOpsV6PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
+		24C0B2EE2720C4A400C34A5F /* ApiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiType.swift; sourceTree = "<group>"; };
+		24C0B2F02720C4DD00C34A5F /* ApiResponseStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponseStatus.swift; sourceTree = "<group>"; };
 		24C58D68259B1FAB00FCB38F /* JobRepoImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobRepoImplTests.swift; sourceTree = "<group>"; };
 		24E33BF72591CAEB00EFCBAF /* GitLabV4PipelineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitLabV4PipelineTests.swift; sourceTree = "<group>"; };
 		24E33C022591CB6000EFCBAF /* GitLabV4PipelineTests_SuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GitLabV4PipelineTests_SuccessResponse.json; sourceTree = "<group>"; };
@@ -260,9 +266,7 @@
 		2415DBC3258903D700E77C88 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				24C0B2E427178CB700C34A5F /* AzureDevOpsV6Pipeline */,
-				24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */,
-				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
+				24C0B2ED2720C48000C34A5F /* supportedApis */,
 				24F185192591B613002A600E /* AbstractDecoderTests.swift */,
 			);
 			path = api;
@@ -392,10 +396,10 @@
 		24B8A9CF25820D0F000F1201 /* api */ = {
 			isa = PBXGroup;
 			children = (
+				24C0B2EC2720C46700C34A5F /* supportedApis */,
 				242F3EB92556741700EFC526 /* ApiProtocols.swift */,
-				24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */,
-				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
-				24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */,
+				24C0B2F02720C4DD00C34A5F /* ApiResponseStatus.swift */,
+				24C0B2EE2720C4A400C34A5F /* ApiType.swift */,
 			);
 			path = api;
 			sourceTree = "<group>";
@@ -410,6 +414,26 @@
 				ECF955141D4F9688382B7A87 /* AzureDevOpsV6PipelineTests_FailResponse.json */,
 			);
 			path = AzureDevOpsV6Pipeline;
+			sourceTree = "<group>";
+		};
+		24C0B2EC2720C46700C34A5F /* supportedApis */ = {
+			isa = PBXGroup;
+			children = (
+				24C0B2E727178D6400C34A5F /* AzureDevopsV6Pipeline.swift */,
+				24B8A9D025820D29000F1201 /* GitHubV3Workflow.swift */,
+				24B8A9E4258267FF000F1201 /* GitLabV4Pipeline.swift */,
+			);
+			path = supportedApis;
+			sourceTree = "<group>";
+		};
+		24C0B2ED2720C48000C34A5F /* supportedApis */ = {
+			isa = PBXGroup;
+			children = (
+				24C0B2E427178CB700C34A5F /* AzureDevOpsV6Pipeline */,
+				24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */,
+				24F184FB2591AD5B002A600E /* GitHubV3Workflow */,
+			);
+			path = supportedApis;
 			sourceTree = "<group>";
 		};
 		24E33BF62591CACD00EFCBAF /* GitLabV4Pipeline */ = {
@@ -669,7 +693,9 @@
 				242F3F65255E5E8400EFC526 /* JobDetail.swift in Sources */,
 				240C977C2552E6F10083C9B8 /* RunRepo.swift in Sources */,
 				242F3E7825565EE600EFC526 /* Run.swift in Sources */,
+				24C0B2F12720C4DD00C34A5F /* ApiResponseStatus.swift in Sources */,
 				24B8A9E5258267FF000F1201 /* GitLabV4Pipeline.swift in Sources */,
+				24C0B2EF2720C4A400C34A5F /* ApiType.swift in Sources */,
 				242F3E8D255660F100EFC526 /* RunRepoImpl.swift in Sources */,
 				242F3ECE255676DF00EFC526 /* RunHttpClient.swift in Sources */,
 				242F3ED3255676EE00EFC526 /* RunHttpClientImpl.swift in Sources */,
@@ -726,10 +752,12 @@
 				24E854CD26F28C2000843504 /* CisbButton.swift in Sources */,
 				24C0B2E627178CEB00C34A5F /* AzureDevOpsV6PipelineTests.swift in Sources */,
 				24F1849A25915415002A600E /* RunHttpClient.swift in Sources */,
+				24C0B2F32720C51500C34A5F /* ApiType.swift in Sources */,
 				242F3EF2255679CB00EFC526 /* CisbError.swift in Sources */,
 				2415DBC5258903F000E77C88 /* GitHubV3WorkflowTests.swift in Sources */,
 				ECF955AC8DEF9AEE4F8659AF /* Job.swift in Sources */,
 				24E854D326F292A400843504 /* StatusItemPresenter.swift in Sources */,
+				24C0B2F22720C50900C34A5F /* ApiResponseStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
