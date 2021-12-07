@@ -25,9 +25,10 @@ Refer to the existing solutions at `cistatusbar/api/supportedApis/` and `cistatu
 
 1. Name your solution. The format should be like `<service-name>V<version-number><response-type>` in camel case.
    eg. `githubV3Workflow`
-2. Add your solution to the `ApiType` enum located at `/api/ApiType.swift`, positioned in alphabetical order. 
-3. Define a struct with your solution name in  the `/api/supportedApis/` group. The struct should have inner structs that implement the protocols defined in `/api/ApiProtocols.swift`
-4. Add a test file at `cistatusbarTests/api/supportedApis/<name-of-your-solution>/<name-of-your-solution>Tests.swift` that inherits `AbstractResponseTests`
-5. In your test files, implement functions that require overriding. Running an empty test class that inherits `AbstractResponseTests` will throw errors that explain next steps.
-6. Add sample json files for `success`, `running`, `unknown`, `fail`. They must be named in the format `<name-of-your-solution>Tests_SuccessResponse.json`
-7. Complete the implementation so all tests pass. Tests should be run using the `UnitTests` or `cistatusbar` schemes.
+2. Add a test file at `cistatusbarTests/api/supportedApis/<name-of-your-solution>/<name-of-your-solution>Tests.swift` that inherits `AbstractResponseTests`
+3. Add your solution to the `ApiType` enum located at `/api/ApiType.swift`, positioned in alphabetical order. 
+4. Define a struct with your solution name in  the `/api/supportedApis/` group. The struct should have inner structs that implement the protocols defined in `/api/ApiProtocols.swift`
+5. Update the struct's Target Membership so that it is included in the `cistatusbarTests` target in addition to the `cistatusbar` target 
+6. In your test files, implement functions that require overriding. Running an empty test class that inherits `AbstractResponseTests` will throw errors that explain next steps.
+7. Add sample json files for `success`, `running`, `unknown`, `fail`. They must be named in the format `<name-of-your-solution>Tests_SuccessResponse.json`
+8. Complete the implementation so all tests pass. Tests should be run using the `UnitTests` or `cistatusbar` schemes.
