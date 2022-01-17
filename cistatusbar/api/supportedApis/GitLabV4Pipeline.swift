@@ -5,7 +5,7 @@ struct GitLabV4Pipeline {
     struct Details: ApiDetails {
         var apiType = ApiType.gitLabV4Pipeline
         var description = "GitLab V4 Pipeline"
-        var format = "https://gitlab.com/api/v4/projects/:owner%2F:repo/pipelines"
+        var format = "https://gitlab.com/api/v4/projects/{owner}%2F{repo}/pipelines"
         var apiReference = URL(string: "https://docs.gitlab.com/ee/api/pipelines.html#list-project-pipelines")!
     }
 

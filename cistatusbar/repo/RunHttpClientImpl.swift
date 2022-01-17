@@ -26,10 +26,13 @@ class RunHttpClientImpl: RunHttpClient {
     private func decodeResponse(apiType: ApiType,
                                 jobName: String,
                                 data: Data) -> AnyPublisher<Run, CisbError> {
-        
         switch apiType {
+        case .azureDevopsV6Pipeline:
+            return AzureDevopsV6Pipeline.ResponseDecoder().decode(jobName: jobName, data: data)
         case .gitHubV3Workflow:
             return GitHubV3Workflow.ResponseDecoder().decode(jobName: jobName, data: data)
+        case .gitLabV4Pipeline:
+            return GitLabV4Pipeline.ResponseDecoder().decode(jobName: jobName, data: data)
         default:
             return GitLabV4Pipeline.ResponseDecoder().decode(jobName: jobName, data: data)
         }

@@ -5,11 +5,11 @@ struct AzureDevopsV6Pipeline {
     struct Details: ApiDetails {
         var apiType = ApiType.azureDevopsV6Pipeline
         var description = "Azure DevOps V6 Pipeline"
-        var format = "https://dev.azure.com/:owner/:repo/_apis/pipelines/{pipelineId}/runs?api-version=6.1-preview.1"
+        var format = "https://dev.azure.com/{owner}/{repo}/_apis/pipelines/{pipelineId}/runs?api-version=6.1-preview.1"
         var apiReference = URL(string: "https://docs.microsoft.com/en-us/rest/api/azure/devops/pipelines/runs/list?view=azure-devops-rest-6.1")!
     }
     
-    struct Response: Codable, ApiResponse {
+    struct Response: ApiResponse {
         var value: [Run] = []
         
         struct Run: Codable {
@@ -62,12 +62,8 @@ struct AzureDevopsV6Pipeline {
             let type = AzureDevopsV6Pipeline.Response.self
             return Just(data)
                     .decode(type: type, decoder: JSONDecoder())
-                    .map {
-                        Run(name: jobName, status: $0.toStatus())
-                    }
-                    .mapError { e in
-                        CisbError()
-                    }
+                    .map { Run(name: jobName, status: $0.toStatus()) }
+                    .mapError { e in CisbError() }
                     .eraseToAnyPublisher()
         }
     }

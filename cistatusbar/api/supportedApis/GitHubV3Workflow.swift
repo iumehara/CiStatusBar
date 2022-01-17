@@ -5,7 +5,7 @@ struct GitHubV3Workflow {
     struct Details: ApiDetails {
         var apiType = ApiType.gitHubV3Workflow
         var description = "GitHub V3 Workflow"
-        var format = "https://api.github.com/repos/:owner/:repo/actions/workflows/:workflow_id/runs"
+        var format = "https://api.github.com/repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs"
         var apiReference = URL(string: "https://developer.github.com/v3/actions/workflow-runs/#list-workflow-runs")!
     }
     
@@ -28,7 +28,7 @@ struct GitHubV3Workflow {
             case action_required
         }
         
-            
+        
         struct WorkflowRun: Codable {
             var conclusion: String
             var status: String
